@@ -28,151 +28,128 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
-			this.fileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.connectMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.reconnectMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.fileSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.settingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.fileSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-			this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.editMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.findMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.findNextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.consoleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.clearConsoleMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.helpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.documentationMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.helpSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.mainMenuStrip.SuspendLayout();
+			this.components = new System.ComponentModel.Container();
+			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
+			this.fileMenuItem = new System.Windows.Forms.MenuItem();
+			this.connectMenuItem = new System.Windows.Forms.MenuItem();
+			this.reconnectMenuItem = new System.Windows.Forms.MenuItem();
+			this.fileSeparator1 = new System.Windows.Forms.MenuItem();
+			this.settingsMenuItem = new System.Windows.Forms.MenuItem();
+			this.fileSeparator2 = new System.Windows.Forms.MenuItem();
+			this.exitMenuItem = new System.Windows.Forms.MenuItem();
+			this.consoleMenuItem = new System.Windows.Forms.MenuItem();
+			this.findMenuItem = new System.Windows.Forms.MenuItem();
+			this.findNextMenuItem = new System.Windows.Forms.MenuItem();
+			this.clearMenuItem = new System.Windows.Forms.MenuItem();
+			this.consoleSeparator1 = new System.Windows.Forms.MenuItem();
+			this.helpMenuItem = new System.Windows.Forms.MenuItem();
+			this.documentationMenuItem = new System.Windows.Forms.MenuItem();
+			this.helpSeparator1 = new System.Windows.Forms.MenuItem();
+			this.aboutMenuItem = new System.Windows.Forms.MenuItem();
 			this.SuspendLayout();
 			// 
-			// mainMenuStrip
+			// mainMenu
 			// 
-			this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.fileMenuItem,
-            this.editMenuItem,
             this.consoleMenuItem,
             this.helpMenuItem});
-			this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
-			this.mainMenuStrip.Name = "mainMenuStrip";
-			this.mainMenuStrip.Size = new System.Drawing.Size(408, 24);
-			this.mainMenuStrip.TabIndex = 0;
-			this.mainMenuStrip.Text = "menuStrip1";
 			// 
 			// fileMenuItem
 			// 
-			this.fileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.fileMenuItem.Index = 0;
+			this.fileMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.connectMenuItem,
             this.reconnectMenuItem,
             this.fileSeparator1,
             this.settingsMenuItem,
             this.fileSeparator2,
             this.exitMenuItem});
-			this.fileMenuItem.Name = "fileMenuItem";
-			this.fileMenuItem.Size = new System.Drawing.Size(37, 20);
 			this.fileMenuItem.Text = "&File";
 			// 
 			// connectMenuItem
 			// 
-			this.connectMenuItem.Name = "connectMenuItem";
-			this.connectMenuItem.Size = new System.Drawing.Size(162, 22);
-			this.connectMenuItem.Text = "&Connect...";
+			this.connectMenuItem.Index = 0;
+			this.connectMenuItem.Text = "&Connect";
 			// 
 			// reconnectMenuItem
 			// 
-			this.reconnectMenuItem.Name = "reconnectMenuItem";
-			this.reconnectMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.reconnectMenuItem.Index = 1;
 			this.reconnectMenuItem.Text = "&Reconnect";
 			// 
 			// fileSeparator1
 			// 
-			this.fileSeparator1.Name = "fileSeparator1";
-			this.fileSeparator1.Size = new System.Drawing.Size(159, 6);
+			this.fileSeparator1.Index = 2;
+			this.fileSeparator1.Text = "-";
 			// 
 			// settingsMenuItem
 			// 
-			this.settingsMenuItem.Name = "settingsMenuItem";
-			this.settingsMenuItem.ShortcutKeyDisplayString = "Ctrl+,";
-			this.settingsMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Oemcomma)));
-			this.settingsMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.settingsMenuItem.Index = 3;
 			this.settingsMenuItem.Text = "Settings...";
 			// 
 			// fileSeparator2
 			// 
-			this.fileSeparator2.Name = "fileSeparator2";
-			this.fileSeparator2.Size = new System.Drawing.Size(159, 6);
+			this.fileSeparator2.Index = 4;
+			this.fileSeparator2.Text = "-";
 			// 
 			// exitMenuItem
 			// 
-			this.exitMenuItem.Name = "exitMenuItem";
-			this.exitMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.exitMenuItem.Index = 5;
 			this.exitMenuItem.Text = "E&xit";
 			// 
-			// editMenuItem
+			// consoleMenuItem
 			// 
-			this.editMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.consoleMenuItem.Index = 1;
+			this.consoleMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.clearMenuItem,
+            this.consoleSeparator1,
             this.findMenuItem,
             this.findNextMenuItem});
-			this.editMenuItem.Name = "editMenuItem";
-			this.editMenuItem.Size = new System.Drawing.Size(39, 20);
-			this.editMenuItem.Text = "&Edit";
+			this.consoleMenuItem.Text = "Console";
 			// 
 			// findMenuItem
 			// 
-			this.findMenuItem.Name = "findMenuItem";
-			this.findMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-			this.findMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.findMenuItem.Index = 2;
 			this.findMenuItem.Text = "Find...";
 			// 
 			// findNextMenuItem
 			// 
-			this.findNextMenuItem.Name = "findNextMenuItem";
-			this.findNextMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-			this.findNextMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.findNextMenuItem.Index = 3;
 			this.findNextMenuItem.Text = "Find Next";
 			// 
-			// consoleMenuItem
+			// clearMenuItem
 			// 
-			this.consoleMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clearConsoleMenuItem});
-			this.consoleMenuItem.Name = "consoleMenuItem";
-			this.consoleMenuItem.Size = new System.Drawing.Size(62, 20);
-			this.consoleMenuItem.Text = "&Console";
+			this.clearMenuItem.Index = 0;
+			this.clearMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
+			this.clearMenuItem.Text = "Clea&r";
 			// 
-			// clearConsoleMenuItem
+			// consoleSeparator1
 			// 
-			this.clearConsoleMenuItem.Name = "clearConsoleMenuItem";
-			this.clearConsoleMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-			this.clearConsoleMenuItem.Size = new System.Drawing.Size(142, 22);
-			this.clearConsoleMenuItem.Text = "Clea&r";
+			this.consoleSeparator1.Index = 1;
+			this.consoleSeparator1.Text = "-";
 			// 
 			// helpMenuItem
 			// 
-			this.helpMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.helpMenuItem.Index = 2;
+			this.helpMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.documentationMenuItem,
             this.helpSeparator1,
             this.aboutMenuItem});
-			this.helpMenuItem.Name = "helpMenuItem";
-			this.helpMenuItem.Size = new System.Drawing.Size(44, 20);
-			this.helpMenuItem.Text = "&Help";
+			this.helpMenuItem.Text = "Help";
 			// 
 			// documentationMenuItem
 			// 
-			this.documentationMenuItem.Name = "documentationMenuItem";
-			this.documentationMenuItem.Size = new System.Drawing.Size(185, 22);
+			this.documentationMenuItem.Index = 0;
 			this.documentationMenuItem.Text = "View Documentation";
 			// 
 			// helpSeparator1
 			// 
-			this.helpSeparator1.Name = "helpSeparator1";
-			this.helpSeparator1.Size = new System.Drawing.Size(182, 6);
+			this.helpSeparator1.Index = 1;
+			this.helpSeparator1.Text = "-";
 			// 
 			// aboutMenuItem
 			// 
-			this.aboutMenuItem.Name = "aboutMenuItem";
-			this.aboutMenuItem.Size = new System.Drawing.Size(185, 22);
+			this.aboutMenuItem.Index = 2;
 			this.aboutMenuItem.Text = "About SRCDS RCON";
 			// 
 			// MainForm
@@ -180,36 +157,31 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(408, 274);
-			this.Controls.Add(this.mainMenuStrip);
-			this.MainMenuStrip = this.mainMenuStrip;
+			this.Menu = this.mainMenu;
 			this.Name = "MainForm";
 			this.Text = "SRCDS RCON";
-			this.mainMenuStrip.ResumeLayout(false);
-			this.mainMenuStrip.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.MenuStrip mainMenuStrip;
-		private System.Windows.Forms.ToolStripMenuItem fileMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem consoleMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem settingsMenuItem;
-		private System.Windows.Forms.ToolStripSeparator fileSeparator1;
-		private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem connectMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem reconnectMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem clearConsoleMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem editMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem helpMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem documentationMenuItem;
-		private System.Windows.Forms.ToolStripSeparator helpSeparator1;
-		private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem findMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem findNextMenuItem;
-		private System.Windows.Forms.ToolStripSeparator fileSeparator2;
+		private System.Windows.Forms.MainMenu mainMenu;
+		private System.Windows.Forms.MenuItem fileMenuItem;
+		private System.Windows.Forms.MenuItem connectMenuItem;
+		private System.Windows.Forms.MenuItem reconnectMenuItem;
+		private System.Windows.Forms.MenuItem fileSeparator1;
+		private System.Windows.Forms.MenuItem settingsMenuItem;
+		private System.Windows.Forms.MenuItem fileSeparator2;
+		private System.Windows.Forms.MenuItem exitMenuItem;
+		private System.Windows.Forms.MenuItem consoleMenuItem;
+		private System.Windows.Forms.MenuItem clearMenuItem;
+		private System.Windows.Forms.MenuItem consoleSeparator1;
+		private System.Windows.Forms.MenuItem findMenuItem;
+		private System.Windows.Forms.MenuItem findNextMenuItem;
+		private System.Windows.Forms.MenuItem helpMenuItem;
+		private System.Windows.Forms.MenuItem documentationMenuItem;
+		private System.Windows.Forms.MenuItem helpSeparator1;
+		private System.Windows.Forms.MenuItem aboutMenuItem;
 	}
 }
 
