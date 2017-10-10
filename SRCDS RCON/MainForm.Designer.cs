@@ -46,6 +46,11 @@
 			this.documentationMenuItem = new System.Windows.Forms.MenuItem();
 			this.helpSeparator1 = new System.Windows.Forms.MenuItem();
 			this.aboutMenuItem = new System.Windows.Forms.MenuItem();
+			this.consoleTextBox = new System.Windows.Forms.RichTextBox();
+			this.inputTextBox = new System.Windows.Forms.TextBox();
+			this.consolePanel = new System.Windows.Forms.Panel();
+			this.sendButton = new System.Windows.Forms.Button();
+			this.consolePanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// mainMenu
@@ -70,12 +75,13 @@
 			// connectMenuItem
 			// 
 			this.connectMenuItem.Index = 0;
+			this.connectMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
 			this.connectMenuItem.Text = "&Connect";
 			// 
 			// reconnectMenuItem
 			// 
 			this.reconnectMenuItem.Index = 1;
-			this.reconnectMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftR;
+			this.reconnectMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftN;
 			this.reconnectMenuItem.Text = "&Reconnect";
 			// 
 			// fileSeparator1
@@ -96,7 +102,7 @@
 			// exitMenuItem
 			// 
 			this.exitMenuItem.Index = 5;
-			this.exitMenuItem.Text = "E&xit";
+			this.exitMenuItem.Text = "Exit";
 			// 
 			// consoleMenuItem
 			// 
@@ -156,15 +162,65 @@
 			this.aboutMenuItem.Index = 2;
 			this.aboutMenuItem.Text = "About SRCDS RCON";
 			// 
+			// consoleTextBox
+			// 
+			this.consoleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.consoleTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.consoleTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.consoleTextBox.Location = new System.Drawing.Point(0, 0);
+			this.consoleTextBox.Name = "consoleTextBox";
+			this.consoleTextBox.Size = new System.Drawing.Size(339, 200);
+			this.consoleTextBox.TabIndex = 0;
+			this.consoleTextBox.Text = "Lorem ipsum\ndolor sit amet";
+			// 
+			// inputTextBox
+			// 
+			this.inputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.inputTextBox.Location = new System.Drawing.Point(13, 220);
+			this.inputTextBox.Name = "inputTextBox";
+			this.inputTextBox.Size = new System.Drawing.Size(259, 20);
+			this.inputTextBox.TabIndex = 1;
+			// 
+			// consolePanel
+			// 
+			this.consolePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.consolePanel.AutoScroll = true;
+			this.consolePanel.BackColor = System.Drawing.SystemColors.Window;
+			this.consolePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.consolePanel.Controls.Add(this.consoleTextBox);
+			this.consolePanel.Location = new System.Drawing.Point(12, 12);
+			this.consolePanel.Name = "consolePanel";
+			this.consolePanel.Size = new System.Drawing.Size(341, 202);
+			this.consolePanel.TabIndex = 2;
+			// 
+			// sendButton
+			// 
+			this.sendButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.sendButton.Location = new System.Drawing.Point(278, 218);
+			this.sendButton.Name = "sendButton";
+			this.sendButton.Size = new System.Drawing.Size(75, 23);
+			this.sendButton.TabIndex = 3;
+			this.sendButton.Text = "Send";
+			this.sendButton.UseVisualStyleBackColor = true;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(408, 274);
+			this.BackColor = System.Drawing.SystemColors.Window;
+			this.ClientSize = new System.Drawing.Size(365, 252);
+			this.Controls.Add(this.sendButton);
+			this.Controls.Add(this.consolePanel);
+			this.Controls.Add(this.inputTextBox);
 			this.Menu = this.mainMenu;
 			this.Name = "MainForm";
 			this.Text = "SRCDS RCON";
+			this.consolePanel.ResumeLayout(false);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -186,6 +242,10 @@
 		private System.Windows.Forms.MenuItem documentationMenuItem;
 		private System.Windows.Forms.MenuItem helpSeparator1;
 		private System.Windows.Forms.MenuItem aboutMenuItem;
+		private System.Windows.Forms.RichTextBox consoleTextBox;
+		private System.Windows.Forms.TextBox inputTextBox;
+		private System.Windows.Forms.Panel consolePanel;
+		private System.Windows.Forms.Button sendButton;
 	}
 }
 
