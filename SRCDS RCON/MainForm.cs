@@ -16,5 +16,16 @@ namespace SRCDS_RCON
 		{
 			InitializeComponent();
 		}
+
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+		{
+			// CTRL+, for settings menu item
+			if (keyData == (Keys.Control | Keys.Oemcomma))
+			{
+				settingsMenuItem.PerformClick();
+				return false;
+			}
+			return base.ProcessCmdKey(ref msg, keyData);
+		}
 	}
 }

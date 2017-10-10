@@ -38,10 +38,10 @@
 			this.fileSeparator2 = new System.Windows.Forms.MenuItem();
 			this.exitMenuItem = new System.Windows.Forms.MenuItem();
 			this.consoleMenuItem = new System.Windows.Forms.MenuItem();
-			this.findMenuItem = new System.Windows.Forms.MenuItem();
-			this.findNextMenuItem = new System.Windows.Forms.MenuItem();
 			this.clearMenuItem = new System.Windows.Forms.MenuItem();
 			this.consoleSeparator1 = new System.Windows.Forms.MenuItem();
+			this.findMenuItem = new System.Windows.Forms.MenuItem();
+			this.findNextMenuItem = new System.Windows.Forms.MenuItem();
 			this.helpMenuItem = new System.Windows.Forms.MenuItem();
 			this.documentationMenuItem = new System.Windows.Forms.MenuItem();
 			this.helpSeparator1 = new System.Windows.Forms.MenuItem();
@@ -75,6 +75,7 @@
 			// reconnectMenuItem
 			// 
 			this.reconnectMenuItem.Index = 1;
+			this.reconnectMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftR;
 			this.reconnectMenuItem.Text = "&Reconnect";
 			// 
 			// fileSeparator1
@@ -85,7 +86,7 @@
 			// settingsMenuItem
 			// 
 			this.settingsMenuItem.Index = 3;
-			this.settingsMenuItem.Text = "Settings...";
+			this.settingsMenuItem.Text = "Settings...\tCtrl+,";
 			// 
 			// fileSeparator2
 			// 
@@ -107,16 +108,6 @@
             this.findNextMenuItem});
 			this.consoleMenuItem.Text = "Console";
 			// 
-			// findMenuItem
-			// 
-			this.findMenuItem.Index = 2;
-			this.findMenuItem.Text = "Find...";
-			// 
-			// findNextMenuItem
-			// 
-			this.findNextMenuItem.Index = 3;
-			this.findNextMenuItem.Text = "Find Next";
-			// 
 			// clearMenuItem
 			// 
 			this.clearMenuItem.Index = 0;
@@ -127,6 +118,18 @@
 			// 
 			this.consoleSeparator1.Index = 1;
 			this.consoleSeparator1.Text = "-";
+			// 
+			// findMenuItem
+			// 
+			this.findMenuItem.Index = 2;
+			this.findMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
+			this.findMenuItem.Text = "Find...";
+			// 
+			// findNextMenuItem
+			// 
+			this.findNextMenuItem.Index = 3;
+			this.findNextMenuItem.Shortcut = System.Windows.Forms.Shortcut.F3;
+			this.findNextMenuItem.Text = "Find Next";
 			// 
 			// helpMenuItem
 			// 
@@ -140,6 +143,7 @@
 			// documentationMenuItem
 			// 
 			this.documentationMenuItem.Index = 0;
+			this.documentationMenuItem.Shortcut = System.Windows.Forms.Shortcut.F1;
 			this.documentationMenuItem.Text = "View Documentation";
 			// 
 			// helpSeparator1
