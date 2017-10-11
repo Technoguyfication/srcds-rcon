@@ -8,6 +8,9 @@ namespace SRCDS_RCON
 {
 	static class Program
 	{
+		// program constants
+		public const string DocumentationUrl = "https://github.com/Technoguyfication/srcds-rcon/wiki";
+		
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>

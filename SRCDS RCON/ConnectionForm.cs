@@ -53,12 +53,6 @@ namespace SRCDS_RCON
 				ConnectToSelectedServer();
 		}
 
-		private void ServerListView_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.KeyCode == Keys.Enter)
-				ConnectToSelectedServer();
-		}
-
 		private void ConnectToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			ConnectToSelectedServer();
@@ -72,6 +66,16 @@ namespace SRCDS_RCON
 		private void ConnectToListViewItem(ListViewItem item)
 		{
 			throw new NotImplementedException();
+		}
+
+		private void CancelButton_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
+		}
+
+		private void ConnectButton_Click(object sender, EventArgs e)
+		{
+			ConnectToSelectedServer();
 		}
 	}
 }

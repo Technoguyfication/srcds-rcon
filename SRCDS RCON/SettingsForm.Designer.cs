@@ -170,11 +170,11 @@
 			// 
 			// firewallButton
 			// 
-			this.firewallButton.Location = new System.Drawing.Point(7, 43);
+			this.firewallButton.Location = new System.Drawing.Point(20, 43);
 			this.firewallButton.Name = "firewallButton";
-			this.firewallButton.Size = new System.Drawing.Size(185, 23);
+			this.firewallButton.Size = new System.Drawing.Size(160, 23);
 			this.firewallButton.TabIndex = 1;
-			this.firewallButton.Text = "Allow through Windows Firewall";
+			this.firewallButton.Text = " Allow through Firewall";
 			this.settingsToolTip.SetToolTip(this.firewallButton, "This is only needed if the prorgam is being blocked by the firewall.");
 			this.firewallButton.UseVisualStyleBackColor = true;
 			// 

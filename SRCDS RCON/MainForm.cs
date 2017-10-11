@@ -61,5 +61,11 @@ namespace SRCDS_RCON
 		{
 			connectionForm.ShowDialog();
 		}
+
+		private void DocumentationMenuItem_Click(object sender, EventArgs e)
+		{
+			// open documentation in web browser
+			System.Diagnostics.Process.Start(Program.DocumentationUrl);
+		}
 	}
 }
