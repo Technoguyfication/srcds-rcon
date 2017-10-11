@@ -16,5 +16,15 @@ namespace SRCDS_RCON
 		{
 			InitializeComponent();
 		}
+
+		private void SaveChangesButton_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.OK;
+		}
+
+		private void CancelButton_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
+		}
 	}
 }
