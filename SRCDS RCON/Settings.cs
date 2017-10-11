@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Win32;
+using SRCDS_RCON.Net;
 
 namespace SRCDS_RCON
 {
@@ -143,6 +144,58 @@ namespace SRCDS_RCON
 		}
 
 		/// <summary>
+		/// The list of user-defined servers
+		/// </summary>
+		public static List<Server> Servers
+		{
+			get
+			{
+				List<Server> servers = new List<Server>();
+
+				RegistryKey serverBaseKey = _baseKey.CreateSubKey("Servers");
+
+				foreach (string serverName in serverBaseKey.GetSubKeyNames())
+				{
+					try
+					{
+						RegistryKey serverKey = serverBaseKey.CreateSubKey(serverName);
+
+						string hostname = (string)serverKey.GetValue("Hostname", string.Empty);
+						int port = (int)serverKey.GetValue("Port", 0);
+						ServerType type = (ServerType)Enum.Parse(typeof(ServerType), (string)serverKey.GetValue("Type", ServerType.SRCDS.ToString()));
+
+						Server server = new Server()
+						{
+							Hostname = hostname,
+							Port = port,
+							Type = type
+						};
+
+						servers.Add(server);
+					}
+					catch (Exception)
+					{
+						continue;
+					}
+				}
+
+				return servers;
+			}
+			set
+			{
+				RegistryKey serverBaseKey = _baseKey.CreateSubKey("Servers");
+				foreach (Server server in value)
+				{
+					RegistryKey serverKey = serverBaseKey.CreateSubKey(server.GetId());
+
+					serverKey.SetValue("Hostname", server.Hostname, RegistryValueKind.String);
+					serverKey.SetValue("Port", server.Port, RegistryValueKind.DWord);
+					serverKey.SetValue("Type", server.Type.ToString(), RegistryValueKind.String);
+				}
+			}
+		}
+
+		/// <summary>
 		/// Gets a boolean value from the registry
 		/// </summary>
 		/// <param name="keyName"></param>
@@ -193,5 +246,7 @@ namespace SRCDS_RCON
 
 
 		public static bool ReconnectOnConnectionLost { get; } = false;
+
+		public static List<Server> Servers { get; } = new List<Server>();
 	}
 }
