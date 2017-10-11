@@ -1,4 +1,6 @@
-﻿namespace SRCDS_RCON
+﻿using SRCDS_RCON.Net;
+
+namespace SRCDS_RCON
 {
 	partial class ConnectionForm
 	{
@@ -34,9 +36,9 @@
             "27015",
             "SRCDS"}, -1);
 			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
-            "192.168.0.254",
-            "27015",
-            "SRCDS"}, -1);
+            "2001:4860:4860::8888",
+            "25575",
+            "Minecraft"}, -1);
 			this.serverListView = new System.Windows.Forms.ListView();
 			this.addressHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.portHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -59,7 +61,7 @@
 			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
 			this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-			this.dropdownButton1 = new SRCDS_RCON.Utility.DropdownButton();
+			this.newButton = new SRCDS_RCON.Utility.DropdownButton();
 			this.connectButton = new SRCDS_RCON.Utility.DropdownButton();
 			this.serverContextMenuStrip.SuspendLayout();
 			this.serverListContextMenuStrip.SuspendLayout();
@@ -85,7 +87,7 @@
 			this.serverListView.Location = new System.Drawing.Point(12, 12);
 			this.serverListView.MultiSelect = false;
 			this.serverListView.Name = "serverListView";
-			this.serverListView.Size = new System.Drawing.Size(286, 90);
+			this.serverListView.Size = new System.Drawing.Size(304, 85);
 			this.serverListView.TabIndex = 0;
 			this.serverListView.UseCompatibleStateImageBehavior = false;
 			this.serverListView.View = System.Windows.Forms.View.Details;
@@ -104,7 +106,7 @@
 			// gameHeader
 			// 
 			this.gameHeader.Text = "Game";
-			this.gameHeader.Width = 50;
+			this.gameHeader.Width = 70;
 			// 
 			// serverContextMenuStrip
 			// 
@@ -136,6 +138,7 @@
 			this.newToolStripMenuItem.Name = "newToolStripMenuItem";
 			this.newToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
 			this.newToolStripMenuItem.Text = "New...";
+			this.newToolStripMenuItem.Click += new System.EventHandler(this.NewToolStripMenuItem_Click);
 			// 
 			// editToolStripMenuItem
 			// 
@@ -143,6 +146,7 @@
 			this.editToolStripMenuItem.Name = "editToolStripMenuItem";
 			this.editToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
 			this.editToolStripMenuItem.Text = "Edit...";
+			this.editToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
 			// 
 			// deleteToolStripMenuItem
 			// 
@@ -164,12 +168,13 @@
 			this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
 			this.newToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
 			this.newToolStripMenuItem1.Text = "New...";
+			this.newToolStripMenuItem1.Click += new System.EventHandler(this.NewToolStripMenuItem1_Click);
 			// 
 			// cancelButton
 			// 
 			this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.cancelButton.Location = new System.Drawing.Point(141, 108);
+			this.cancelButton.Location = new System.Drawing.Point(159, 103);
 			this.cancelButton.Name = "cancelButton";
 			this.cancelButton.Size = new System.Drawing.Size(75, 23);
 			this.cancelButton.TabIndex = 2;
@@ -215,26 +220,27 @@
             this.editToolStripMenuItem1,
             this.deleteToolStripMenuItem1});
 			this.newContextMenuStrip.Name = "editButtonContextMenuStrip";
-			this.newContextMenuStrip.Size = new System.Drawing.Size(108, 76);
+			this.newContextMenuStrip.Size = new System.Drawing.Size(153, 98);
 			this.newContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.EditButtonContextMenuStrip_Opening);
 			// 
 			// newToolStripMenuItem2
 			// 
 			this.newToolStripMenuItem2.Image = global::SRCDS_RCON.Properties.Resources.add;
 			this.newToolStripMenuItem2.Name = "newToolStripMenuItem2";
-			this.newToolStripMenuItem2.Size = new System.Drawing.Size(107, 22);
+			this.newToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
 			this.newToolStripMenuItem2.Text = "New...";
+			this.newToolStripMenuItem2.Click += new System.EventHandler(this.NewToolStripMenuItem2_Click);
 			// 
 			// toolStripMenuItem3
 			// 
 			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(104, 6);
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
 			// 
 			// editToolStripMenuItem1
 			// 
 			this.editToolStripMenuItem1.Image = global::SRCDS_RCON.Properties.Resources.server_edit;
 			this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-			this.editToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+			this.editToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
 			this.editToolStripMenuItem1.Text = "Edit...";
 			this.editToolStripMenuItem1.Click += new System.EventHandler(this.EditToolStripMenuItem1_Click);
 			// 
@@ -242,25 +248,26 @@
 			// 
 			this.deleteToolStripMenuItem1.Image = global::SRCDS_RCON.Properties.Resources.server_delete;
 			this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-			this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+			this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
 			this.deleteToolStripMenuItem1.Text = "Delete";
 			// 
-			// dropdownButton1
+			// newButton
 			// 
-			this.dropdownButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.dropdownButton1.Location = new System.Drawing.Point(12, 108);
-			this.dropdownButton1.Menu = this.newContextMenuStrip;
-			this.dropdownButton1.Name = "dropdownButton1";
-			this.dropdownButton1.Size = new System.Drawing.Size(69, 23);
-			this.dropdownButton1.SplitStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-			this.dropdownButton1.TabIndex = 4;
-			this.dropdownButton1.Text = "New   ";
-			this.dropdownButton1.UseVisualStyleBackColor = true;
+			this.newButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.newButton.Location = new System.Drawing.Point(12, 103);
+			this.newButton.Menu = this.newContextMenuStrip;
+			this.newButton.Name = "newButton";
+			this.newButton.Size = new System.Drawing.Size(69, 23);
+			this.newButton.SplitStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+			this.newButton.TabIndex = 4;
+			this.newButton.Text = "New   ";
+			this.newButton.UseVisualStyleBackColor = true;
+			this.newButton.Click += new System.EventHandler(this.NewButton_Click);
 			// 
 			// connectButton
 			// 
 			this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.connectButton.Location = new System.Drawing.Point(222, 108);
+			this.connectButton.Location = new System.Drawing.Point(240, 103);
 			this.connectButton.Menu = this.connectButtonContextMenuStrip;
 			this.connectButton.Name = "connectButton";
 			this.connectButton.Size = new System.Drawing.Size(76, 23);
@@ -275,8 +282,8 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.cancelButton;
-			this.ClientSize = new System.Drawing.Size(310, 143);
-			this.Controls.Add(this.dropdownButton1);
+			this.ClientSize = new System.Drawing.Size(328, 138);
+			this.Controls.Add(this.newButton);
 			this.Controls.Add(this.connectButton);
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.serverListView);
@@ -312,7 +319,7 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
 		private System.Windows.Forms.ToolStripMenuItem connectButtonDirectConnectItem;
 		private Utility.DropdownButton connectButton;
-		private Utility.DropdownButton dropdownButton1;
+		private Utility.DropdownButton newButton;
 		private System.Windows.Forms.ContextMenuStrip newContextMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem2;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;

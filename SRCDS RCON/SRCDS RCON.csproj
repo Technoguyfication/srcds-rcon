@@ -57,6 +57,12 @@
     <Compile Include="ConnectionForm.Designer.cs">
       <DependentUpon>ConnectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateServerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateServerForm.Designer.cs">
+      <DependentUpon>CreateServerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Minecraft\TextColorUtility.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -80,6 +86,9 @@
     </Compile>
     <EmbeddedResource Include="ConnectionForm.resx">
       <DependentUpon>ConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateServerForm.resx">
+      <DependentUpon>CreateServerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

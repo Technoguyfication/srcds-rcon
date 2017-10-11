@@ -14,11 +14,13 @@ namespace SRCDS_RCON
 {
 	public partial class ConnectionForm : Form
 	{
-		private MainForm mainForm;
+		/// <summary>
+		/// Fired when the user connects to a server
+		/// </summary>
+		public event EventHandler<ServerConnectEventArgs> ServerConnect;
 
 		public ConnectionForm(MainForm mainForm)
 		{
-			this.mainForm = mainForm;
 			InitializeComponent();
 		}
 
@@ -28,7 +30,60 @@ namespace SRCDS_RCON
 		/// <param name="server"></param>
 		private void Connect(Server server)
 		{
-			throw new NotImplementedException();
+			ServerConnect?.Invoke(this, new ServerConnectEventArgs() { Server = server });
+			DialogResult = DialogResult.OK;
+		}
+
+		/// <summary>
+		/// Opens the create server dialog and removes the old one on success
+		/// </summary>
+		/// <param name="server"></param>
+		private void EditServer(Server server)
+		{
+			using (CreateServerForm form = new CreateServerForm(server))
+			{
+				if (form.ShowDialog() == DialogResult.OK)
+				{
+					Settings.Servers.Remove(server);
+					LoadServers();
+				}
+			}
+		}
+
+		/// <summary>
+		/// Opens the create server dialog
+		/// </summary>
+		private void CreateServer()
+		{
+			using (CreateServerForm form = new CreateServerForm())
+			{
+				if (form.ShowDialog() == DialogResult.OK)
+				{
+					LoadServers();
+				}
+			}
+		}
+
+		/// <summary>
+		/// (Re)load server list
+		/// </summary>
+		public void LoadServers()
+		{
+			serverListView.Clear();
+			foreach (Server server in Settings.Servers)
+			{
+				ListViewItem item = new ListViewItem(new string[]
+					{
+						server.Hostname,
+						server.Port.ToString(),
+						server.Type.ToString()
+					})
+				{
+					Tag = server
+				};
+
+				serverListView.Items.Add(item);
+			}	
 		}
 
 		/// <summary>
@@ -135,7 +190,8 @@ namespace SRCDS_RCON
 
 		private void EditToolStripMenuItem1_Click(object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
+			if (IsServerSelected())
+				EditServer(GetSelectedServer());
 		}
 
 		#endregion
@@ -146,5 +202,36 @@ namespace SRCDS_RCON
 
 			connectButtonDirectConnectItem.Enabled = serverSelected;
 		}
+
+		private void NewButton_Click(object sender, EventArgs e)
+		{
+			CreateServer();
+		}
+
+		private void EditToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (IsServerSelected())
+				EditServer(GetSelectedServer());
+		}
+
+		private void NewToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			CreateServer();
+		}
+
+		private void NewToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			CreateServer();
+		}
+
+		private void NewToolStripMenuItem2_Click(object sender, EventArgs e)
+		{
+			CreateServer();
+		}
+	}
+
+	public class ServerConnectEventArgs : EventArgs
+	{
+		public Server Server { get; set; }
 	}
 }
