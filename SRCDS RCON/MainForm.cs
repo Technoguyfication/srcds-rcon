@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SRCDS_RCON.Net;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,13 @@ namespace SRCDS_RCON
 {
 	public partial class MainForm : Form
 	{
+		private Protocol protocol;
+		private ConnectionForm connectionForm;
+
 		public MainForm()
 		{
 			InitializeComponent();
+			connectionForm = new ConnectionForm(this);
 		}
 
 		/// <summary>
@@ -50,6 +55,11 @@ namespace SRCDS_RCON
 			{
 				settings.ShowDialog();	// the form will handle all the hard stuff
 			}
+		}
+
+		private void ConnectMenuItem_Click(object sender, EventArgs e)
+		{
+			connectionForm.ShowDialog();
 		}
 	}
 }

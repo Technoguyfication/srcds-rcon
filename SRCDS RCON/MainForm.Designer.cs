@@ -77,6 +77,7 @@
 			this.connectMenuItem.Index = 0;
 			this.connectMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
 			this.connectMenuItem.Text = "&Connect";
+			this.connectMenuItem.Click += new System.EventHandler(this.ConnectMenuItem_Click);
 			// 
 			// reconnectMenuItem
 			// 
