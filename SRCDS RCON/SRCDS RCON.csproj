@@ -46,6 +46,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="VistaMenu">
+      <HintPath>..\thirdparty\Vistamenu\VistaMenu.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionForm.cs">

@@ -50,7 +50,9 @@
 			this.inputTextBox = new System.Windows.Forms.TextBox();
 			this.consolePanel = new System.Windows.Forms.Panel();
 			this.sendButton = new System.Windows.Forms.Button();
+			this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
 			this.consolePanel.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// mainMenu
@@ -74,6 +76,7 @@
 			// 
 			// connectMenuItem
 			// 
+			this.vistaMenu.SetImage(this.connectMenuItem, global::SRCDS_RCON.Properties.Resources.connect);
 			this.connectMenuItem.Index = 0;
 			this.connectMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
 			this.connectMenuItem.Text = "&Connect";
@@ -210,6 +213,10 @@
 			this.sendButton.Text = "Send";
 			this.sendButton.UseVisualStyleBackColor = true;
 			// 
+			// vistaMenu
+			// 
+			this.vistaMenu.ContainerControl = this;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,6 +231,7 @@
 			this.Name = "MainForm";
 			this.Text = "SRCDS RCON";
 			this.consolePanel.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -251,6 +259,7 @@
 		private System.Windows.Forms.TextBox inputTextBox;
 		private System.Windows.Forms.Panel consolePanel;
 		private System.Windows.Forms.Button sendButton;
+		private wyDay.Controls.VistaMenu vistaMenu;
 	}
 }
 
