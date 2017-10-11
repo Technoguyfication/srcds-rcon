@@ -30,7 +30,7 @@ namespace SRCDS_RCON
 		public void WriteToConsole(string text, Color? textColor = null)
 		{
 			if (InvokeRequired)
-				Invoke((MethodInvoker) delegate { WriteToConsole(text, textColor); });
+				Invoke((MethodInvoker)delegate { WriteToConsole(text, textColor); });
 
 			if (textColor == null)
 				textColor = Settings.DefaultConsoleColor;
@@ -49,11 +49,13 @@ namespace SRCDS_RCON
 			return base.ProcessCmdKey(ref msg, keyData);
 		}
 
+		#region Event Handlers
+
 		private void SettingsMenuItem_Click(object sender, EventArgs e)
 		{
 			using (var settings = new SettingsForm())
 			{
-				settings.ShowDialog();	// the form will handle all the hard stuff
+				settings.ShowDialog();  // the form will handle all the hard stuff
 			}
 		}
 
@@ -67,5 +69,7 @@ namespace SRCDS_RCON
 			// open documentation in web browser
 			System.Diagnostics.Process.Start(Program.DocumentationUrl);
 		}
+
+		#endregion
 	}
 }
