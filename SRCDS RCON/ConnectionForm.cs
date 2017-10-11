@@ -19,9 +19,11 @@ namespace SRCDS_RCON
 		/// </summary>
 		public event EventHandler<ServerConnectEventArgs> ServerConnect;
 
-		public ConnectionForm(MainForm mainForm)
+		public ConnectionForm()
 		{
 			InitializeComponent();
+
+			LoadServers();
 		}
 
 		/// <summary>
@@ -44,7 +46,9 @@ namespace SRCDS_RCON
 			{
 				if (form.ShowDialog() == DialogResult.OK)
 				{
-					Settings.Servers.Remove(server);
+					List<Server> servers = Settings.Servers;
+					servers.Remove(server);
+					Settings.Servers = servers;
 					LoadServers();
 				}
 			}
@@ -69,7 +73,7 @@ namespace SRCDS_RCON
 		/// </summary>
 		public void LoadServers()
 		{
-			serverListView.Clear();
+			serverListView.Items.Clear();
 			foreach (Server server in Settings.Servers)
 			{
 				ListViewItem item = new ListViewItem(new string[]
@@ -82,8 +86,9 @@ namespace SRCDS_RCON
 					Tag = server
 				};
 
+
 				serverListView.Items.Add(item);
-			}	
+			}
 		}
 
 		/// <summary>

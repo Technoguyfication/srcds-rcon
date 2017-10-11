@@ -61,6 +61,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.typeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
 			this.typeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+			this.typeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.typeComboBox.FormattingEnabled = true;
 			this.typeComboBox.Location = new System.Drawing.Point(50, 40);
 			this.typeComboBox.Name = "typeComboBox";

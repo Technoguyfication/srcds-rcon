@@ -16,26 +16,47 @@ namespace SRCDS_RCON
 		public CreateServerForm()
 		{
 			InitializeComponent();
+
+			PopulateTypeBox();
 		}
 
 		public CreateServerForm(Server server)
 		{
 			InitializeComponent();
 
-			hostLabel.Text = server.Hostname;
-			portLabel.Text = server.Port.ToString();
+			hostTextBox.Text = server.Hostname;
+			portTextBox.Text = server.Port.ToString();
 
-			typeLabel.Text = Server.GetFriendlyTypeName(server.Type);
+			PopulateTypeBox();
+
+			typeComboBox.SelectedIndex = typeComboBox.Items.IndexOf(Server.GetFriendlyTypeName(server.Type));
+		}
+
+		private void PopulateTypeBox()
+		{
+			List<string> serverTypes = new List<string>();
+			// these need to stay in order because they are selected by index
+			foreach (ServerType type in Enum.GetValues(typeof(ServerType)))
+			{
+				serverTypes.Add(Server.GetFriendlyTypeName(type));
+			}
+
+			typeComboBox.Items.AddRange(serverTypes.ToArray());
+			typeComboBox.SelectedIndex = 0;
 		}
 
 		private void SaveButton_Click(object sender, EventArgs e)
 		{
-			Settings.Servers.Add(new Server()
+			List<Server> servers = Settings.Servers;
+
+			servers.Add(new Server()
 			{
 				Hostname = hostTextBox.Text,
 				Port = int.Parse(portTextBox.Text),
-				Type = (ServerType)Enum.Parse(typeof(ServerType), typeComboBox.Text)
+				Type = (ServerType)Enum.Parse(typeof(ServerType), Enum.GetName(typeof(ServerType), typeComboBox.SelectedIndex))
 			});
+
+			Settings.Servers = servers;
 
 			DialogResult = DialogResult.OK;
 		}

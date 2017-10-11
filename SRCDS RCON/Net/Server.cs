@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace SRCDS_RCON.Net
 {
-	public enum ServerType
+	// don't set the value manually on these
+	// the index is linked to the value and it's important
+	public enum ServerType : int
 	{
 		SRCDS,
 		MINECRAFT
@@ -45,8 +47,14 @@ namespace SRCDS_RCON.Net
 			byte[] hash = sha.ComputeHash(rawData.ToArray());
 
 			// turn it into a string
-			string friendlyHash = Encoding.Unicode.GetString(hash);
+			string friendlyHash = BitConverter.ToString(hash).Substring(0, 6);
 			return friendlyHash;
+		}
+
+		public override bool Equals(object obj)
+		{
+			Server s = (Server)obj;
+			return (s.Hostname == Hostname && s.Port == Port && s.Type == Type);
 		}
 	}
 }

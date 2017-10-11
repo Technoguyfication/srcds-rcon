@@ -183,6 +183,7 @@ namespace SRCDS_RCON
 			}
 			set
 			{
+				_baseKey.DeleteSubKeyTree("Servers");
 				RegistryKey serverBaseKey = _baseKey.CreateSubKey("Servers");
 				foreach (Server server in value)
 				{

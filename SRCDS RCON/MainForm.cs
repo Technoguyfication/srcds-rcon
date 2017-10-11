@@ -19,7 +19,7 @@ namespace SRCDS_RCON
 		public MainForm()
 		{
 			InitializeComponent();
-			connectionForm = new ConnectionForm(this);
+			connectionForm = new ConnectionForm();
 		}
 
 		/// <summary>
