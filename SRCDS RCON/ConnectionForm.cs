@@ -1,4 +1,5 @@
 ﻿using SRCDS_RCON.Net;
+using SRCDS_RCON.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,12 +31,55 @@ namespace SRCDS_RCON
 			throw new NotImplementedException();
 		}
 
+		/// <summary>
+		/// Gets the selected server from the list
+		/// </summary>
+		/// <returns></returns>
+		private Server GetSelectedServer()
+		{
+			return (Server)GetSelectedItem().Tag;
+		}
+
+		/// <summary>
+		/// Gets whether or not a server is selected in the list
+		/// </summary>
+		/// <returns></returns>
+		private bool IsServerSelected()
+		{
+			return GetSelectedItem() != null;
+		}
+
+		/// <summary>
+		/// Gets the selected item from the server list
+		/// </summary>
+		/// <returns></returns>
+		private ListViewItem GetSelectedItem()
+		{
+			if (serverListView.SelectedItems.Count == 0)
+				return null;
+			else
+				return serverListView.SelectedItems[0];
+		}
+
+		#region Event Handlers
+
 		private void ServerListView_MouseDown(object sender, MouseEventArgs e)
 		{
+			// check for right click
 			if (e.Button == MouseButtons.Right)
 			{
+				bool isClickingOnServer = false;
+				foreach (ListViewItem server in serverListView.Items)
+				{
+					if (server.Bounds.Contains(e.Location))
+					{
+						isClickingOnServer = true;
+						break;
+					}
+				}
+
 				// right clicking on server entry
-				if (serverListView.FocusedItem.Bounds.Contains(e.Location))
+				if (isClickingOnServer)
 				{
 					serverContextMenuStrip.Show(Cursor.Position);
 				}
@@ -49,23 +93,14 @@ namespace SRCDS_RCON
 
 		private void ServerListView_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
-			if (serverListView.FocusedItem.Bounds.Contains(e.Location))
-				ConnectToSelectedServer();
+			if (IsServerSelected() && serverListView.FocusedItem.Bounds.Contains(e.Location))
+				Connect(GetSelectedServer());
 		}
 
 		private void ConnectToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			ConnectToSelectedServer();
-		}
-
-		private void ConnectToSelectedServer()
-		{
-			ConnectToListViewItem(serverListView.FocusedItem);
-		}
-
-		private void ConnectToListViewItem(ListViewItem item)
-		{
-			throw new NotImplementedException();
+			if (IsServerSelected())
+				Connect(GetSelectedServer());
 		}
 
 		private void CancelButton_Click(object sender, EventArgs e)
@@ -75,7 +110,41 @@ namespace SRCDS_RCON
 
 		private void ConnectButton_Click(object sender, EventArgs e)
 		{
-			ConnectToSelectedServer();
+			if (IsServerSelected())
+				Connect(GetSelectedServer());
+		}
+
+		private void ConnectButtonConnectItem_Click(object sender, EventArgs e)
+		{
+			if (IsServerSelected())
+				Connect(GetSelectedServer());
+		}
+
+		private void ConnectButtonDirectConnectItem_Click(object sender, EventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+
+		private void EditButtonContextMenuStrip_Opening(object sender, CancelEventArgs e)
+		{
+			bool serverSelected = IsServerSelected();
+
+			editToolStripMenuItem1.Enabled = serverSelected;
+			deleteToolStripMenuItem1.Enabled = serverSelected;
+		}
+
+		private void EditToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+
+		#endregion
+
+		private void ConnectButtonContextMenuStrip_Opening(object sender, EventArgs e)
+		{
+			bool serverSelected = IsServerSelected();
+
+			connectButtonDirectConnectItem.Enabled = serverSelected;
 		}
 	}
 }

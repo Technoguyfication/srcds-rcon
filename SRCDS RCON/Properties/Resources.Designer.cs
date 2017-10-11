@@ -133,6 +133,16 @@ namespace SRCDS_RCON.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap server_connect {
+            get {
+                object obj = ResourceManager.GetObject("server_connect", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap server_delete {
             get {
                 object obj = ResourceManager.GetObject("server_delete", resourceCulture);

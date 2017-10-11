@@ -29,19 +29,18 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.ListViewItem serverPreviewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "192.168.0.254",
             "27015",
             "SRCDS"}, -1);
-			System.Windows.Forms.ListViewItem serverPreviewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
-			"192.168.0.254",
-			"27015",
-			"SRCDS"}, -1);
+			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            "192.168.0.254",
+            "27015",
+            "SRCDS"}, -1);
 			this.serverListView = new System.Windows.Forms.ListView();
 			this.addressHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.portHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.gameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.connectButton = new System.Windows.Forms.Button();
 			this.serverContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -51,8 +50,21 @@
 			this.serverListContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.newToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 			this.cancelButton = new System.Windows.Forms.Button();
+			this.connectButtonContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.connectButtonConnectItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+			this.connectButtonDirectConnectItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.newContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.newToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+			this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.dropdownButton1 = new SRCDS_RCON.Utility.DropdownButton();
+			this.connectButton = new SRCDS_RCON.Utility.DropdownButton();
 			this.serverContextMenuStrip.SuspendLayout();
 			this.serverListContextMenuStrip.SuspendLayout();
+			this.connectButtonContextMenuStrip.SuspendLayout();
+			this.newContextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// serverListView
@@ -68,10 +80,12 @@
 			this.serverListView.FullRowSelect = true;
 			this.serverListView.HideSelection = false;
 			this.serverListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            serverPreviewItem1, serverPreviewItem2});
+            listViewItem1,
+            listViewItem2});
 			this.serverListView.Location = new System.Drawing.Point(12, 12);
+			this.serverListView.MultiSelect = false;
 			this.serverListView.Name = "serverListView";
-			this.serverListView.Size = new System.Drawing.Size(279, 114);
+			this.serverListView.Size = new System.Drawing.Size(286, 90);
 			this.serverListView.TabIndex = 0;
 			this.serverListView.UseCompatibleStateImageBehavior = false;
 			this.serverListView.View = System.Windows.Forms.View.Details;
@@ -91,16 +105,6 @@
 			// 
 			this.gameHeader.Text = "Game";
 			this.gameHeader.Width = 50;
-			// 
-			// connectButton
-			// 
-			this.connectButton.Location = new System.Drawing.Point(216, 132);
-			this.connectButton.Name = "connectButton";
-			this.connectButton.Size = new System.Drawing.Size(75, 23);
-			this.connectButton.TabIndex = 1;
-			this.connectButton.Text = "Connect";
-			this.connectButton.UseVisualStyleBackColor = true;
-			this.connectButton.Click += new System.EventHandler(this.ConnectButton_Click);
 			// 
 			// serverContextMenuStrip
 			// 
@@ -163,8 +167,9 @@
 			// 
 			// cancelButton
 			// 
+			this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.cancelButton.Location = new System.Drawing.Point(135, 132);
+			this.cancelButton.Location = new System.Drawing.Point(141, 108);
 			this.cancelButton.Name = "cancelButton";
 			this.cancelButton.Size = new System.Drawing.Size(75, 23);
 			this.cancelButton.TabIndex = 2;
@@ -172,15 +177,108 @@
 			this.cancelButton.UseVisualStyleBackColor = true;
 			this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
 			// 
+			// connectButtonContextMenuStrip
+			// 
+			this.connectButtonContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.connectButtonConnectItem,
+            this.toolStripMenuItem2,
+            this.connectButtonDirectConnectItem});
+			this.connectButtonContextMenuStrip.Name = "connectButtonContextMenuStrip";
+			this.connectButtonContextMenuStrip.Size = new System.Drawing.Size(163, 54);
+			this.connectButtonContextMenuStrip.Opened += new System.EventHandler(this.ConnectButtonContextMenuStrip_Opening);
+			// 
+			// connectButtonConnectItem
+			// 
+			this.connectButtonConnectItem.Image = global::SRCDS_RCON.Properties.Resources.connect;
+			this.connectButtonConnectItem.Name = "connectButtonConnectItem";
+			this.connectButtonConnectItem.Size = new System.Drawing.Size(162, 22);
+			this.connectButtonConnectItem.Text = "Connect";
+			this.connectButtonConnectItem.Click += new System.EventHandler(this.ConnectButtonConnectItem_Click);
+			// 
+			// toolStripMenuItem2
+			// 
+			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(159, 6);
+			// 
+			// connectButtonDirectConnectItem
+			// 
+			this.connectButtonDirectConnectItem.Name = "connectButtonDirectConnectItem";
+			this.connectButtonDirectConnectItem.Size = new System.Drawing.Size(162, 22);
+			this.connectButtonDirectConnectItem.Text = "Direct Connect...";
+			this.connectButtonDirectConnectItem.Click += new System.EventHandler(this.ConnectButtonDirectConnectItem_Click);
+			// 
+			// newContextMenuStrip
+			// 
+			this.newContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.editToolStripMenuItem1,
+            this.deleteToolStripMenuItem1});
+			this.newContextMenuStrip.Name = "editButtonContextMenuStrip";
+			this.newContextMenuStrip.Size = new System.Drawing.Size(108, 76);
+			this.newContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.EditButtonContextMenuStrip_Opening);
+			// 
+			// newToolStripMenuItem2
+			// 
+			this.newToolStripMenuItem2.Image = global::SRCDS_RCON.Properties.Resources.add;
+			this.newToolStripMenuItem2.Name = "newToolStripMenuItem2";
+			this.newToolStripMenuItem2.Size = new System.Drawing.Size(107, 22);
+			this.newToolStripMenuItem2.Text = "New...";
+			// 
+			// toolStripMenuItem3
+			// 
+			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(104, 6);
+			// 
+			// editToolStripMenuItem1
+			// 
+			this.editToolStripMenuItem1.Image = global::SRCDS_RCON.Properties.Resources.server_edit;
+			this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
+			this.editToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+			this.editToolStripMenuItem1.Text = "Edit...";
+			this.editToolStripMenuItem1.Click += new System.EventHandler(this.EditToolStripMenuItem1_Click);
+			// 
+			// deleteToolStripMenuItem1
+			// 
+			this.deleteToolStripMenuItem1.Image = global::SRCDS_RCON.Properties.Resources.server_delete;
+			this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+			this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+			this.deleteToolStripMenuItem1.Text = "Delete";
+			// 
+			// dropdownButton1
+			// 
+			this.dropdownButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.dropdownButton1.Location = new System.Drawing.Point(12, 108);
+			this.dropdownButton1.Menu = this.newContextMenuStrip;
+			this.dropdownButton1.Name = "dropdownButton1";
+			this.dropdownButton1.Size = new System.Drawing.Size(69, 23);
+			this.dropdownButton1.SplitStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+			this.dropdownButton1.TabIndex = 4;
+			this.dropdownButton1.Text = "New   ";
+			this.dropdownButton1.UseVisualStyleBackColor = true;
+			// 
+			// connectButton
+			// 
+			this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.connectButton.Location = new System.Drawing.Point(222, 108);
+			this.connectButton.Menu = this.connectButtonContextMenuStrip;
+			this.connectButton.Name = "connectButton";
+			this.connectButton.Size = new System.Drawing.Size(76, 23);
+			this.connectButton.SplitStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+			this.connectButton.TabIndex = 3;
+			this.connectButton.Text = "Connect    ";
+			this.connectButton.UseVisualStyleBackColor = true;
+			this.connectButton.Click += new System.EventHandler(this.ConnectButton_Click);
+			// 
 			// ConnectionForm
 			// 
-			this.AcceptButton = this.connectButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.cancelButton;
-			this.ClientSize = new System.Drawing.Size(303, 261);
-			this.Controls.Add(this.cancelButton);
+			this.ClientSize = new System.Drawing.Size(310, 143);
+			this.Controls.Add(this.dropdownButton1);
 			this.Controls.Add(this.connectButton);
+			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.serverListView);
 			this.MaximizeBox = false;
 			this.Name = "ConnectionForm";
@@ -188,6 +286,8 @@
 			this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ServerListView_MouseDoubleClick);
 			this.serverContextMenuStrip.ResumeLayout(false);
 			this.serverListContextMenuStrip.ResumeLayout(false);
+			this.connectButtonContextMenuStrip.ResumeLayout(false);
+			this.newContextMenuStrip.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -198,7 +298,6 @@
 		private System.Windows.Forms.ColumnHeader addressHeader;
 		private System.Windows.Forms.ColumnHeader portHeader;
 		private System.Windows.Forms.ColumnHeader gameHeader;
-		private System.Windows.Forms.Button connectButton;
 		private System.Windows.Forms.ContextMenuStrip serverContextMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
@@ -208,5 +307,16 @@
 		private System.Windows.Forms.ContextMenuStrip serverListContextMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem1;
 		private System.Windows.Forms.Button cancelButton;
+		private System.Windows.Forms.ContextMenuStrip connectButtonContextMenuStrip;
+		private System.Windows.Forms.ToolStripMenuItem connectButtonConnectItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+		private System.Windows.Forms.ToolStripMenuItem connectButtonDirectConnectItem;
+		private Utility.DropdownButton connectButton;
+		private Utility.DropdownButton dropdownButton1;
+		private System.Windows.Forms.ContextMenuStrip newContextMenuStrip;
+		private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem2;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+		private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
 	}
 }
