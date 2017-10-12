@@ -24,6 +24,22 @@ namespace SRCDS_RCON
 			Height = Settings.MainWindowHeight;
 
 			connectionForm = new ConnectionForm();
+			connectionForm.ServerConnect += ConnectionForm_ServerConnect;
+		}
+
+		private void ConnectionForm_ServerConnect(object sender, ServerConnectEventArgs e)
+		{
+			Connect(e.Server);
+		}
+
+		/// <summary>
+		/// Starts an RCON connection
+		/// </summary>
+		/// <param name="server"></param>
+		public void Connect(Server server)
+		{
+			WriteToConsole($"Connecting to {server.Hostname}:{server.Port}...", Settings.DefaultConsoleColor);
+			throw new NotImplementedException();
 		}
 
 		/// <summary>
@@ -39,9 +55,11 @@ namespace SRCDS_RCON
 			if (textColor == null)
 				textColor = Settings.DefaultConsoleColor;
 
+			// start selection at end of text
 			consoleTextBox.SelectionStart = consoleTextBox.TextLength;
 			consoleTextBox.SelectionLength = 0;
 
+			// set color and write text
 			consoleTextBox.SelectionColor = (Color)textColor;
 			consoleTextBox.AppendText(text + Environment.NewLine);
 		}
@@ -87,7 +105,7 @@ namespace SRCDS_RCON
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			consoleTextBox.Clear();
-			WriteToConsole("Hi!", Settings.ProgramConsoleColor);
+			WriteToConsole(Program.StartupText, Settings.ProgramConsoleColor);
 		}
 
 		#endregion

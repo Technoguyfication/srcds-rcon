@@ -10,6 +10,9 @@ namespace SRCDS_RCON
 	{
 		// program constants
 		public const string DocumentationUrl = "https://github.com/Technoguyfication/srcds-rcon/wiki";
+		public const string StartupText =
+			"Welcome to SRCDS RCON!\n" +
+			"This program licensed under the Unlicense.\n";
 		
 		/// <summary>
 		/// The main entry point for the application.
