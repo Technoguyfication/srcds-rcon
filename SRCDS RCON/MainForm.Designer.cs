@@ -29,110 +29,41 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.mainMenu = new System.Windows.Forms.MainMenu(this.components);
-			this.fileMenuItem = new System.Windows.Forms.MenuItem();
-			this.fileSeparator1 = new System.Windows.Forms.MenuItem();
-			this.fileSeparator2 = new System.Windows.Forms.MenuItem();
-			this.exitMenuItem = new System.Windows.Forms.MenuItem();
-			this.consoleMenuItem = new System.Windows.Forms.MenuItem();
-			this.findNextMenuItem = new System.Windows.Forms.MenuItem();
-			this.helpMenuItem = new System.Windows.Forms.MenuItem();
-			this.helpSeparator1 = new System.Windows.Forms.MenuItem();
-			this.aboutMenuItem = new System.Windows.Forms.MenuItem();
 			this.consoleTextBox = new System.Windows.Forms.RichTextBox();
-			this.inputTextBox = new System.Windows.Forms.TextBox();
-			this.consolePanel = new System.Windows.Forms.Panel();
-			this.sendButton = new System.Windows.Forms.Button();
-			this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
 			this.consoleContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.reconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
 			this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.connectMenuItem = new System.Windows.Forms.MenuItem();
-			this.reconnectMenuItem = new System.Windows.Forms.MenuItem();
-			this.disconnectMenuItem = new System.Windows.Forms.MenuItem();
-			this.settingsMenuItem = new System.Windows.Forms.MenuItem();
-			this.clearMenuItem = new System.Windows.Forms.MenuItem();
-			this.findMenuItem = new System.Windows.Forms.MenuItem();
-			this.documentationMenuItem = new System.Windows.Forms.MenuItem();
-			this.menuItem1 = new System.Windows.Forms.MenuItem();
+			this.inputTextBox = new System.Windows.Forms.TextBox();
+			this.consolePanel = new System.Windows.Forms.Panel();
+			this.sendButton = new System.Windows.Forms.Button();
+			this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
+			this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
+			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.reconnectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.disconnectToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+			this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.consoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.clearToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+			this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.findNextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.viewDocumentationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+			this.aboutSRCDSRCONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.consoleContextMenuStrip.SuspendLayout();
 			this.consolePanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).BeginInit();
-			this.consoleContextMenuStrip.SuspendLayout();
+			this.mainMenuStrip.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// mainMenu
-			// 
-			this.mainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.fileMenuItem,
-            this.consoleMenuItem,
-            this.helpMenuItem});
-			// 
-			// fileMenuItem
-			// 
-			this.fileMenuItem.Index = 0;
-			this.fileMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.connectMenuItem,
-            this.reconnectMenuItem,
-            this.disconnectMenuItem,
-            this.fileSeparator1,
-            this.settingsMenuItem,
-            this.fileSeparator2,
-            this.exitMenuItem});
-			this.fileMenuItem.Text = "&File";
-			// 
-			// fileSeparator1
-			// 
-			this.fileSeparator1.Index = 3;
-			this.fileSeparator1.Text = "-";
-			// 
-			// fileSeparator2
-			// 
-			this.fileSeparator2.Index = 5;
-			this.fileSeparator2.Text = "-";
-			// 
-			// exitMenuItem
-			// 
-			this.exitMenuItem.Index = 6;
-			this.exitMenuItem.Text = "Exit";
-			// 
-			// consoleMenuItem
-			// 
-			this.consoleMenuItem.Index = 1;
-			this.consoleMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.clearMenuItem,
-            this.menuItem1,
-            this.findMenuItem,
-            this.findNextMenuItem});
-			this.consoleMenuItem.Text = "Console";
-			// 
-			// findNextMenuItem
-			// 
-			this.findNextMenuItem.Index = 3;
-			this.findNextMenuItem.Shortcut = System.Windows.Forms.Shortcut.F3;
-			this.findNextMenuItem.Text = "Find Next";
-			// 
-			// helpMenuItem
-			// 
-			this.helpMenuItem.Index = 2;
-			this.helpMenuItem.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.documentationMenuItem,
-            this.helpSeparator1,
-            this.aboutMenuItem});
-			this.helpMenuItem.Text = "Help";
-			// 
-			// helpSeparator1
-			// 
-			this.helpSeparator1.Index = 1;
-			this.helpSeparator1.Text = "-";
-			// 
-			// aboutMenuItem
-			// 
-			this.aboutMenuItem.Index = 2;
-			this.aboutMenuItem.Text = "About SRCDS RCON";
 			// 
 			// consoleTextBox
 			// 
@@ -144,47 +75,10 @@
 			this.consoleTextBox.Location = new System.Drawing.Point(0, 0);
 			this.consoleTextBox.Name = "consoleTextBox";
 			this.consoleTextBox.ReadOnly = true;
-			this.consoleTextBox.Size = new System.Drawing.Size(378, 92);
+			this.consoleTextBox.Size = new System.Drawing.Size(378, 102);
 			this.consoleTextBox.TabIndex = 0;
 			this.consoleTextBox.TabStop = false;
 			this.consoleTextBox.Text = "Lorem ipsum\ndolor sit amet";
-			// 
-			// inputTextBox
-			// 
-			this.inputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.inputTextBox.Location = new System.Drawing.Point(13, 112);
-			this.inputTextBox.Name = "inputTextBox";
-			this.inputTextBox.Size = new System.Drawing.Size(298, 20);
-			this.inputTextBox.TabIndex = 1;
-			// 
-			// consolePanel
-			// 
-			this.consolePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.consolePanel.AutoScroll = true;
-			this.consolePanel.BackColor = System.Drawing.SystemColors.Window;
-			this.consolePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.consolePanel.Controls.Add(this.consoleTextBox);
-			this.consolePanel.Location = new System.Drawing.Point(12, 12);
-			this.consolePanel.Name = "consolePanel";
-			this.consolePanel.Size = new System.Drawing.Size(380, 94);
-			this.consolePanel.TabIndex = 0;
-			// 
-			// sendButton
-			// 
-			this.sendButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.sendButton.Location = new System.Drawing.Point(317, 110);
-			this.sendButton.Name = "sendButton";
-			this.sendButton.Size = new System.Drawing.Size(75, 23);
-			this.sendButton.TabIndex = 2;
-			this.sendButton.Text = "Send";
-			this.sendButton.UseVisualStyleBackColor = true;
-			// 
-			// vistaMenu
-			// 
-			this.vistaMenu.ContainerControl = this;
 			// 
 			// consoleContextMenuStrip
 			// 
@@ -197,6 +91,14 @@
             this.copyToolStripMenuItem});
 			this.consoleContextMenuStrip.Name = "consoleContextMenuStrip";
 			this.consoleContextMenuStrip.Size = new System.Drawing.Size(134, 104);
+			// 
+			// clearToolStripMenuItem
+			// 
+			this.clearToolStripMenuItem.Image = global::SRCDS_RCON.Properties.Resources.page_refresh;
+			this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+			this.clearToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+			this.clearToolStripMenuItem.Text = "Clear";
+			this.clearToolStripMenuItem.Click += new System.EventHandler(this.ClearToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem1
 			// 
@@ -228,67 +130,188 @@
 			this.copyToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
 			this.copyToolStripMenuItem.Text = "Copy";
 			// 
-			// clearToolStripMenuItem
+			// inputTextBox
 			// 
-			this.clearToolStripMenuItem.Image = global::SRCDS_RCON.Properties.Resources.page_refresh;
-			this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-			this.clearToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-			this.clearToolStripMenuItem.Text = "Clear";
+			this.inputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.inputTextBox.Location = new System.Drawing.Point(13, 137);
+			this.inputTextBox.Name = "inputTextBox";
+			this.inputTextBox.Size = new System.Drawing.Size(298, 20);
+			this.inputTextBox.TabIndex = 1;
 			// 
-			// connectMenuItem
+			// consolePanel
 			// 
-			this.vistaMenu.SetImage(this.connectMenuItem, global::SRCDS_RCON.Properties.Resources.connect);
-			this.connectMenuItem.Index = 0;
-			this.connectMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
-			this.connectMenuItem.Text = "&Connect";
-			this.connectMenuItem.Click += new System.EventHandler(this.ConnectMenuItem_Click);
+			this.consolePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.consolePanel.AutoScroll = true;
+			this.consolePanel.BackColor = System.Drawing.SystemColors.Window;
+			this.consolePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.consolePanel.Controls.Add(this.consoleTextBox);
+			this.consolePanel.Location = new System.Drawing.Point(12, 27);
+			this.consolePanel.Name = "consolePanel";
+			this.consolePanel.Size = new System.Drawing.Size(380, 104);
+			this.consolePanel.TabIndex = 0;
 			// 
-			// reconnectMenuItem
+			// sendButton
 			// 
-			this.vistaMenu.SetImage(this.reconnectMenuItem, global::SRCDS_RCON.Properties.Resources.arrow_refresh);
-			this.reconnectMenuItem.Index = 1;
-			this.reconnectMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftN;
-			this.reconnectMenuItem.Text = "&Reconnect";
+			this.sendButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.sendButton.Location = new System.Drawing.Point(317, 135);
+			this.sendButton.Name = "sendButton";
+			this.sendButton.Size = new System.Drawing.Size(75, 23);
+			this.sendButton.TabIndex = 2;
+			this.sendButton.Text = "Send";
+			this.sendButton.UseVisualStyleBackColor = true;
 			// 
-			// disconnectMenuItem
+			// vistaMenu
 			// 
-			this.vistaMenu.SetImage(this.disconnectMenuItem, global::SRCDS_RCON.Properties.Resources.disconnect);
-			this.disconnectMenuItem.Index = 2;
-			this.disconnectMenuItem.Text = "Disconnect";
+			this.vistaMenu.ContainerControl = this;
 			// 
-			// settingsMenuItem
+			// mainMenuStrip
 			// 
-			this.vistaMenu.SetImage(this.settingsMenuItem, global::SRCDS_RCON.Properties.Resources.application_form_edit);
-			this.settingsMenuItem.Index = 4;
-			this.settingsMenuItem.Text = "Settings...\tCtrl+,";
-			this.settingsMenuItem.Click += new System.EventHandler(this.SettingsMenuItem_Click);
+			this.mainMenuStrip.BackColor = System.Drawing.SystemColors.Window;
+			this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.consoleToolStripMenuItem,
+            this.helpToolStripMenuItem});
+			this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
+			this.mainMenuStrip.Name = "mainMenuStrip";
+			this.mainMenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+			this.mainMenuStrip.Size = new System.Drawing.Size(404, 24);
+			this.mainMenuStrip.TabIndex = 3;
+			this.mainMenuStrip.Text = "menuStrip1";
 			// 
-			// clearMenuItem
+			// fileToolStripMenuItem
 			// 
-			this.vistaMenu.SetImage(this.clearMenuItem, global::SRCDS_RCON.Properties.Resources.page_refresh);
-			this.clearMenuItem.Index = 0;
-			this.clearMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlR;
-			this.clearMenuItem.Text = "Clea&r";
+			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.connectToolStripMenuItem,
+            this.reconnectToolStripMenuItem1,
+            this.disconnectToolStripMenuItem1,
+            this.toolStripMenuItem3,
+            this.settingsToolStripMenuItem,
+            this.toolStripMenuItem4,
+            this.exitToolStripMenuItem});
+			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+			this.fileToolStripMenuItem.Text = "&File";
 			// 
-			// findMenuItem
+			// connectToolStripMenuItem
 			// 
-			this.vistaMenu.SetImage(this.findMenuItem, global::SRCDS_RCON.Properties.Resources.find);
-			this.findMenuItem.Index = 2;
-			this.findMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlF;
-			this.findMenuItem.Text = "Find...";
+			this.connectToolStripMenuItem.Image = global::SRCDS_RCON.Properties.Resources.connect;
+			this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
+			this.connectToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.connectToolStripMenuItem.Text = "&Connect...";
+			this.connectToolStripMenuItem.Click += new System.EventHandler(this.ConnectToolStripMenuItem_Click);
 			// 
-			// documentationMenuItem
+			// reconnectToolStripMenuItem1
 			// 
-			this.vistaMenu.SetImage(this.documentationMenuItem, global::SRCDS_RCON.Properties.Resources.book);
-			this.documentationMenuItem.Index = 0;
-			this.documentationMenuItem.Shortcut = System.Windows.Forms.Shortcut.F1;
-			this.documentationMenuItem.Text = "View Documentation";
-			this.documentationMenuItem.Click += new System.EventHandler(this.DocumentationMenuItem_Click);
+			this.reconnectToolStripMenuItem1.Image = global::SRCDS_RCON.Properties.Resources.arrow_refresh;
+			this.reconnectToolStripMenuItem1.Name = "reconnectToolStripMenuItem1";
+			this.reconnectToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
+			this.reconnectToolStripMenuItem1.Text = "&Reconnect";
 			// 
-			// menuItem1
+			// disconnectToolStripMenuItem1
 			// 
-			this.menuItem1.Index = 1;
-			this.menuItem1.Text = "-";
+			this.disconnectToolStripMenuItem1.Image = global::SRCDS_RCON.Properties.Resources.disconnect;
+			this.disconnectToolStripMenuItem1.Name = "disconnectToolStripMenuItem1";
+			this.disconnectToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
+			this.disconnectToolStripMenuItem1.Text = "&Disconnect";
+			// 
+			// toolStripMenuItem3
+			// 
+			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(130, 6);
+			// 
+			// settingsToolStripMenuItem
+			// 
+			this.settingsToolStripMenuItem.Image = global::SRCDS_RCON.Properties.Resources.application_form_edit;
+			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+			this.settingsToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+,";
+			this.settingsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Oemcomma)));
+			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.settingsToolStripMenuItem.Text = "Settings...";
+			this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem4
+			// 
+			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+			this.toolStripMenuItem4.Size = new System.Drawing.Size(130, 6);
+			// 
+			// exitToolStripMenuItem
+			// 
+			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+			this.exitToolStripMenuItem.Text = "Exit";
+			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+			// 
+			// consoleToolStripMenuItem
+			// 
+			this.consoleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clearToolStripMenuItem1,
+            this.toolStripMenuItem5,
+            this.findToolStripMenuItem,
+            this.findNextToolStripMenuItem});
+			this.consoleToolStripMenuItem.Name = "consoleToolStripMenuItem";
+			this.consoleToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+			this.consoleToolStripMenuItem.Text = "&Console";
+			// 
+			// clearToolStripMenuItem1
+			// 
+			this.clearToolStripMenuItem1.Image = global::SRCDS_RCON.Properties.Resources.page_refresh;
+			this.clearToolStripMenuItem1.Name = "clearToolStripMenuItem1";
+			this.clearToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+			this.clearToolStripMenuItem1.Text = "Clea&r";
+			this.clearToolStripMenuItem1.Click += new System.EventHandler(this.ClearToolStripMenuItem1_Click);
+			// 
+			// toolStripMenuItem5
+			// 
+			this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+			this.toolStripMenuItem5.Size = new System.Drawing.Size(149, 6);
+			// 
+			// findToolStripMenuItem
+			// 
+			this.findToolStripMenuItem.Image = global::SRCDS_RCON.Properties.Resources.find;
+			this.findToolStripMenuItem.Name = "findToolStripMenuItem";
+			this.findToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+			this.findToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.findToolStripMenuItem.Text = "Find...";
+			// 
+			// findNextToolStripMenuItem
+			// 
+			this.findNextToolStripMenuItem.Name = "findNextToolStripMenuItem";
+			this.findNextToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+			this.findNextToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.findNextToolStripMenuItem.Text = "Find Next";
+			// 
+			// helpToolStripMenuItem
+			// 
+			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewDocumentationToolStripMenuItem,
+            this.toolStripMenuItem6,
+            this.aboutSRCDSRCONToolStripMenuItem});
+			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			this.helpToolStripMenuItem.Text = "Help";
+			// 
+			// viewDocumentationToolStripMenuItem
+			// 
+			this.viewDocumentationToolStripMenuItem.Image = global::SRCDS_RCON.Properties.Resources.book;
+			this.viewDocumentationToolStripMenuItem.Name = "viewDocumentationToolStripMenuItem";
+			this.viewDocumentationToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+			this.viewDocumentationToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+			this.viewDocumentationToolStripMenuItem.Text = "View Documentation";
+			this.viewDocumentationToolStripMenuItem.Click += new System.EventHandler(this.viewDocumentationToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem6
+			// 
+			this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+			this.toolStripMenuItem6.Size = new System.Drawing.Size(182, 6);
+			// 
+			// aboutSRCDSRCONToolStripMenuItem
+			// 
+			this.aboutSRCDSRCONToolStripMenuItem.Name = "aboutSRCDSRCONToolStripMenuItem";
+			this.aboutSRCDSRCONToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+			this.aboutSRCDSRCONToolStripMenuItem.Text = "About SRCDS RCON";
 			// 
 			// MainForm
 			// 
@@ -296,41 +319,28 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Window;
-			this.ClientSize = new System.Drawing.Size(404, 144);
+			this.ClientSize = new System.Drawing.Size(404, 169);
+			this.Controls.Add(this.mainMenuStrip);
 			this.Controls.Add(this.sendButton);
 			this.Controls.Add(this.consolePanel);
 			this.Controls.Add(this.inputTextBox);
-			this.Menu = this.mainMenu;
+			this.MainMenuStrip = this.mainMenuStrip;
 			this.MinimumSize = new System.Drawing.Size(180, 150);
 			this.Name = "MainForm";
 			this.Text = "SRCDS RCON";
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
+			this.consoleContextMenuStrip.ResumeLayout(false);
 			this.consolePanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).EndInit();
-			this.consoleContextMenuStrip.ResumeLayout(false);
+			this.mainMenuStrip.ResumeLayout(false);
+			this.mainMenuStrip.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
 		}
 
 		#endregion
-		private System.Windows.Forms.MainMenu mainMenu;
-		private System.Windows.Forms.MenuItem fileMenuItem;
-		private System.Windows.Forms.MenuItem connectMenuItem;
-		private System.Windows.Forms.MenuItem reconnectMenuItem;
-		private System.Windows.Forms.MenuItem fileSeparator1;
-		private System.Windows.Forms.MenuItem settingsMenuItem;
-		private System.Windows.Forms.MenuItem fileSeparator2;
-		private System.Windows.Forms.MenuItem exitMenuItem;
-		private System.Windows.Forms.MenuItem consoleMenuItem;
-		private System.Windows.Forms.MenuItem clearMenuItem;
-		private System.Windows.Forms.MenuItem findMenuItem;
-		private System.Windows.Forms.MenuItem findNextMenuItem;
-		private System.Windows.Forms.MenuItem helpMenuItem;
-		private System.Windows.Forms.MenuItem documentationMenuItem;
-		private System.Windows.Forms.MenuItem helpSeparator1;
-		private System.Windows.Forms.MenuItem aboutMenuItem;
 		private System.Windows.Forms.RichTextBox consoleTextBox;
 		private System.Windows.Forms.TextBox inputTextBox;
 		private System.Windows.Forms.Panel consolePanel;
@@ -343,8 +353,24 @@
 		private System.Windows.Forms.ToolStripMenuItem reconnectToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
 		private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-		private System.Windows.Forms.MenuItem disconnectMenuItem;
-		private System.Windows.Forms.MenuItem menuItem1;
+		private System.Windows.Forms.MenuStrip mainMenuStrip;
+		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem consoleToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem connectToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem reconnectToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+		private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+		private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem findNextToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem viewDocumentationToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
+		private System.Windows.Forms.ToolStripMenuItem aboutSRCDSRCONToolStripMenuItem;
 	}
 }
 

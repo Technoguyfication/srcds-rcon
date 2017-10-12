@@ -64,37 +64,36 @@ namespace SRCDS_RCON
 			consoleTextBox.AppendText(text + Environment.NewLine);
 		}
 
+		/// <summary>
+		/// Clears all text from the console
+		/// </summary>
+		public void ClearConsole()
+		{
+			consoleTextBox.Clear();
+		}
+
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 		{
 			// CTRL+, for settings menu item
 			if (keyData == (Keys.Control | Keys.Oemcomma))
 			{
-				settingsMenuItem.PerformClick();
+				throw new NotImplementedException();	// reimplement this for menustrip
+
+				//settingsMenuItem.PerformClick();
 				return false;
 			}
 			return base.ProcessCmdKey(ref msg, keyData);
 		}
 
+		/// <summary>
+		/// Copies the selected text from the console
+		/// </summary>
+		private void CopyConsoleSelection()
+		{
+			throw new NotImplementedException();
+		}
+
 		#region Event Handlers
-
-		private void SettingsMenuItem_Click(object sender, EventArgs e)
-		{
-			using (var settings = new SettingsForm())
-			{
-				settings.ShowDialog();  // the form will handle all the hard stuff
-			}
-		}
-
-		private void ConnectMenuItem_Click(object sender, EventArgs e)
-		{
-			connectionForm.ShowDialog();
-		}
-
-		private void DocumentationMenuItem_Click(object sender, EventArgs e)
-		{
-			// open documentation in web browser
-			System.Diagnostics.Process.Start(Program.DocumentationUrl);
-		}
 
 		private void MainForm_ResizeEnd(object sender, EventArgs e)
 		{
@@ -109,5 +108,43 @@ namespace SRCDS_RCON
 		}
 
 		#endregion
+
+		private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			CopyConsoleSelection();
+		}
+
+		private void ClearToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			ClearConsole();
+		}
+
+		private void ConnectToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			connectionForm.ShowDialog();
+		}
+
+		private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			using (SettingsForm form = new SettingsForm())
+			{
+				form.ShowDialog();
+			}
+		}
+
+		private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+
+		private void ClearToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			ClearConsole();
+		}
+
+		private void viewDocumentationToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			System.Diagnostics.Process.Start(Program.DocumentationUrl);
+		}
 	}
 }
