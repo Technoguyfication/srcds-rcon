@@ -40,7 +40,6 @@
 			this.inputTextBox = new System.Windows.Forms.TextBox();
 			this.consolePanel = new System.Windows.Forms.Panel();
 			this.sendButton = new System.Windows.Forms.Button();
-			this.vistaMenu = new wyDay.Controls.VistaMenu(this.components);
 			this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +60,6 @@
 			this.aboutSRCDSRCONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.consoleContextMenuStrip.SuspendLayout();
 			this.consolePanel.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).BeginInit();
 			this.mainMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -163,10 +161,6 @@
 			this.sendButton.TabIndex = 2;
 			this.sendButton.Text = "Send";
 			this.sendButton.UseVisualStyleBackColor = true;
-			// 
-			// vistaMenu
-			// 
-			this.vistaMenu.ContainerControl = this;
 			// 
 			// mainMenuStrip
 			// 
@@ -339,7 +333,6 @@
 			this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.MainForm_HelpRequested);
 			this.consoleContextMenuStrip.ResumeLayout(false);
 			this.consolePanel.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).EndInit();
 			this.mainMenuStrip.ResumeLayout(false);
 			this.mainMenuStrip.PerformLayout();
 			this.ResumeLayout(false);
@@ -352,7 +345,6 @@
 		private System.Windows.Forms.TextBox inputTextBox;
 		private System.Windows.Forms.Panel consolePanel;
 		private System.Windows.Forms.Button sendButton;
-		private wyDay.Controls.VistaMenu vistaMenu;
 		private System.Windows.Forms.ContextMenuStrip consoleContextMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
