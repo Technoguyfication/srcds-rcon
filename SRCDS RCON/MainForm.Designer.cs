@@ -199,7 +199,8 @@
 			// 
 			this.connectToolStripMenuItem.Image = global::SRCDS_RCON.Properties.Resources.connect;
 			this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-			this.connectToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.connectToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+			this.connectToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
 			this.connectToolStripMenuItem.Text = "&Connect...";
 			this.connectToolStripMenuItem.Click += new System.EventHandler(this.ConnectToolStripMenuItem_Click);
 			// 
@@ -207,20 +208,22 @@
 			// 
 			this.reconnectToolStripMenuItem1.Image = global::SRCDS_RCON.Properties.Resources.arrow_refresh;
 			this.reconnectToolStripMenuItem1.Name = "reconnectToolStripMenuItem1";
-			this.reconnectToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
+			this.reconnectToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.N)));
+			this.reconnectToolStripMenuItem1.Size = new System.Drawing.Size(205, 22);
 			this.reconnectToolStripMenuItem1.Text = "&Reconnect";
 			// 
 			// disconnectToolStripMenuItem1
 			// 
 			this.disconnectToolStripMenuItem1.Image = global::SRCDS_RCON.Properties.Resources.disconnect;
 			this.disconnectToolStripMenuItem1.Name = "disconnectToolStripMenuItem1";
-			this.disconnectToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
+			this.disconnectToolStripMenuItem1.Size = new System.Drawing.Size(205, 22);
 			this.disconnectToolStripMenuItem1.Text = "&Disconnect";
 			// 
 			// toolStripMenuItem3
 			// 
 			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(130, 6);
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(202, 6);
 			// 
 			// settingsToolStripMenuItem
 			// 
@@ -228,19 +231,19 @@
 			this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
 			this.settingsToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+,";
 			this.settingsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Oemcomma)));
-			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.settingsToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
 			this.settingsToolStripMenuItem.Text = "Settings...";
 			this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem4
 			// 
 			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-			this.toolStripMenuItem4.Size = new System.Drawing.Size(130, 6);
+			this.toolStripMenuItem4.Size = new System.Drawing.Size(202, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
 			// 
@@ -252,6 +255,7 @@
             this.findToolStripMenuItem,
             this.findNextToolStripMenuItem});
 			this.consoleToolStripMenuItem.Name = "consoleToolStripMenuItem";
+			this.consoleToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
 			this.consoleToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
 			this.consoleToolStripMenuItem.Text = "&Console";
 			// 
@@ -259,6 +263,7 @@
 			// 
 			this.clearToolStripMenuItem1.Image = global::SRCDS_RCON.Properties.Resources.page_refresh;
 			this.clearToolStripMenuItem1.Name = "clearToolStripMenuItem1";
+			this.clearToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
 			this.clearToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
 			this.clearToolStripMenuItem1.Text = "Clea&r";
 			this.clearToolStripMenuItem1.Click += new System.EventHandler(this.ClearToolStripMenuItem1_Click);
@@ -300,12 +305,12 @@
 			this.viewDocumentationToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
 			this.viewDocumentationToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
 			this.viewDocumentationToolStripMenuItem.Text = "View Documentation";
-			this.viewDocumentationToolStripMenuItem.Click += new System.EventHandler(this.viewDocumentationToolStripMenuItem_Click);
+			this.viewDocumentationToolStripMenuItem.Click += new System.EventHandler(this.ViewDocumentationToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem6
 			// 
 			this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-			this.toolStripMenuItem6.Size = new System.Drawing.Size(182, 6);
+			this.toolStripMenuItem6.Size = new System.Drawing.Size(201, 6);
 			// 
 			// aboutSRCDSRCONToolStripMenuItem
 			// 
