@@ -37,24 +37,6 @@ namespace SRCDS_RCON
 		}
 
 		/// <summary>
-		/// Opens the create server dialog and removes the old one on success
-		/// </summary>
-		/// <param name="server"></param>
-		private void EditServer(Server server)
-		{
-			using (CreateServerForm form = new CreateServerForm(server))
-			{
-				if (form.ShowDialog() == DialogResult.OK)
-				{
-					List<Server> servers = Settings.Servers;
-					servers.Remove(server);
-					Settings.Servers = servers;
-					LoadServers();
-				}
-			}
-		}
-
-		/// <summary>
 		/// Opens the create server dialog
 		/// </summary>
 		private void CreateServer()
@@ -66,6 +48,34 @@ namespace SRCDS_RCON
 					LoadServers();
 				}
 			}
+		}
+
+		/// <summary>
+		/// Opens the create server dialog and removes the old one on success
+		/// </summary>
+		/// <param name="server"></param>
+		private void EditServer(Server server)
+		{
+			using (CreateServerForm form = new CreateServerForm(server))
+			{
+				if (form.ShowDialog() == DialogResult.OK)
+				{
+					DeleteServer(server);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Deletes a server from the config
+		/// </summary>
+		/// <param name="server"></param>
+		private void DeleteServer(Server server)
+		{
+			List<Server> servers = Settings.Servers;
+			servers.Remove(server);
+			Settings.Servers = servers;
+
+			LoadServers();
 		}
 
 		/// <summary>
@@ -199,8 +209,6 @@ namespace SRCDS_RCON
 				EditServer(GetSelectedServer());
 		}
 
-		#endregion
-
 		private void ConnectButtonContextMenuStrip_Opening(object sender, EventArgs e)
 		{
 			bool serverSelected = IsServerSelected();
@@ -233,6 +241,20 @@ namespace SRCDS_RCON
 		{
 			CreateServer();
 		}
+
+		private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (IsServerSelected())
+				DeleteServer(GetSelectedServer());
+		}
+
+		private void DeleteToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			if (IsServerSelected())
+				DeleteServer(GetSelectedServer());
+		}
+
+		#endregion
 	}
 
 	public class ServerConnectEventArgs : EventArgs
