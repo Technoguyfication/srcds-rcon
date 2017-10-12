@@ -39,7 +39,11 @@ namespace SRCDS_RCON
 			if (textColor == null)
 				textColor = Settings.DefaultConsoleColor;
 
-			throw new NotImplementedException();
+			consoleTextBox.SelectionStart = consoleTextBox.TextLength;
+			consoleTextBox.SelectionLength = 0;
+
+			consoleTextBox.SelectionColor = (Color)textColor;
+			consoleTextBox.AppendText(text + Environment.NewLine);
 		}
 
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -74,12 +78,18 @@ namespace SRCDS_RCON
 			System.Diagnostics.Process.Start(Program.DocumentationUrl);
 		}
 
-		#endregion
-
 		private void MainForm_ResizeEnd(object sender, EventArgs e)
 		{
 			Settings.MainWindowHeight = Height;
 			Settings.MainWindowWidth = Width;
 		}
+
+		private void MainForm_Load(object sender, EventArgs e)
+		{
+			consoleTextBox.Clear();
+			WriteToConsole("Hi!", Settings.ProgramConsoleColor);
+		}
+
+		#endregion
 	}
 }

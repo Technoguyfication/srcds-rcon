@@ -237,6 +237,7 @@
 			this.MinimumSize = new System.Drawing.Size(180, 150);
 			this.Name = "MainForm";
 			this.Text = "SRCDS RCON";
+			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
 			this.consolePanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).EndInit();
