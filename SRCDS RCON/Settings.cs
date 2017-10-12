@@ -197,6 +197,36 @@ namespace SRCDS_RCON
 		}
 
 		/// <summary>
+		/// The width of the main RCON window
+		/// </summary>
+		public static int MainWindowWidth
+		{
+			get
+			{
+				return (int)_baseKey.GetValue("MainWindowWidth", DefaultSettings.MainWindowWidth);
+			}
+			set
+			{
+				_baseKey.SetValue("MainWindowWidth", value, RegistryValueKind.DWord);
+			}
+		}
+
+		/// <summary>
+		/// The height of the main RCON window
+		/// </summary>
+		public static int MainWindowHeight
+		{
+			get
+			{
+				return (int)_baseKey.GetValue("MainWindowHeight", DefaultSettings.MainWindowHeight);
+			}
+			set
+			{
+				_baseKey.SetValue("MainWindowHeight", value, RegistryValueKind.DWord);
+			}
+		}
+
+		/// <summary>
 		/// Gets a boolean value from the registry
 		/// </summary>
 		/// <param name="keyName"></param>
@@ -249,5 +279,8 @@ namespace SRCDS_RCON
 		public static bool ReconnectOnConnectionLost { get; } = false;
 
 		public static List<Server> Servers { get; } = new List<Server>();
+
+		public static int MainWindowWidth { get; } = 420;
+		public static int MainWindowHeight { get; } = 225;
 	}
 }

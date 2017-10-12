@@ -19,6 +19,10 @@ namespace SRCDS_RCON
 		public MainForm()
 		{
 			InitializeComponent();
+
+			Width = Settings.MainWindowWidth;
+			Height = Settings.MainWindowHeight;
+
 			connectionForm = new ConnectionForm();
 		}
 
@@ -71,5 +75,11 @@ namespace SRCDS_RCON
 		}
 
 		#endregion
+
+		private void MainForm_ResizeEnd(object sender, EventArgs e)
+		{
+			Settings.MainWindowHeight = Height;
+			Settings.MainWindowWidth = Width;
+		}
 	}
 }
