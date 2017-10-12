@@ -1,4 +1,5 @@
-﻿using SRCDS_RCON.Net;
+﻿using SRCDS_RCON.Utility;
+using SRCDS_RCON.Net;
 
 namespace SRCDS_RCON
 {
