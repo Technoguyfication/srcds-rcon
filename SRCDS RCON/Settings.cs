@@ -187,7 +187,7 @@ namespace SRCDS_RCON
 				RegistryKey serverBaseKey = _baseKey.CreateSubKey("Servers");
 				foreach (Server server in value)
 				{
-					RegistryKey serverKey = serverBaseKey.CreateSubKey(server.GetId());
+					RegistryKey serverKey = serverBaseKey.CreateSubKey(server.GetHashCode().ToString());
 
 					serverKey.SetValue("Hostname", server.Hostname, RegistryValueKind.String);
 					serverKey.SetValue("Port", server.Port, RegistryValueKind.DWord);

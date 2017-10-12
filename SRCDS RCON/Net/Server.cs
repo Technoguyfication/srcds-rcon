@@ -28,32 +28,22 @@ namespace SRCDS_RCON.Net
 			return typeMap[type];
 		}
 
-		public string Hostname { get; set; }
-		public int Port { get; set; }
-		public ServerType Type { get; set; }
+		public string Hostname { get; set; } = string.Empty;
+		public int Port { get; set; } = 0;
+		public ServerType Type { get; set; } = ServerType.SRCDS;
 
-		/// <summary>
-		/// Gets a unique ID suitable for identification
-		/// </summary>
-		/// <returns></returns>
-		public string GetId()
+		public override int GetHashCode()
 		{
-			SHA256 sha = SHA256.Create();
-			// add some unique data
-			List<byte> rawData = new List<byte>(Encoding.Unicode.GetBytes(Hostname));
-			rawData.AddRange(BitConverter.GetBytes(Port));
-
-			// hash it
-			byte[] hash = sha.ComputeHash(rawData.ToArray());
-
-			// turn it into a string
-			string friendlyHash = BitConverter.ToString(hash).Substring(0, 6);
-			return friendlyHash;
+			// this is just a random algorithm that probably has a low chance of colliding
+			// it isn't super important
+			return (Hostname.Length * Port * 11) + (int)Type * 555;
 		}
 
 		public override bool Equals(object obj)
 		{
 			Server s = (Server)obj;
+
+			// we could compare hashcodes, but this is more reliable
 			return (s.Hostname == Hostname && s.Port == Port && s.Type == Type);
 		}
 	}
