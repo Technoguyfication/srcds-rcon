@@ -90,7 +90,7 @@ namespace SRCDS_RCON
 					{
 						server.Hostname,
 						server.Port.ToString(),
-						server.Type.ToString()
+						Server.GetFriendlyTypeName(server.Type)
 					})
 				{
 					Tag = server
