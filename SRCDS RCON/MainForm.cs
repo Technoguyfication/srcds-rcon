@@ -77,9 +77,7 @@ namespace SRCDS_RCON
 			// CTRL+, for settings menu item
 			if (keyData == (Keys.Control | Keys.Oemcomma))
 			{
-				throw new NotImplementedException();	// reimplement this for menustrip
-
-				//settingsMenuItem.PerformClick();
+				settingsToolStripMenuItem.PerformClick();
 				return false;
 			}
 			return base.ProcessCmdKey(ref msg, keyData);
@@ -142,7 +140,7 @@ namespace SRCDS_RCON
 			ClearConsole();
 		}
 
-		private void viewDocumentationToolStripMenuItem_Click(object sender, EventArgs e)
+		private void ViewDocumentationToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			System.Diagnostics.Process.Start(Program.DocumentationUrl);
 		}
