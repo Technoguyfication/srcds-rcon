@@ -90,7 +90,7 @@
             this.toolStripMenuItem2,
             this.copyToolStripMenuItem});
 			this.consoleContextMenuStrip.Name = "consoleContextMenuStrip";
-			this.consoleContextMenuStrip.Size = new System.Drawing.Size(134, 104);
+			this.consoleContextMenuStrip.Size = new System.Drawing.Size(153, 126);
 			// 
 			// clearToolStripMenuItem
 			// 
@@ -127,8 +127,9 @@
 			// copyToolStripMenuItem
 			// 
 			this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-			this.copyToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+			this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.copyToolStripMenuItem.Text = "Copy";
+			this.copyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
 			// 
 			// inputTextBox
 			// 
@@ -335,6 +336,7 @@
 			this.Text = "SRCDS RCON";
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
+			this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.MainForm_HelpRequested);
 			this.consoleContextMenuStrip.ResumeLayout(false);
 			this.consolePanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.vistaMenu)).EndInit();

@@ -72,6 +72,23 @@ namespace SRCDS_RCON
 			consoleTextBox.Clear();
 		}
 
+		/// <summary>
+		/// Copies the selected text from the console
+		/// </summary>
+		private void CopyConsoleSelection()
+		{
+			if (consoleTextBox.SelectionLength > 0)
+				Clipboard.SetText(consoleTextBox.SelectedText);
+		}
+
+		/// <summary>
+		/// Opens up the documenation for the program in a new window
+		/// </summary>
+		private void ShowDocumenation()
+		{
+			System.Diagnostics.Process.Start(Program.DocumentationUrl);
+		}
+
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 		{
 			// CTRL+, for settings menu item
@@ -81,14 +98,6 @@ namespace SRCDS_RCON
 				return false;
 			}
 			return base.ProcessCmdKey(ref msg, keyData);
-		}
-
-		/// <summary>
-		/// Copies the selected text from the console
-		/// </summary>
-		private void CopyConsoleSelection()
-		{
-			throw new NotImplementedException();
 		}
 
 		#region Event Handlers
@@ -103,13 +112,6 @@ namespace SRCDS_RCON
 		{
 			consoleTextBox.Clear();
 			WriteToConsole(Program.StartupText, Settings.ProgramConsoleColor);
-		}
-
-		#endregion
-
-		private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			CopyConsoleSelection();
 		}
 
 		private void ClearToolStripMenuItem_Click(object sender, EventArgs e)
@@ -142,7 +144,19 @@ namespace SRCDS_RCON
 
 		private void ViewDocumentationToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			System.Diagnostics.Process.Start(Program.DocumentationUrl);
+			ShowDocumenation();
 		}
+
+		private void MainForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+		{
+			ShowDocumenation();
+		}
+
+		private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			CopyConsoleSelection();
+		}
+
+		#endregion
 	}
 }
