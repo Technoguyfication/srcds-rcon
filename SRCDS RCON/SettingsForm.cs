@@ -27,6 +27,42 @@ namespace SRCDS_RCON
 			// add uac shield to firewall button
 			firewallButton.FlatStyle = FlatStyle.System;
 			SendMessage(firewallButton.Handle, BCM_SETSHIELD, 0, 0xFFFFFFFF);
+
+			UpdateControls();
+		}
+
+		private void UpdateControls()
+		{
+			// logs
+			logEnabledCheckBox.Checked = Settings.LogToFile;
+			logPathTextBox.Text = Settings.LogFilePath;
+
+			// colors
+			defaultColorPickerButton.BackColor = Settings.DefaultConsoleColor;
+			sentColorPickerButton.BackColor = Settings.SentConsoleColor;
+			programColorPickerButton.BackColor = Settings.ProgramConsoleColor;
+
+			// network
+			reconnectCheckBox.Checked = Settings.ReconnectOnConnectionLost;
+		}
+
+		/// <summary>
+		/// Gets a custom color from the user
+		/// </summary>
+		/// <param name="original"></param>
+		/// <returns></returns>
+		private Color GetCustomColor(Color original)
+		{
+			ColorDialog dialog = new ColorDialog()
+			{
+				AllowFullOpen = true
+			};
+			DialogResult result = dialog.ShowDialog();
+
+			if (result != DialogResult.OK)
+				return original;
+			else
+				return dialog.Color;
 		}
 
 		private void SaveChangesButton_Click(object sender, EventArgs e)
@@ -37,6 +73,24 @@ namespace SRCDS_RCON
 		private void CancelButton_Click(object sender, EventArgs e)
 		{
 			DialogResult = DialogResult.Cancel;
+		}
+
+		private void DefaultColorPickerButton_Click(object sender, EventArgs e)
+		{
+			Settings.DefaultConsoleColor = GetCustomColor(Settings.DefaultConsoleColor);
+			UpdateControls();
+		}
+
+		private void ProgramColorPickerButton_Click(object sender, EventArgs e)
+		{
+			Settings.ProgramConsoleColor = GetCustomColor(Settings.ProgramConsoleColor);
+			UpdateControls();
+		}
+
+		private void SendColorPickerButton_Click(object sender, EventArgs e)
+		{
+			Settings.SentConsoleColor = GetCustomColor(Settings.SentConsoleColor);
+			UpdateControls();
 		}
 	}
 }

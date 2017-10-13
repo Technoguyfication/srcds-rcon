@@ -36,7 +36,7 @@
 			this.defaultColorPickerButton = new System.Windows.Forms.Button();
 			this.useMinecraftColorsCheckBox = new System.Windows.Forms.CheckBox();
 			this.programColorPickerButton = new System.Windows.Forms.Button();
-			this.sendColorPickerButton = new System.Windows.Forms.Button();
+			this.sentColorPickerButton = new System.Windows.Forms.Button();
 			this.settingsToolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.logEnabledCheckBox = new System.Windows.Forms.CheckBox();
 			this.logPathTextBox = new System.Windows.Forms.TextBox();
@@ -62,7 +62,7 @@
 			this.colorGroupBox.Controls.Add(this.defaultColorPickerButton);
 			this.colorGroupBox.Controls.Add(this.useMinecraftColorsCheckBox);
 			this.colorGroupBox.Controls.Add(this.programColorPickerButton);
-			this.colorGroupBox.Controls.Add(this.sendColorPickerButton);
+			this.colorGroupBox.Controls.Add(this.sentColorPickerButton);
 			this.colorGroupBox.Location = new System.Drawing.Point(216, 12);
 			this.colorGroupBox.Name = "colorGroupBox";
 			this.colorGroupBox.Size = new System.Drawing.Size(194, 132);
@@ -105,6 +105,7 @@
 			this.defaultColorPickerButton.Size = new System.Drawing.Size(75, 23);
 			this.defaultColorPickerButton.TabIndex = 0;
 			this.defaultColorPickerButton.UseVisualStyleBackColor = false;
+			this.defaultColorPickerButton.Click += new System.EventHandler(this.DefaultColorPickerButton_Click);
 			// 
 			// useMinecraftColorsCheckBox
 			// 
@@ -127,15 +128,17 @@
 			this.programColorPickerButton.Size = new System.Drawing.Size(75, 23);
 			this.programColorPickerButton.TabIndex = 2;
 			this.programColorPickerButton.UseVisualStyleBackColor = false;
+			this.programColorPickerButton.Click += new System.EventHandler(this.ProgramColorPickerButton_Click);
 			// 
-			// sendColorPickerButton
+			// sentColorPickerButton
 			// 
-			this.sendColorPickerButton.BackColor = System.Drawing.Color.LimeGreen;
-			this.sendColorPickerButton.Location = new System.Drawing.Point(6, 77);
-			this.sendColorPickerButton.Name = "sendColorPickerButton";
-			this.sendColorPickerButton.Size = new System.Drawing.Size(75, 23);
-			this.sendColorPickerButton.TabIndex = 4;
-			this.sendColorPickerButton.UseVisualStyleBackColor = false;
+			this.sentColorPickerButton.BackColor = System.Drawing.Color.LimeGreen;
+			this.sentColorPickerButton.Location = new System.Drawing.Point(6, 77);
+			this.sentColorPickerButton.Name = "sentColorPickerButton";
+			this.sentColorPickerButton.Size = new System.Drawing.Size(75, 23);
+			this.sentColorPickerButton.TabIndex = 4;
+			this.sentColorPickerButton.UseVisualStyleBackColor = false;
+			this.sentColorPickerButton.Click += new System.EventHandler(this.SendColorPickerButton_Click);
 			// 
 			// logEnabledCheckBox
 			// 
@@ -271,7 +274,7 @@
 		#endregion
 
 		private System.Windows.Forms.GroupBox colorGroupBox;
-		private System.Windows.Forms.Button sendColorPickerButton;
+		private System.Windows.Forms.Button sentColorPickerButton;
 		private System.Windows.Forms.Label defaultColorLabel;
 		private System.Windows.Forms.Label programColorLabel;
 		private System.Windows.Forms.Label sentColorLabel;
