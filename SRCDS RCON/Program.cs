@@ -13,7 +13,9 @@ namespace SRCDS_RCON
 		public const string StartupText =
 			"Welcome to SRCDS RCON!\n" +
 			"This program licensed under the Unlicense.\n";
-		
+
+		public static PersistentSettings Settings { get; set; } = new PersistentSettings();
+
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>

@@ -9,8 +9,8 @@ using SRCDS_RCON.Net;
 
 namespace SRCDS_RCON
 {
-	// User-defined settings, stored in registry but serializable too so you can export and import them.
-	public static class Settings
+	// Settings that stick the second you set them, used for actions that don't require confirmation
+	public class PersistentSettings : ISettings
 	{
 		/// <summary>
 		/// The base key where the program should store everything
@@ -20,7 +20,7 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// The basic color used for miscellaneous console text
 		/// </summary>
-		public static Color DefaultConsoleColor
+		public Color DefaultConsoleColor
 		{
 			get
 			{
@@ -35,7 +35,7 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// The color to use for outgoing RCON commands
 		/// </summary>
-		public static Color SentConsoleColor
+		public Color SentConsoleColor
 		{
 			get
 			{
@@ -50,7 +50,7 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// The color to use for program messages in the console
 		/// </summary>
-		public static Color ProgramConsoleColor
+		public Color ProgramConsoleColor
 		{
 			get
 			{
@@ -78,7 +78,7 @@ namespace SRCDS_RCON
 		/// </summary>
 		/// <param name="colorName"></param>
 		/// <param name="color"></param>
-		private static void SetConsoleColor(string colorName, Color color)
+		private static  void SetConsoleColor(string colorName, Color color)
 		{
 			_baseKey.CreateSubKey("Console").SetValue(colorName, color.ToArgb(), RegistryValueKind.DWord);
 		}
@@ -86,7 +86,7 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// Whether the console should try and use the custom colors from a Minecraft (Bukkit) server
 		/// </summary>
-		public static bool UseMinecraftColors
+		public bool UseMinecraftColors
 		{
 			get
 			{
@@ -101,7 +101,7 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// Whether or not a console log should be saved to a file
 		/// </summary>
-		public static bool LogToFile
+		public bool LogToFile
 		{
 			get
 			{
@@ -116,7 +116,7 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// Where the console log should be saved (if enabled)
 		/// </summary>
-		public static string LogFilePath
+		public string LogFilePath
 		{
 			get
 			{
@@ -131,7 +131,7 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// Whether or not the program should try to reconnect on unplanned connection loss
 		/// </summary>
-		public static bool ReconnectOnConnectionLost
+		public bool ReconnectOnConnectionLost
 		{
 			get
 			{
@@ -146,7 +146,7 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// The list of user-defined servers
 		/// </summary>
-		public static List<Server> Servers
+		public List<Server> Servers
 		{
 			get
 			{
@@ -199,7 +199,7 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// The width of the main RCON window
 		/// </summary>
-		public static int MainWindowWidth
+		public int MainWindowWidth
 		{
 			get
 			{
@@ -214,7 +214,7 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// The height of the main RCON window
 		/// </summary>
-		public static int MainWindowHeight
+		public int MainWindowHeight
 		{
 			get
 			{
@@ -265,8 +265,12 @@ namespace SRCDS_RCON
 	/// <summary>
 	/// Gets the default settings for the program to use.
 	/// </summary>
-	static class DefaultSettings
+	public static class DefaultSettings
 	{
+		/*
+		 * Static classes cannot implement interfaces, therefore, it is extremely important this class is kept up-to-date
+		 * */
+
 		public static Color DefaultConsoleColor { get; } = SystemColors.ControlText;
 		public static Color SentConsoleColor { get; } = Color.FromKnownColor(KnownColor.LimeGreen);
 		public static Color ProgramConsoleColor { get; } = Color.Blue;
@@ -275,12 +279,72 @@ namespace SRCDS_RCON
 		public static bool LogToFile { get; } = false;
 		public static string LogFilePath { get; } = "logs\\{0}.log";
 
-
 		public static bool ReconnectOnConnectionLost { get; } = false;
 
 		public static List<Server> Servers { get; } = new List<Server>();
 
 		public static int MainWindowWidth { get; } = 420;
 		public static int MainWindowHeight { get; } = 225;
+	}
+
+	/// <summary>
+	/// Basic temporary class to work with settings
+	/// </summary>
+	public class Settings : ISettings
+	{
+		public  Color DefaultConsoleColor { get; set; }
+		public  Color SentConsoleColor { get; set; }
+		public  Color ProgramConsoleColor { get; set; }
+		public  bool UseMinecraftColors { get; set; }
+
+		public  bool LogToFile { get; set; }
+		public  string LogFilePath { get; set; }
+
+		public  bool ReconnectOnConnectionLost { get; set; }
+
+		public  List<Server> Servers { get; set; }
+
+		public  int MainWindowWidth { get; set; }
+		public  int MainWindowHeight { get; set; }
+
+		/// <summary>
+		/// Copies the properties of one <see cref="ISettings"/> onto another
+		/// </summary>
+		public static void Copy(ISettings source, ISettings target)
+		{
+			Type type = typeof(ISettings);
+
+			// copy properties
+			foreach (var sourceProperty in type.GetProperties())
+			{
+				// if the property exists on the target
+				if (type.GetProperty(sourceProperty.Name) != null)
+				{
+					var targetProperty = type.GetProperty(sourceProperty.Name);
+					targetProperty.SetValue(target, sourceProperty.GetValue(source));
+				}
+			}
+		}
+	}
+
+	/// <summary>
+	/// Interface for settings
+	/// </summary>
+	public interface ISettings
+	{
+		Color DefaultConsoleColor { get; set; }
+		Color SentConsoleColor { get; set; }
+		Color ProgramConsoleColor { get; set; }
+		bool UseMinecraftColors { get; set; }
+
+		bool LogToFile { get; set; }
+		string LogFilePath { get; set; }
+
+		bool ReconnectOnConnectionLost { get; set; }
+
+		List<Server> Servers { get; set; }
+
+		int MainWindowWidth { get; set; }
+		int MainWindowHeight { get; set; }
 	}
 }

@@ -249,9 +249,11 @@
 			// 
 			// SettingsForm
 			// 
+			this.AcceptButton = this.saveChangesButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Window;
+			this.CancelButton = this.cancelButton;
 			this.ClientSize = new System.Drawing.Size(422, 189);
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.saveChangesButton);

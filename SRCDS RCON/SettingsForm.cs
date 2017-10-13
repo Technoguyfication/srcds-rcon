@@ -20,8 +20,12 @@ namespace SRCDS_RCON
 		internal const int BCM_FIRST = 0x1600;	// normal button
 		internal const int BCM_SETSHIELD = (BCM_FIRST + 0x000C); //Elevated button
 
+		Settings tSettings = new Settings();
+
 		public SettingsForm()
 		{
+			Settings.Copy(Program.Settings, tSettings);
+
 			InitializeComponent();
 
 			// add uac shield to firewall button
@@ -34,16 +38,24 @@ namespace SRCDS_RCON
 		private void UpdateControls()
 		{
 			// logs
-			logEnabledCheckBox.Checked = Settings.LogToFile;
-			logPathTextBox.Text = Settings.LogFilePath;
+			logEnabledCheckBox.Checked = tSettings.LogToFile;
+			logPathTextBox.Text = tSettings.LogFilePath;
 
 			// colors
-			defaultColorPickerButton.BackColor = Settings.DefaultConsoleColor;
-			sentColorPickerButton.BackColor = Settings.SentConsoleColor;
-			programColorPickerButton.BackColor = Settings.ProgramConsoleColor;
+			defaultColorPickerButton.BackColor = tSettings.DefaultConsoleColor;
+			sentColorPickerButton.BackColor = tSettings.SentConsoleColor;
+			programColorPickerButton.BackColor = tSettings.ProgramConsoleColor;
 
 			// network
-			reconnectCheckBox.Checked = Settings.ReconnectOnConnectionLost;
+			reconnectCheckBox.Checked = tSettings.ReconnectOnConnectionLost;
+		}
+
+		/// <summary>
+		/// saves the settings from the form to the program settings
+		/// </summary>
+		private void Save()
+		{
+			Settings.Copy(tSettings, Program.Settings);
 		}
 
 		/// <summary>
@@ -67,6 +79,7 @@ namespace SRCDS_RCON
 
 		private void SaveChangesButton_Click(object sender, EventArgs e)
 		{
+			Save();
 			DialogResult = DialogResult.OK;
 		}
 
@@ -77,19 +90,19 @@ namespace SRCDS_RCON
 
 		private void DefaultColorPickerButton_Click(object sender, EventArgs e)
 		{
-			Settings.DefaultConsoleColor = GetCustomColor(Settings.DefaultConsoleColor);
+			tSettings.DefaultConsoleColor = GetCustomColor(tSettings.DefaultConsoleColor);
 			UpdateControls();
 		}
 
 		private void ProgramColorPickerButton_Click(object sender, EventArgs e)
 		{
-			Settings.ProgramConsoleColor = GetCustomColor(Settings.ProgramConsoleColor);
+			tSettings.ProgramConsoleColor = GetCustomColor(tSettings.ProgramConsoleColor);
 			UpdateControls();
 		}
 
 		private void SendColorPickerButton_Click(object sender, EventArgs e)
 		{
-			Settings.SentConsoleColor = GetCustomColor(Settings.SentConsoleColor);
+			tSettings.SentConsoleColor = GetCustomColor(tSettings.SentConsoleColor);
 			UpdateControls();
 		}
 	}
