@@ -119,6 +119,7 @@
 			this.useMinecraftColorsCheckBox.Text = "Show Minecraft server colors";
 			this.settingsToolTip.SetToolTip(this.useMinecraftColorsCheckBox, "For Minecraft / Bukkit servers only.");
 			this.useMinecraftColorsCheckBox.UseVisualStyleBackColor = true;
+			this.useMinecraftColorsCheckBox.CheckedChanged += new System.EventHandler(this.UseMinecraftColorsCheckBox_CheckedChanged);
 			// 
 			// programColorPickerButton
 			// 
@@ -150,6 +151,7 @@
 			this.logEnabledCheckBox.Text = "Save Console Logs";
 			this.settingsToolTip.SetToolTip(this.logEnabledCheckBox, "Enable saving logs of all RCON commands and responses?");
 			this.logEnabledCheckBox.UseVisualStyleBackColor = true;
+			this.logEnabledCheckBox.CheckedChanged += new System.EventHandler(this.LogEnabledCheckBox_CheckedChanged);
 			// 
 			// logPathTextBox
 			// 
@@ -160,6 +162,7 @@
 			this.logPathTextBox.Text = "logs\\{0}.log";
 			this.settingsToolTip.SetToolTip(this.logPathTextBox, "Path to the log file.\r\nThis can be relative to the executable, or an absolute pat" +
         "h.");
+			this.logPathTextBox.TextChanged += new System.EventHandler(this.LogPathTextBox_TextChanged);
 			// 
 			// reconnectCheckBox
 			// 
@@ -171,6 +174,7 @@
 			this.reconnectCheckBox.Text = "Reconnect on connection loss";
 			this.settingsToolTip.SetToolTip(this.reconnectCheckBox, "Whether the program should reconnect automatically if the connection is dropped.");
 			this.reconnectCheckBox.UseVisualStyleBackColor = true;
+			this.reconnectCheckBox.CheckedChanged += new System.EventHandler(this.ReconnectCheckBox_CheckedChanged);
 			// 
 			// firewallButton
 			// 
@@ -239,6 +243,7 @@
 			// cancelButton
 			// 
 			this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.cancelButton.Location = new System.Drawing.Point(218, 154);
 			this.cancelButton.Name = "cancelButton";
 			this.cancelButton.Size = new System.Drawing.Size(84, 23);

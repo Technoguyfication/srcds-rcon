@@ -105,5 +105,25 @@ namespace SRCDS_RCON
 			tSettings.SentConsoleColor = GetCustomColor(tSettings.SentConsoleColor);
 			UpdateControls();
 		}
+
+		private void LogPathTextBox_TextChanged(object sender, EventArgs e)
+		{
+			tSettings.LogFilePath = logPathTextBox.Text;
+		}
+
+		private void LogEnabledCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			tSettings.LogToFile = logEnabledCheckBox.Checked;
+		}
+
+		private void ReconnectCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			tSettings.ReconnectOnConnectionLost = reconnectCheckBox.Checked;
+		}
+
+		private void UseMinecraftColorsCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			tSettings.UseMinecraftColors = useMinecraftColorsCheckBox.Checked;
+		}
 	}
 }
