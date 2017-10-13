@@ -12,7 +12,7 @@ namespace SRCDS_RCON
 	// Settings that stick the second you set them, used for actions that don't require confirmation
 	public class PersistentSettings : Settings, ISettings
 	{
-		private DefaultSettings _defaultSettings;
+		private DefaultSettings _defaultSettings = new DefaultSettings();
 
 		/// <summary>
 		/// The base key where the program should store everything
