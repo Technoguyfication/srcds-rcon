@@ -135,6 +135,7 @@
 			this.Controls.Add(this.typeComboBox);
 			this.Controls.Add(this.portTextBox);
 			this.Controls.Add(this.hostTextBox);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.Name = "CreateServerForm";
 			this.Text = "CreateServerForm";

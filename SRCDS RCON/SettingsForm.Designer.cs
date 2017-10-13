@@ -55,6 +55,7 @@
 			// 
 			// colorGroupBox
 			// 
+			this.colorGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.colorGroupBox.Controls.Add(this.defaultColorLabel);
 			this.colorGroupBox.Controls.Add(this.programColorLabel);
 			this.colorGroupBox.Controls.Add(this.sentColorLabel);
@@ -211,6 +212,7 @@
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.groupBox1.Controls.Add(this.firewallButton);
 			this.groupBox1.Controls.Add(this.reconnectCheckBox);
 			this.groupBox1.Location = new System.Drawing.Point(12, 107);
@@ -222,6 +224,7 @@
 			// 
 			// saveChangesButton
 			// 
+			this.saveChangesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.saveChangesButton.Location = new System.Drawing.Point(308, 154);
 			this.saveChangesButton.Name = "saveChangesButton";
 			this.saveChangesButton.Size = new System.Drawing.Size(104, 23);
@@ -232,6 +235,7 @@
 			// 
 			// cancelButton
 			// 
+			this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.cancelButton.Location = new System.Drawing.Point(218, 154);
 			this.cancelButton.Name = "cancelButton";
 			this.cancelButton.Size = new System.Drawing.Size(84, 23);
@@ -251,6 +255,7 @@
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.systemGroupBox);
 			this.Controls.Add(this.colorGroupBox);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "SettingsForm";
 			this.Text = "Settings";
 			this.colorGroupBox.ResumeLayout(false);
