@@ -187,6 +187,7 @@
 			this.firewallButton.Text = " Allow through Firewall";
 			this.settingsToolTip.SetToolTip(this.firewallButton, "This is only needed if the prorgam is being blocked by the firewall.");
 			this.firewallButton.UseVisualStyleBackColor = true;
+			this.firewallButton.Click += new System.EventHandler(this.FirewallButton_Click);
 			// 
 			// systemGroupBox
 			// 
@@ -243,9 +244,9 @@
 			// 
 			// cancelButton
 			// 
-			this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.cancelButton.Location = new System.Drawing.Point(311, 193);
+			this.cancelButton.Location = new System.Drawing.Point(127, 193);
 			this.cancelButton.Name = "cancelButton";
 			this.cancelButton.Size = new System.Drawing.Size(72, 23);
 			this.cancelButton.TabIndex = 3;

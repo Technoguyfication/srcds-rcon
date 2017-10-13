@@ -47,7 +47,7 @@ namespace SRCDS_RCON
 
 		private void SaveButton_Click(object sender, EventArgs e)
 		{
-			List<Server> servers = Program.Settings.Servers;
+			List<Server> servers = SrcdsRcon.Settings.Servers;
 
 			servers.Add(new Server()
 			{
@@ -56,7 +56,7 @@ namespace SRCDS_RCON
 				Type = (ServerType)Enum.Parse(typeof(ServerType), Enum.GetName(typeof(ServerType), typeComboBox.SelectedIndex))
 			});
 
-			Program.Settings.Servers = servers;
+			SrcdsRcon.Settings.Servers = servers;
 
 			DialogResult = DialogResult.OK;
 		}

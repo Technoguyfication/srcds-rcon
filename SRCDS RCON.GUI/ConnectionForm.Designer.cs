@@ -122,7 +122,7 @@ namespace SRCDS_RCON
 			// 
 			// connectToolStripMenuItem
 			// 
-			this.connectToolStripMenuItem.Image = global::SRCDS_RCON.Properties.Resources.connect;
+			this.connectToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.connect;
 			this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
 			this.connectToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
 			this.connectToolStripMenuItem.Text = "Connect";
@@ -135,7 +135,7 @@ namespace SRCDS_RCON
 			// 
 			// newToolStripMenuItem
 			// 
-			this.newToolStripMenuItem.Image = global::SRCDS_RCON.Properties.Resources.add;
+			this.newToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.add;
 			this.newToolStripMenuItem.Name = "newToolStripMenuItem";
 			this.newToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
 			this.newToolStripMenuItem.Text = "New...";
@@ -143,7 +143,7 @@ namespace SRCDS_RCON
 			// 
 			// editToolStripMenuItem
 			// 
-			this.editToolStripMenuItem.Image = global::SRCDS_RCON.Properties.Resources.server_edit;
+			this.editToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.server_edit;
 			this.editToolStripMenuItem.Name = "editToolStripMenuItem";
 			this.editToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
 			this.editToolStripMenuItem.Text = "Edit...";
@@ -151,7 +151,7 @@ namespace SRCDS_RCON
 			// 
 			// deleteToolStripMenuItem
 			// 
-			this.deleteToolStripMenuItem.Image = global::SRCDS_RCON.Properties.Resources.server_delete;
+			this.deleteToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.server_delete;
 			this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
 			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
 			this.deleteToolStripMenuItem.Text = "Delete";
@@ -166,7 +166,7 @@ namespace SRCDS_RCON
 			// 
 			// newToolStripMenuItem1
 			// 
-			this.newToolStripMenuItem1.Image = global::SRCDS_RCON.Properties.Resources.add;
+			this.newToolStripMenuItem1.Image = global::SRCDS_RCON.GUI.Properties.Resources.add;
 			this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
 			this.newToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
 			this.newToolStripMenuItem1.Text = "New...";
@@ -196,7 +196,7 @@ namespace SRCDS_RCON
 			// 
 			// connectButtonConnectItem
 			// 
-			this.connectButtonConnectItem.Image = global::SRCDS_RCON.Properties.Resources.connect;
+			this.connectButtonConnectItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.connect;
 			this.connectButtonConnectItem.Name = "connectButtonConnectItem";
 			this.connectButtonConnectItem.Size = new System.Drawing.Size(162, 22);
 			this.connectButtonConnectItem.Text = "Connect";
@@ -227,7 +227,7 @@ namespace SRCDS_RCON
 			// 
 			// newToolStripMenuItem2
 			// 
-			this.newToolStripMenuItem2.Image = global::SRCDS_RCON.Properties.Resources.add;
+			this.newToolStripMenuItem2.Image = global::SRCDS_RCON.GUI.Properties.Resources.add;
 			this.newToolStripMenuItem2.Name = "newToolStripMenuItem2";
 			this.newToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
 			this.newToolStripMenuItem2.Text = "New...";
@@ -240,7 +240,7 @@ namespace SRCDS_RCON
 			// 
 			// editToolStripMenuItem1
 			// 
-			this.editToolStripMenuItem1.Image = global::SRCDS_RCON.Properties.Resources.server_edit;
+			this.editToolStripMenuItem1.Image = global::SRCDS_RCON.GUI.Properties.Resources.server_edit;
 			this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
 			this.editToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
 			this.editToolStripMenuItem1.Text = "Edit...";
@@ -248,7 +248,7 @@ namespace SRCDS_RCON
 			// 
 			// deleteToolStripMenuItem1
 			// 
-			this.deleteToolStripMenuItem1.Image = global::SRCDS_RCON.Properties.Resources.server_delete;
+			this.deleteToolStripMenuItem1.Image = global::SRCDS_RCON.GUI.Properties.Resources.server_delete;
 			this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
 			this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
 			this.deleteToolStripMenuItem1.Text = "Delete";

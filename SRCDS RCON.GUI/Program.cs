@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SRCDS_RCON
+namespace SRCDS_RCON.GUI
 {
 	static class Program
 	{
@@ -13,8 +13,6 @@ namespace SRCDS_RCON
 		public const string StartupText =
 			"Welcome to SRCDS RCON!\n" +
 			"This program licensed under the Unlicense.\n";
-
-		public static PersistentSettings Settings { get; set; } = new PersistentSettings();
 
 		/// <summary>
 		/// The main entry point for the application.
@@ -25,19 +23,6 @@ namespace SRCDS_RCON
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MainForm());
-		}
-
-		/// <summary>
-		/// Ensures an array of bytes is Little Endian, before/after use of the <see cref="BitConverter"/>
-		/// </summary>
-		/// <param name="buffer"></param>
-		/// <returns></returns>
-		public static byte[] ReverseLittleEndian(this byte[] buffer)
-		{
-			if (!BitConverter.IsLittleEndian)
-				Array.Reverse(buffer);
-
-			return buffer;
 		}
 	}
 }

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SRCDS_RCON
+namespace SRCDS_RCON.GUI
 {
 	public partial class MainForm : Form
 	{
@@ -20,8 +20,8 @@ namespace SRCDS_RCON
 		{
 			InitializeComponent();
 
-			Width = Program.Settings.MainWindowWidth;
-			Height = Program.Settings.MainWindowHeight;
+			Width = SrcdsRcon.Settings.MainWindowWidth;
+			Height = SrcdsRcon.Settings.MainWindowHeight;
 
 			connectionForm = new ConnectionForm();
 			connectionForm.ServerConnect += ConnectionForm_ServerConnect;
@@ -40,7 +40,7 @@ namespace SRCDS_RCON
 		/// <param name="server"></param>
 		public void Connect(Server server)
 		{
-			WriteToConsole($"Connecting to {server.Hostname}:{server.Port}...", Program.Settings.DefaultConsoleColor);
+			WriteToConsole($"Connecting to {server.Hostname}:{server.Port}...", SrcdsRcon.Settings.DefaultConsoleColor);
 			throw new NotImplementedException();
 		}
 
@@ -55,7 +55,7 @@ namespace SRCDS_RCON
 				Invoke((MethodInvoker)delegate { WriteToConsole(text, textColor); });
 
 			if (textColor == null)
-				textColor = Program.Settings.DefaultConsoleColor;
+				textColor = SrcdsRcon.Settings.DefaultConsoleColor;
 
 			// start selection at end of text
 			consoleTextBox.SelectionStart = consoleTextBox.TextLength;
@@ -106,14 +106,14 @@ namespace SRCDS_RCON
 
 		private void MainForm_ResizeEnd(object sender, EventArgs e)
 		{
-			Program.Settings.MainWindowHeight = Height;
-			Program.Settings.MainWindowWidth = Width;
+			SrcdsRcon.Settings.MainWindowHeight = Height;
+			SrcdsRcon.Settings.MainWindowWidth = Width;
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			consoleTextBox.Clear();
-			WriteToConsole(Program.StartupText, Program.Settings.ProgramConsoleColor);
+			WriteToConsole(Program.StartupText, SrcdsRcon.Settings.ProgramConsoleColor);
 		}
 
 		private void ClearToolStripMenuItem_Click(object sender, EventArgs e)

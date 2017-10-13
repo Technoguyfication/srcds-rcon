@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Management;
 
 namespace SRCDS_RCON
 {
@@ -24,7 +25,7 @@ namespace SRCDS_RCON
 
 		public SettingsForm()
 		{
-			Settings.Copy(Program.Settings, tSettings);
+			Settings.Copy(SrcdsRcon.Settings, tSettings);
 
 			InitializeComponent();
 
@@ -58,7 +59,7 @@ namespace SRCDS_RCON
 		/// </summary>
 		private void Save()
 		{
-			Settings.Copy(tSettings, Program.Settings);
+			Settings.Copy(tSettings, SrcdsRcon.Settings);
 		}
 
 		/// <summary>
@@ -133,6 +134,11 @@ namespace SRCDS_RCON
 		{
 			Settings.Copy(new DefaultSettings(), tSettings);
 			UpdateControls();
+		}
+
+		private void FirewallButton_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

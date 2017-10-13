@@ -71,9 +71,9 @@ namespace SRCDS_RCON
 		/// <param name="server"></param>
 		private void DeleteServer(Server server)
 		{
-			List<Server> servers = Program.Settings.Servers;
+			List<Server> servers = SrcdsRcon.Settings.Servers;
 			servers.Remove(server);
-			Program.Settings.Servers = servers;
+			SrcdsRcon.Settings.Servers = servers;
 
 			LoadServers();
 		}
@@ -84,7 +84,7 @@ namespace SRCDS_RCON
 		public void LoadServers()
 		{
 			serverListView.Items.Clear();
-			foreach (Server server in Program.Settings.Servers)
+			foreach (Server server in SrcdsRcon.Settings.Servers)
 			{
 				ListViewItem item = new ListViewItem(new string[]
 					{
