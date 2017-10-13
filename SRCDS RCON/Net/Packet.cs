@@ -96,6 +96,6 @@ namespace SRCDS_RCON.Net
 		AUTH = 3,
 		AUTH_RESPONSE = 2,
 		COMMAND = 2,
-		COMMAND_RESPONSE = 0
+		COMMAND_RESPONSE = 0,
 	}
 }

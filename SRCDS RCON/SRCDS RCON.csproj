@@ -152,4 +152,13 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>:REM kill all testing engines
+wmic process where name='vstest.discoveryengine.x86.exe' delete
+wmic process where name='vstest.discoveryengine.exe' delete
+
+wmic process where name='vstest.executionengine.x86.exe' delete
+wmic process where name='vstest.executionengine.exe' delete
+</PreBuildEvent>
+  </PropertyGroup>
 </Project>

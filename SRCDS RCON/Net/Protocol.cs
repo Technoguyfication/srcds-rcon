@@ -200,6 +200,7 @@ namespace SRCDS_RCON.Net
 			{
 				byte[] buffer = packet.Raw;
 				_client.GetStream().Write(buffer, 0, buffer.Length);
+				_client.GetStream().Flush();
 			}
 		}
 
@@ -252,7 +253,10 @@ namespace SRCDS_RCON.Net
 			{
 				int newBytesRead = _client.GetStream().Read(buffer, offset + bytesRead, size - bytesRead);
 				if (newBytesRead == 0)
+				{
+					Disconnect();
 					throw new DisconnectedException("Connection closed");
+				}
 
 				bytesRead += newBytesRead;
 			}
