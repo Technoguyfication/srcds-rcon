@@ -81,7 +81,41 @@ namespace SRCDS_RCON.Tests
 			p.Dispose();
 		}
 
+		[TestMethod]
+		public void SendRecvCommand_OK()
+		{
+			int port = 2502;
+			string password = "test";
 
+			Server s = new Server()
+			{
+				Hostname = "localhost",
+				Port = port,
+				Password = password
+			};
+
+			StartFakeServer(password, port);
+
+			Protocol p = new Protocol();
+
+			// set on packet response received
+			bool eventFired = false;
+			p.MessageReceived += (object sender, MessageReceivedEventArgs e) =>
+			{
+				eventFired = true;
+			};
+
+			// connect and send a command
+			p.Connect(s);
+			p.SendCommand("test");
+
+			Thread.Sleep(100);  // give the fake server some time to process the packet
+
+			Assert.IsTrue(eventFired);
+
+			// cleanup
+			p.Disconnect();
+		}
 
 		/// <summary>
 		/// Starts a fake server that accepts a client and behaves like a SRCDS server would
