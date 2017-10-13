@@ -310,15 +310,16 @@ namespace SRCDS_RCON
 		/// </summary>
 		public static void Copy(IBaseSettings source, ISettings target)
 		{
-			Type type = typeof(ISettings);
+			Type sourceType = typeof(IBaseSettings);
+			Type targetType = typeof(ISettings);
 
 			// copy properties
-			foreach (var sourceProperty in type.GetProperties())
+			foreach (var sourceProperty in sourceType.GetProperties())
 			{
 				// if the property exists on the target
-				if (type.GetProperty(sourceProperty.Name) != null)
+				if (sourceType.GetProperty(sourceProperty.Name) != null)
 				{
-					var targetProperty = type.GetProperty(sourceProperty.Name);
+					var targetProperty = targetType.GetProperty(sourceProperty.Name);
 					targetProperty.SetValue(target, sourceProperty.GetValue(source));
 				}
 			}
