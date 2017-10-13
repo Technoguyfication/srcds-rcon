@@ -25,7 +25,7 @@ namespace SRCDS_RCON.Tests
 			int port = 2500;
 			string password = "test";
 
-			Thread serverThread = StartFakeServer(password, port);
+			StartFakeServer(password, port);
 
 			Server s = new Server()
 			{
@@ -38,7 +38,10 @@ namespace SRCDS_RCON.Tests
 
 			// check that the event is fired on connection
 			bool eventFired = false;
-			p.Ready += (object sender, EventArgs e) => { eventFired = true; };
+			p.Ready += (object sender, EventArgs e) =>
+			{
+				eventFired = true;
+			};
 
 			p.Connect(s);
 
@@ -54,7 +57,7 @@ namespace SRCDS_RCON.Tests
 			string serverPassword = "test";
 			string clientPassword = "not the password";
 
-			Thread serverThread = StartFakeServer(serverPassword, port);
+			StartFakeServer(serverPassword, port);
 
 			Server s = new Server()
 			{
