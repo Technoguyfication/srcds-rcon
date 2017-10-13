@@ -10,8 +10,10 @@ using SRCDS_RCON.Net;
 namespace SRCDS_RCON
 {
 	// Settings that stick the second you set them, used for actions that don't require confirmation
-	public class PersistentSettings : ISettings
+	public class PersistentSettings : Settings, ISettings
 	{
+		private DefaultSettings _defaultSettings;
+
 		/// <summary>
 		/// The base key where the program should store everything
 		/// </summary>
@@ -20,11 +22,11 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// The basic color used for miscellaneous console text
 		/// </summary>
-		public Color DefaultConsoleColor
+		new public Color DefaultConsoleColor
 		{
 			get
 			{
-				return GetConsoleColor("DefaultColor", DefaultSettings.DefaultConsoleColor);
+				return GetConsoleColor("DefaultColor", _defaultSettings.DefaultConsoleColor);
 			}
 			set
 			{
@@ -35,11 +37,11 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// The color to use for outgoing RCON commands
 		/// </summary>
-		public Color SentConsoleColor
+		new public Color SentConsoleColor
 		{
 			get
 			{
-				return GetConsoleColor("SentColor", DefaultSettings.SentConsoleColor);
+				return GetConsoleColor("SentColor", _defaultSettings.SentConsoleColor);
 			}
 			set
 			{
@@ -50,11 +52,11 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// The color to use for program messages in the console
 		/// </summary>
-		public Color ProgramConsoleColor
+		new public Color ProgramConsoleColor
 		{
 			get
 			{
-				return GetConsoleColor("ProgramColor", DefaultSettings.ProgramConsoleColor);
+				return GetConsoleColor("ProgramColor", _defaultSettings.ProgramConsoleColor);
 			}
 			set
 			{
@@ -86,11 +88,11 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// Whether the console should try and use the custom colors from a Minecraft (Bukkit) server
 		/// </summary>
-		public bool UseMinecraftColors
+		new public bool UseMinecraftColors
 		{
 			get
 			{
-				return GetBoolean("UseMinecraftColors", DefaultSettings.UseMinecraftColors, _baseKey.CreateSubKey("Console"));
+				return GetBoolean("UseMinecraftColors", _defaultSettings.UseMinecraftColors, _baseKey.CreateSubKey("Console"));
 			}
 			set
 			{
@@ -101,11 +103,11 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// Whether or not a console log should be saved to a file
 		/// </summary>
-		public bool LogToFile
+		new public bool LogToFile
 		{
 			get
 			{
-				return GetBoolean("LogToFile", DefaultSettings.LogToFile);
+				return GetBoolean("LogToFile", _defaultSettings.LogToFile);
 			}
 			set
 			{
@@ -116,11 +118,11 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// Where the console log should be saved (if enabled)
 		/// </summary>
-		public string LogFilePath
+		new public string LogFilePath
 		{
 			get
 			{
-				return (string)_baseKey.GetValue("LogFilePath", DefaultSettings.LogFilePath);
+				return (string)_baseKey.GetValue("LogFilePath", _defaultSettings.LogFilePath);
 			}
 			set
 			{
@@ -131,11 +133,11 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// Whether or not the program should try to reconnect on unplanned connection loss
 		/// </summary>
-		public bool ReconnectOnConnectionLost
+		new public bool ReconnectOnConnectionLost
 		{
 			get
 			{
-				return GetBoolean("ReconnectOnConnectionLost", DefaultSettings.ReconnectOnConnectionLost);
+				return GetBoolean("ReconnectOnConnectionLost", _defaultSettings.ReconnectOnConnectionLost);
 			}
 			set
 			{
@@ -146,7 +148,7 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// The list of user-defined servers
 		/// </summary>
-		public List<Server> Servers
+		new public List<Server> Servers
 		{
 			get
 			{
@@ -199,11 +201,11 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// The width of the main RCON window
 		/// </summary>
-		public int MainWindowWidth
+		new public int MainWindowWidth
 		{
 			get
 			{
-				return (int)_baseKey.GetValue("MainWindowWidth", DefaultSettings.MainWindowWidth);
+				return (int)_baseKey.GetValue("MainWindowWidth", _defaultSettings.MainWindowWidth);
 			}
 			set
 			{
@@ -214,11 +216,11 @@ namespace SRCDS_RCON
 		/// <summary>
 		/// The height of the main RCON window
 		/// </summary>
-		public int MainWindowHeight
+		new public int MainWindowHeight
 		{
 			get
 			{
-				return (int)_baseKey.GetValue("MainWindowHeight", DefaultSettings.MainWindowHeight);
+				return (int)_baseKey.GetValue("MainWindowHeight", _defaultSettings.MainWindowHeight);
 			}
 			set
 			{
@@ -265,26 +267,22 @@ namespace SRCDS_RCON
 	/// <summary>
 	/// Gets the default settings for the program to use.
 	/// </summary>
-	public static class DefaultSettings
+	public  class DefaultSettings : IBaseSettings
 	{
-		/*
-		 * Static classes cannot implement interfaces, therefore, it is extremely important this class is kept up-to-date
-		 * */
+		public  Color DefaultConsoleColor { get; set; } = SystemColors.ControlText;
+		public Color SentConsoleColor { get; set; } = Color.FromKnownColor(KnownColor.LimeGreen);
+		public Color ProgramConsoleColor { get; set; } = Color.Blue;
+		public bool UseMinecraftColors { get; set; } = true;
 
-		public static Color DefaultConsoleColor { get; } = SystemColors.ControlText;
-		public static Color SentConsoleColor { get; } = Color.FromKnownColor(KnownColor.LimeGreen);
-		public static Color ProgramConsoleColor { get; } = Color.Blue;
-		public static bool UseMinecraftColors { get; } = true;
+		public bool LogToFile { get; set; } = false;
+		public string LogFilePath { get; set; } = "logs\\{0}.log";
 
-		public static bool LogToFile { get; } = false;
-		public static string LogFilePath { get; } = "logs\\{0}.log";
+		public bool ReconnectOnConnectionLost { get; set; } = false;
 
-		public static bool ReconnectOnConnectionLost { get; } = false;
+		public List<Server> Servers { get; set; } = new List<Server>();
 
-		public static List<Server> Servers { get; } = new List<Server>();
-
-		public static int MainWindowWidth { get; } = 420;
-		public static int MainWindowHeight { get; } = 225;
+		public int MainWindowWidth { get; set; } = 420;
+		public int MainWindowHeight { get; set; } = 225;
 	}
 
 	/// <summary>
@@ -308,9 +306,9 @@ namespace SRCDS_RCON
 		public  int MainWindowHeight { get; set; }
 
 		/// <summary>
-		/// Copies the properties of one <see cref="ISettings"/> onto another
+		/// Copies the properties of a <see cref="IBaseSettings"/> to a <see cref="ISettings"/>
 		/// </summary>
-		public static void Copy(ISettings source, ISettings target)
+		public static void Copy(IBaseSettings source, ISettings target)
 		{
 			Type type = typeof(ISettings);
 
@@ -328,23 +326,44 @@ namespace SRCDS_RCON
 	}
 
 	/// <summary>
-	/// Interface for settings
+	/// Interface for gettable and settable settings
 	/// </summary>
-	public interface ISettings
+	public interface ISettings : IBaseSettings
 	{
-		Color DefaultConsoleColor { get; set; }
-		Color SentConsoleColor { get; set; }
-		Color ProgramConsoleColor { get; set; }
-		bool UseMinecraftColors { get; set; }
+		new Color DefaultConsoleColor { get; set; }
+		new Color SentConsoleColor { get; set; }
+		new Color ProgramConsoleColor { get; set; }
+		new bool UseMinecraftColors { get; set; }
 
-		bool LogToFile { get; set; }
-		string LogFilePath { get; set; }
+		new bool LogToFile { get; set; }
+		new string LogFilePath { get; set; }
 
-		bool ReconnectOnConnectionLost { get; set; }
+		new bool ReconnectOnConnectionLost { get; set; }
 
-		List<Server> Servers { get; set; }
+		new List<Server> Servers { get; set; }
 
-		int MainWindowWidth { get; set; }
-		int MainWindowHeight { get; set; }
+		new int MainWindowWidth { get; set; }
+		new int MainWindowHeight { get; set; }
+	}
+
+	/// <summary>
+	/// Interface for gettable settings
+	/// </summary>
+	public interface IBaseSettings
+	{
+		Color DefaultConsoleColor { get; }
+		Color SentConsoleColor { get; }
+		Color ProgramConsoleColor { get; }
+		bool UseMinecraftColors { get; }
+
+		bool LogToFile { get; }
+		string LogFilePath { get; }
+
+		bool ReconnectOnConnectionLost { get; }
+
+		List<Server> Servers { get; }
+
+		int MainWindowWidth { get; }
+		int MainWindowHeight { get; }
 	}
 }
