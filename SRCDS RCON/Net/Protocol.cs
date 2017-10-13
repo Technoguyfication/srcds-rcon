@@ -114,6 +114,7 @@ namespace SRCDS_RCON.Net
 			{
 				Listen();
 			}, _cancellationtokenSource.Token);
+			_listenTask.Start();
 
 			Ready?.Invoke(this, new EventArgs());
 		}
@@ -123,11 +124,11 @@ namespace SRCDS_RCON.Net
 			Disconnect();
 		}
 
+		/// <summary>
+		/// Disconnects the client safely and gets everything ready for another connection
+		/// </summary>
 		public void Disconnect()
 		{
-			if (!Connected)
-				return;
-
 			_cancellationtokenSource?.Cancel();
 			_client?.Close();
 
@@ -135,11 +136,40 @@ namespace SRCDS_RCON.Net
 		}
 
 		/// <summary>
+		/// Sends a command to the server
+		/// </summary>
+		/// <param name="command"></param>
+		public void SendCommand(string command)
+		{
+			if (!Connected)
+				throw new Exception("Not connected to a server");
+
+			Packet packet = new Packet()
+			{
+				Type = PacketType.COMMAND,
+				Payload = command
+			};
+
+			SendPacket(packet);
+		}
+
+		/// <summary>
 		/// Listens to the server on a loop, sending all packets to <see cref="HandlePacket"/>
 		/// </summary>
 		private void Listen()
 		{
-			throw new NotImplementedException();
+			while (Connected && !_cancellationtokenSource.IsCancellationRequested)
+			{
+				try
+				{
+					HandlePacket(ReadNextPacket());
+				}
+				catch (DisconnectedException)
+				{
+					Disconnect();
+					return;
+				}
+			}
 		}
 
 		/// <summary>
