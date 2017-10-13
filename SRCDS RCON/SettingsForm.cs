@@ -35,6 +35,9 @@ namespace SRCDS_RCON
 			UpdateControls();
 		}
 
+		/// <summary>
+		/// Updates the controls to reflect the values of <see cref="tSettings"/>
+		/// </summary>
 		private void UpdateControls()
 		{
 			// logs
@@ -124,6 +127,12 @@ namespace SRCDS_RCON
 		private void UseMinecraftColorsCheckBox_CheckedChanged(object sender, EventArgs e)
 		{
 			tSettings.UseMinecraftColors = useMinecraftColorsCheckBox.Checked;
+		}
+
+		private void DefaultsButton_Click(object sender, EventArgs e)
+		{
+			Settings.Copy(new DefaultSettings(), tSettings);
+			UpdateControls();
 		}
 	}
 }

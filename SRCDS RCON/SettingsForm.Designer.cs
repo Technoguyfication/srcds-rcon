@@ -45,12 +45,13 @@
 			this.systemGroupBox = new System.Windows.Forms.GroupBox();
 			this.logSubstituteLabel = new System.Windows.Forms.Label();
 			this.logBrowseButton = new System.Windows.Forms.Button();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.networkGroupBox = new System.Windows.Forms.GroupBox();
 			this.saveChangesButton = new System.Windows.Forms.Button();
 			this.cancelButton = new System.Windows.Forms.Button();
+			this.defaultsButton = new System.Windows.Forms.Button();
 			this.colorGroupBox.SuspendLayout();
 			this.systemGroupBox.SuspendLayout();
-			this.groupBox1.SuspendLayout();
+			this.networkGroupBox.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// colorGroupBox
@@ -63,9 +64,9 @@
 			this.colorGroupBox.Controls.Add(this.useMinecraftColorsCheckBox);
 			this.colorGroupBox.Controls.Add(this.programColorPickerButton);
 			this.colorGroupBox.Controls.Add(this.sentColorPickerButton);
-			this.colorGroupBox.Location = new System.Drawing.Point(216, 12);
+			this.colorGroupBox.Location = new System.Drawing.Point(238, 12);
 			this.colorGroupBox.Name = "colorGroupBox";
-			this.colorGroupBox.Size = new System.Drawing.Size(194, 132);
+			this.colorGroupBox.Size = new System.Drawing.Size(243, 131);
 			this.colorGroupBox.TabIndex = 2;
 			this.colorGroupBox.TabStop = false;
 			this.colorGroupBox.Text = "Console Colors";
@@ -100,6 +101,7 @@
 			// defaultColorPickerButton
 			// 
 			this.defaultColorPickerButton.BackColor = System.Drawing.SystemColors.ControlText;
+			this.defaultColorPickerButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.defaultColorPickerButton.Location = new System.Drawing.Point(6, 19);
 			this.defaultColorPickerButton.Name = "defaultColorPickerButton";
 			this.defaultColorPickerButton.Size = new System.Drawing.Size(75, 23);
@@ -157,7 +159,7 @@
 			// 
 			this.logPathTextBox.Location = new System.Drawing.Point(7, 42);
 			this.logPathTextBox.Name = "logPathTextBox";
-			this.logPathTextBox.Size = new System.Drawing.Size(118, 20);
+			this.logPathTextBox.Size = new System.Drawing.Size(140, 20);
 			this.logPathTextBox.TabIndex = 2;
 			this.logPathTextBox.Text = "logs\\{0}.log";
 			this.settingsToolTip.SetToolTip(this.logPathTextBox, "Path to the log file.\r\nThis can be relative to the executable, or an absolute pat" +
@@ -178,7 +180,7 @@
 			// 
 			// firewallButton
 			// 
-			this.firewallButton.Location = new System.Drawing.Point(20, 43);
+			this.firewallButton.Location = new System.Drawing.Point(16, 43);
 			this.firewallButton.Name = "firewallButton";
 			this.firewallButton.Size = new System.Drawing.Size(160, 23);
 			this.firewallButton.TabIndex = 1;
@@ -194,7 +196,7 @@
 			this.systemGroupBox.Controls.Add(this.logEnabledCheckBox);
 			this.systemGroupBox.Location = new System.Drawing.Point(12, 12);
 			this.systemGroupBox.Name = "systemGroupBox";
-			this.systemGroupBox.Size = new System.Drawing.Size(198, 88);
+			this.systemGroupBox.Size = new System.Drawing.Size(220, 88);
 			this.systemGroupBox.TabIndex = 0;
 			this.systemGroupBox.TabStop = false;
 			this.systemGroupBox.Text = "System";
@@ -210,31 +212,30 @@
 			// 
 			// logBrowseButton
 			// 
-			this.logBrowseButton.Location = new System.Drawing.Point(131, 40);
+			this.logBrowseButton.Location = new System.Drawing.Point(153, 40);
 			this.logBrowseButton.Name = "logBrowseButton";
 			this.logBrowseButton.Size = new System.Drawing.Size(61, 23);
 			this.logBrowseButton.TabIndex = 3;
 			this.logBrowseButton.Text = "Browse...";
 			this.logBrowseButton.UseVisualStyleBackColor = true;
 			// 
-			// groupBox1
+			// networkGroupBox
 			// 
-			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.groupBox1.Controls.Add(this.firewallButton);
-			this.groupBox1.Controls.Add(this.reconnectCheckBox);
-			this.groupBox1.Location = new System.Drawing.Point(12, 107);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(200, 74);
-			this.groupBox1.TabIndex = 1;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Network";
+			this.networkGroupBox.Controls.Add(this.firewallButton);
+			this.networkGroupBox.Controls.Add(this.reconnectCheckBox);
+			this.networkGroupBox.Location = new System.Drawing.Point(12, 106);
+			this.networkGroupBox.Name = "networkGroupBox";
+			this.networkGroupBox.Size = new System.Drawing.Size(214, 74);
+			this.networkGroupBox.TabIndex = 1;
+			this.networkGroupBox.TabStop = false;
+			this.networkGroupBox.Text = "Network";
 			// 
 			// saveChangesButton
 			// 
 			this.saveChangesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.saveChangesButton.Location = new System.Drawing.Point(308, 154);
+			this.saveChangesButton.Location = new System.Drawing.Point(389, 193);
 			this.saveChangesButton.Name = "saveChangesButton";
-			this.saveChangesButton.Size = new System.Drawing.Size(104, 23);
+			this.saveChangesButton.Size = new System.Drawing.Size(92, 23);
 			this.saveChangesButton.TabIndex = 4;
 			this.saveChangesButton.Text = "Save Changes";
 			this.saveChangesButton.UseVisualStyleBackColor = true;
@@ -244,25 +245,36 @@
 			// 
 			this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.cancelButton.Location = new System.Drawing.Point(218, 154);
+			this.cancelButton.Location = new System.Drawing.Point(311, 193);
 			this.cancelButton.Name = "cancelButton";
-			this.cancelButton.Size = new System.Drawing.Size(84, 23);
+			this.cancelButton.Size = new System.Drawing.Size(72, 23);
 			this.cancelButton.TabIndex = 3;
 			this.cancelButton.Text = "Cancel";
 			this.cancelButton.UseVisualStyleBackColor = true;
 			this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
 			// 
+			// defaultsButton
+			// 
+			this.defaultsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.defaultsButton.Location = new System.Drawing.Point(12, 193);
+			this.defaultsButton.Name = "defaultsButton";
+			this.defaultsButton.Size = new System.Drawing.Size(109, 23);
+			this.defaultsButton.TabIndex = 5;
+			this.defaultsButton.Text = "Reset to Defaults";
+			this.defaultsButton.UseVisualStyleBackColor = true;
+			this.defaultsButton.Click += new System.EventHandler(this.DefaultsButton_Click);
+			// 
 			// SettingsForm
 			// 
-			this.AcceptButton = this.saveChangesButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Window;
 			this.CancelButton = this.cancelButton;
-			this.ClientSize = new System.Drawing.Size(422, 189);
+			this.ClientSize = new System.Drawing.Size(493, 228);
+			this.Controls.Add(this.defaultsButton);
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.saveChangesButton);
-			this.Controls.Add(this.groupBox1);
+			this.Controls.Add(this.networkGroupBox);
 			this.Controls.Add(this.systemGroupBox);
 			this.Controls.Add(this.colorGroupBox);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -272,8 +284,8 @@
 			this.colorGroupBox.PerformLayout();
 			this.systemGroupBox.ResumeLayout(false);
 			this.systemGroupBox.PerformLayout();
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
+			this.networkGroupBox.ResumeLayout(false);
+			this.networkGroupBox.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -294,10 +306,11 @@
 		private System.Windows.Forms.Button logBrowseButton;
 		private System.Windows.Forms.TextBox logPathTextBox;
 		private System.Windows.Forms.CheckBox logEnabledCheckBox;
-		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.GroupBox networkGroupBox;
 		private System.Windows.Forms.Button firewallButton;
 		private System.Windows.Forms.CheckBox reconnectCheckBox;
 		private System.Windows.Forms.Button saveChangesButton;
 		private System.Windows.Forms.Button cancelButton;
+		private System.Windows.Forms.Button defaultsButton;
 	}
 }
