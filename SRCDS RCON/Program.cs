@@ -24,5 +24,18 @@ namespace SRCDS_RCON
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MainForm());
 		}
+
+		/// <summary>
+		/// Ensures an array of bytes is Little Endian, before/after use of the <see cref="BitConverter"/>
+		/// </summary>
+		/// <param name="buffer"></param>
+		/// <returns></returns>
+		public static byte[] ReverseLittleEndian(this byte[] buffer)
+		{
+			if (!BitConverter.IsLittleEndian)
+				Array.Reverse(buffer);
+
+			return buffer;
+		}
 	}
 }

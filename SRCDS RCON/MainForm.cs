@@ -25,6 +25,8 @@ namespace SRCDS_RCON
 
 			connectionForm = new ConnectionForm();
 			connectionForm.ServerConnect += ConnectionForm_ServerConnect;
+
+			protocol = new Protocol();
 		}
 
 		private void ConnectionForm_ServerConnect(object sender, ServerConnectEventArgs e)

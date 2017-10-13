@@ -67,6 +67,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Net\Packet.cs" />
     <Compile Include="Net\Protocol.cs" />
     <Compile Include="Net\Server.cs" />
     <Compile Include="Program.cs" />
@@ -149,5 +150,6 @@
   <ItemGroup>
     <None Include="Resources\disconnect.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

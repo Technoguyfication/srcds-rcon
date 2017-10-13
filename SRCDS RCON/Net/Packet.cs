@@ -11,29 +11,44 @@ namespace SRCDS_RCON.Net
 		/// <summary>
 		/// The length of the entire packet, in bytes
 		/// </summary>
-		public int Length { get; }
+		public int Length
+		{
+			get
+			{
+				return (sizeof(int) * 2 + Payload.Length + Padding.Length);	// int*2 is for packet id + packet type
+			}
+		}
 
 		/// <summary>
 		/// Used for matching requests to their responses, randomly generated for each packet
 		/// </summary>
-		public int PacketID
-		{
-			get
-			{
-				return new Random().Next();
-			}
-		}
+		public int PacketID { get; set; }
 
 		/// <summary>
 		/// Type of the packet<para/>
 		/// See https://developer.valvesoftware.com/wiki/Source_RCON_Protocol#Packet_Type
 		/// </summary>
-		public PacketType Type { get; protected set; }
+		public PacketType Type { get; set; }
 
 		/// <summary>
-		/// Body of the packet
+		/// Body of the packet, an encoded version of <see cref="Payload"/>
 		/// </summary>
-		public byte[] Body { get; protected set; }
+		public byte[] Body
+		{
+			get
+			{
+				return Encoding.ASCII.GetBytes(Payload);
+			}
+			set
+			{
+				Payload = Encoding.ASCII.GetString(value);
+			}
+		}
+
+		/// <summary>
+		/// The data contained inside the packet, usually a command or password.
+		/// </summary>
+		public string Payload { get; set; } = string.Empty;
 
 		/// <summary>
 		/// The padding at the end of the packet, basically a suffix.<para />
@@ -43,7 +58,7 @@ namespace SRCDS_RCON.Net
 		{
 			get
 			{
-				return new byte[] { 0x00, 0x00 };
+				return new byte[Protocol.PacketSuffixSize];
 			}
 		}
 
@@ -54,8 +69,21 @@ namespace SRCDS_RCON.Net
 		{
 			get
 			{
-				throw new NotImplementedException();
+				List<byte> builder = new List<byte>();
+
+				builder.AddRange(BitConverter.GetBytes(Length).ReverseLittleEndian());
+				builder.AddRange(BitConverter.GetBytes(PacketID).ReverseLittleEndian());
+				builder.AddRange(BitConverter.GetBytes((int)Type).ReverseLittleEndian());
+				builder.AddRange(Body);
+				builder.AddRange(Padding);
+
+				return builder.ToArray();
 			}
+		}
+
+		public Packet()
+		{
+			PacketID = new Random().Next();
 		}
 	}
 

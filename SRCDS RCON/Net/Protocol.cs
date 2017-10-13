@@ -9,11 +9,23 @@ using System.Threading;
 
 namespace SRCDS_RCON.Net
 {
+	/// <summary>
+	/// Handles all network connection and provides an interface for interacting with the server
+	/// </summary>
 	public class Protocol : IDisposable
 	{
+		/// <summary>
+		/// The amount of empty bytes at the end of a packet.<para/>
+		/// See https://developer.valvesoftware.com/wiki/Source_RCON_Protocol#Empty_String
+		/// </summary>
+		public const int PacketSuffixSize = 2;
+
 		private TcpClient _client;
 		private CancellationTokenSource _cancellationtokenSource;
 		private Task _listenTask;
+
+		private readonly object ReadLock = new object();
+		private readonly object WriteLock = new object();
 
 		/// <summary>
 		/// Occurs when the server sends the client a message, like the resposne to a comment
@@ -28,7 +40,7 @@ namespace SRCDS_RCON.Net
 		/// <summary>
 		/// Occurs when the client is disconnected
 		/// </summary>
-		public event EventHandler<EventArgs> Stopped;
+		public event EventHandler<EventArgs> Disconnected;
 
 		/// <summary>
 		/// Whether the client is connected or not
@@ -50,7 +62,7 @@ namespace SRCDS_RCON.Net
 
 		public Protocol()
 		{
-			
+
 		}
 
 		~Protocol()
@@ -64,9 +76,46 @@ namespace SRCDS_RCON.Net
 				Disconnect();
 
 			_cancellationtokenSource = new CancellationTokenSource();
-			
 
-			throw new NotImplementedException();
+			_client = new TcpClient();
+			_client.Connect(server.Hostname, server.Port);
+
+			// send auth packet
+			Packet authPacket = new Packet()
+			{
+				Type = PacketType.AUTH,
+				Payload = server.Password
+			};
+
+			SendPacket(authPacket);
+
+			// receive auth packet
+			Packet authResponse;
+			while (true)
+			{
+				Packet newPacket = ReadNextPacket();
+				if (newPacket.Type != PacketType.AUTH_RESPONSE)
+				{
+					HandlePacket(newPacket);
+					continue;
+				}
+				else
+				{
+					authResponse = newPacket;
+					break;
+				}
+			}
+
+			if (authResponse.PacketID == -1)
+				throw new InvalidCredentialsException("Server rejected password");
+
+			// set up everything else
+			_listenTask = new Task(() =>
+			{
+				Listen();
+			}, _cancellationtokenSource.Token);
+
+			Ready?.Invoke(this, new EventArgs());
 		}
 
 		public void Dispose()
@@ -76,18 +125,107 @@ namespace SRCDS_RCON.Net
 
 		public void Disconnect()
 		{
+			if (!Connected)
+				return;
+
 			_cancellationtokenSource?.Cancel();
 			_client?.Close();
+
+			Disconnected?.Invoke(this, new EventArgs());
 		}
 
+		/// <summary>
+		/// Listens to the server on a loop, sending all packets to <see cref="HandlePacket"/>
+		/// </summary>
 		private void Listen()
 		{
 			throw new NotImplementedException();
 		}
 
-		private void SendAuthentication()
+		/// <summary>
+		/// Handles a packet from the server, used if it's not already handled
+		/// </summary>
+		private void HandlePacket(Packet packet)
 		{
+			switch (packet.Type)
+			{
+				case PacketType.COMMAND_RESPONSE:
+					MessageReceived?.Invoke(this, new MessageReceivedEventArgs()
+					{
+						Message = packet.Payload
+					});
+					break;
+				default:
+					throw new NotImplementedException();
+			}
+		}
 
+		/// <summary>
+		/// Sends a packet
+		/// </summary>
+		/// <param name="packet"></param>
+		private void SendPacket(Packet packet)
+		{
+			lock (WriteLock)
+			{
+				byte[] buffer = packet.Raw;
+				_client.GetStream().Write(buffer, 0, buffer.Length);
+			}
+		}
+
+		/// <summary>
+		/// Reads the next packet from the stream
+		/// </summary>
+		/// <returns></returns>
+		private Packet ReadNextPacket()
+		{
+			lock (ReadLock)
+			{
+				// read length
+				byte[] lengthBuffer = new byte[sizeof(int)];
+				ReadFromStream(lengthBuffer, 0, lengthBuffer.Length);
+				int length = BitConverter.ToInt32(lengthBuffer.ReverseLittleEndian(), 0);
+
+				// read the rest of the packet
+				byte[] packetBuffer = new byte[length];
+				ReadFromStream(packetBuffer, 0, packetBuffer.Length);
+				List<byte> packetBufferList = new List<byte>(packetBuffer);
+
+				Packet packet = new Packet()
+				{
+					PacketID = getNextInt(packetBufferList),
+					Type = (PacketType)getNextInt(packetBufferList),
+					Body = packetBufferList.Take(packetBufferList.Count - PacketSuffixSize).ToArray()
+				};
+
+				return packet;
+			}
+
+			int getNextInt(List<byte> buffer)
+			{
+				int number = BitConverter.ToInt32(buffer.Take(4).ToArray().ReverseLittleEndian(), 0);
+				buffer.RemoveRange(0, sizeof(int));
+				return number;
+			}
+		}
+
+		/// <summary>
+		/// Reads from the client stream
+		/// </summary>
+		/// <param name="buffer"></param>
+		/// <param name="offset"></param>
+		/// <param name="size"></param>
+		private void ReadFromStream(byte[] buffer, int offset, int size)
+		{
+			int bytesRead = 0;
+			while (bytesRead < size)
+			{
+				int newBytesRead = _client.GetStream().Read(buffer, offset + bytesRead, size - bytesRead);
+				if (newBytesRead == 0)
+					throw new DisconnectedException("Connection closed");
+
+				bytesRead += newBytesRead;
+			}
 		}
 	}
 
@@ -96,7 +234,9 @@ namespace SRCDS_RCON.Net
 		public string Message { get; set; }
 	}
 
-
+	/// <summary>
+	/// This exception is thrown when the credentials supplied are not valid
+	/// </summary>
 	[Serializable]
 	public class InvalidCredentialsException : Exception
 	{
@@ -104,6 +244,34 @@ namespace SRCDS_RCON.Net
 		public InvalidCredentialsException(string message) : base(message) { }
 		public InvalidCredentialsException(string message, Exception inner) : base(message, inner) { }
 		protected InvalidCredentialsException(
+		  System.Runtime.Serialization.SerializationInfo info,
+		  System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+	}
+
+	/// <summary>
+	/// This exception is thrown when the Protocol is not used properly
+	/// </summary>
+	[Serializable]
+	public class ProtocolException : Exception
+	{
+		public ProtocolException() { }
+		public ProtocolException(string message) : base(message) { }
+		public ProtocolException(string message, Exception inner) : base(message, inner) { }
+		protected ProtocolException(
+		  System.Runtime.Serialization.SerializationInfo info,
+		  System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+	}
+
+	/// <summary>
+	/// This exception is thrown when the client is forcibly disconnected
+	/// </summary>
+	[Serializable]
+	public class DisconnectedException : Exception
+	{
+		public DisconnectedException() { }
+		public DisconnectedException(string message) : base(message) { }
+		public DisconnectedException(string message, Exception inner) : base(message, inner) { }
+		protected DisconnectedException(
 		  System.Runtime.Serialization.SerializationInfo info,
 		  System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
 	}
