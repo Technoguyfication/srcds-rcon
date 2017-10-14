@@ -27,6 +27,10 @@ namespace SRCDS_RCON.GUI
 			connectionForm.ServerConnect += ConnectionForm_ServerConnect;
 
 			protocol = new Protocol();
+
+			protocol.Ready += Protocol_Ready;
+			protocol.Disconnected += Protocol_Disconnected;
+			protocol.MessageReceived += Protocol_MessageReceived;
 		}
 
 		private void ConnectionForm_ServerConnect(object sender, ServerConnectEventArgs e)
@@ -41,7 +45,34 @@ namespace SRCDS_RCON.GUI
 		public void Connect(Server server)
 		{
 			WriteToConsole($"Connecting to {server.Hostname}:{server.Port}...", SrcdsRcon.Settings.DefaultConsoleColor);
-			throw new NotImplementedException();
+
+			try
+			{
+				protocol.Connect(server);
+			}
+			catch (InvalidCredentialsException)
+			{
+				WriteToConsole("Incorrect password");
+			}
+			catch (Exception e)
+			{
+				WriteToConsole($"Unhandled exception: {e.Message}\n{e.StackTrace}");
+			}
+		}
+
+		private void Protocol_Ready(object sender, EventArgs e)
+		{
+			WriteToConsole("Connected!");
+		}
+
+		private void Protocol_Disconnected(object sender, EventArgs e)
+		{
+			WriteToConsole("Disconnected.");
+		}
+
+		private void Protocol_MessageReceived(object sender, MessageReceivedEventArgs e)
+		{
+			WriteToConsole($"rcon: {e.Message}");
 		}
 
 		/// <summary>
@@ -102,7 +133,7 @@ namespace SRCDS_RCON.GUI
 			return base.ProcessCmdKey(ref msg, keyData);
 		}
 
-		#region Event Handlers
+		#region Control Event Handlers
 
 		private void MainForm_ResizeEnd(object sender, EventArgs e)
 		{
