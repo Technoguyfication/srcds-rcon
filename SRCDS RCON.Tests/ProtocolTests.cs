@@ -12,6 +12,9 @@ namespace SRCDS_RCON.Tests
 	[TestClass]
 	public class ProtocolTests
 	{
+		/// <summary>
+		/// Test that the <see cref="Protocol"/> class constructs correctly
+		/// </summary>
 		[TestMethod]
 		public void Constructor_OK()
 		{
@@ -19,6 +22,9 @@ namespace SRCDS_RCON.Tests
 			Assert.IsNotNull(p);
 		}
 
+		/// <summary>
+		/// Test that we can connect to a server using the correct password
+		/// </summary>
 		[TestMethod]
 		public void Connect_OK()
 		{
@@ -50,6 +56,9 @@ namespace SRCDS_RCON.Tests
 			p.Disconnect();
 		}
 
+		/// <summary>
+		/// Test that <see cref="InvalidCredentialsException"/> is thrown on bad password
+		/// </summary>
 		[TestMethod]
 		public void Connect_BadPassword_Error()
 		{
@@ -77,6 +86,9 @@ namespace SRCDS_RCON.Tests
 			p.Disconnect();
 		}
 
+		/// <summary>
+		/// Test that the protocol can be disposed of properly
+		/// </summary>
 		[TestMethod]
 		public void Dispose_OK()
 		{
@@ -84,6 +96,45 @@ namespace SRCDS_RCON.Tests
 			p.Dispose();
 		}
 
+		/// <summary>
+		/// Test that we can connect to a server and Dispose the <see cref="Protocol"/><para/>
+		/// This should handle all disconnecting safely.
+		/// </summary>
+		[TestMethod]
+		public void Connect_Dispose_OK()
+		{
+			int port = 2503;
+			string password = "test";
+
+			Server s = new Server()
+			{
+				Hostname = "localhost",
+				Port = port,
+				Password = password
+			};
+
+			Protocol p = new Protocol();
+
+			StartFakeServer(password, port);
+
+			p.Connect(s);
+
+			p.Dispose();
+
+			try
+			{
+				// check that the protocol is no longer connected
+				Assert.IsFalse(p.Connected);
+			}
+			catch (ObjectDisposedException)
+			{
+				// a disposed exception here is perfectly acceptable
+			}
+		}
+
+		/// <summary>
+		/// Test that we can send commands and receive a response back
+		/// </summary>
 		[TestMethod]
 		public void SendRecvCommand_OK()
 		{
