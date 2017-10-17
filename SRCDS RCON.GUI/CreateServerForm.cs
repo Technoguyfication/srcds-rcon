@@ -13,6 +13,8 @@ namespace SRCDS_RCON
 {
 	public partial class CreateServerForm : Form
 	{
+		private int _originalHash = 0;
+
 		public CreateServerForm()
 		{
 			InitializeComponent();
@@ -23,6 +25,8 @@ namespace SRCDS_RCON
 		public CreateServerForm(Server server)
 		{
 			InitializeComponent();
+
+			_originalHash = server.GetHashCode();
 
 			hostTextBox.Text = server.Hostname;
 			portTextBox.Text = server.Port.ToString();
@@ -48,19 +52,28 @@ namespace SRCDS_RCON
 
 		private void SaveButton_Click(object sender, EventArgs e)
 		{
-			List<Server> servers = SrcdsRcon.Settings.Servers;
 
-			servers.Add(new Server()
+			Server newServer = new Server()
 			{
 				Hostname = hostTextBox.Text,
 				Port = int.Parse(portTextBox.Text),
 				Type = (ServerType)Enum.Parse(typeof(ServerType), Enum.GetName(typeof(ServerType), typeComboBox.SelectedIndex)),
 				Password = passwordTextBox.Text
-			});
+			};
+			
+			// has the server been edited at all?
+			if (_originalHash != newServer.GetHashCode())
+			{
+				List<Server> servers = SrcdsRcon.Settings.Servers;
+				servers.Add(newServer);
+				SrcdsRcon.Settings.Servers = servers;
 
-			SrcdsRcon.Settings.Servers = servers;
-
-			DialogResult = DialogResult.OK;
+				DialogResult = DialogResult.OK;
+			}
+			else
+			{
+				DialogResult = DialogResult.Cancel;
+			}
 		}
 
 		private void CancelButton_Click(object sender, EventArgs e)
