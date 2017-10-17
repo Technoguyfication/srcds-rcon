@@ -165,12 +165,14 @@ namespace SRCDS_RCON
 						string hostname = (string)serverKey.GetValue("Hostname", string.Empty);
 						int port = (int)serverKey.GetValue("Port", 0);
 						ServerType type = (ServerType)Enum.Parse(typeof(ServerType), (string)serverKey.GetValue("Type", ServerType.SRCDS.ToString()));
+						string password = (string)serverKey.GetValue("Password", string.Empty);
 
 						Server server = new Server()
 						{
 							Hostname = hostname,
 							Port = port,
-							Type = type
+							Type = type,
+							Password = password
 						};
 
 						servers.Add(server);
@@ -194,6 +196,7 @@ namespace SRCDS_RCON
 					serverKey.SetValue("Hostname", server.Hostname, RegistryValueKind.String);
 					serverKey.SetValue("Port", server.Port, RegistryValueKind.DWord);
 					serverKey.SetValue("Type", server.Type.ToString(), RegistryValueKind.String);
+					serverKey.SetValue("Password", server.Password, RegistryValueKind.String);
 				}
 			}
 		}

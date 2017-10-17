@@ -37,7 +37,7 @@ namespace SRCDS_RCON.Net
 		{
 			// this is just a random algorithm that probably has a low chance of colliding
 			// it isn't super important
-			return (Hostname.Length * Port * 11) + (int)Type * 555;
+			return (Hostname.Length * Port * 11) + ((int)Type * 555) + ((Password.Length + 23) * 800);
 		}
 
 		public override bool Equals(object obj)

@@ -26,6 +26,7 @@ namespace SRCDS_RCON
 
 			hostTextBox.Text = server.Hostname;
 			portTextBox.Text = server.Port.ToString();
+			passwordTextBox.Text = server.Password;
 
 			PopulateTypeBox();
 
@@ -53,7 +54,8 @@ namespace SRCDS_RCON
 			{
 				Hostname = hostTextBox.Text,
 				Port = int.Parse(portTextBox.Text),
-				Type = (ServerType)Enum.Parse(typeof(ServerType), Enum.GetName(typeof(ServerType), typeComboBox.SelectedIndex))
+				Type = (ServerType)Enum.Parse(typeof(ServerType), Enum.GetName(typeof(ServerType), typeComboBox.SelectedIndex)),
+				Password = passwordTextBox.Text
 			});
 
 			SrcdsRcon.Settings.Servers = servers;
