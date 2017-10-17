@@ -161,6 +161,24 @@ namespace SRCDS_RCON
 			}
 		}
 
+		private void ConnectionForm_KeyDown(object sender, KeyEventArgs e)
+		{
+			// check for key combos
+			if (e.KeyCode == Keys.N && e.Control)	// new
+			{
+				e.Handled = true;
+				CreateServer();
+			}
+			else if (e.KeyCode == Keys.Delete)		// delete
+			{
+				if (IsServerSelected())
+				{
+					DeleteServer(GetSelectedServer());
+					e.Handled = true;
+				}
+			}
+		}
+
 		private void ServerListView_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
 			if (IsServerSelected() && serverListView.FocusedItem.Bounds.Contains(e.Location))

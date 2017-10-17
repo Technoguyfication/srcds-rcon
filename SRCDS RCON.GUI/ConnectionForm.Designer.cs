@@ -32,11 +32,11 @@ namespace SRCDS_RCON
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+			System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "192.168.0.254",
             "27015",
             "SRCDS"}, -1);
-			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+			System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
             "2001:4860:4860::8888",
             "25575",
             "Minecraft"}, -1);
@@ -83,8 +83,8 @@ namespace SRCDS_RCON
 			this.serverListView.FullRowSelect = true;
 			this.serverListView.HideSelection = false;
 			this.serverListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2});
+            listViewItem7,
+            listViewItem8});
 			this.serverListView.Location = new System.Drawing.Point(12, 12);
 			this.serverListView.MultiSelect = false;
 			this.serverListView.Name = "serverListView";
@@ -118,7 +118,7 @@ namespace SRCDS_RCON
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
 			this.serverContextMenuStrip.Name = "serverContextMenuStrip";
-			this.serverContextMenuStrip.Size = new System.Drawing.Size(120, 98);
+			this.serverContextMenuStrip.Size = new System.Drawing.Size(151, 98);
 			// 
 			// connectToolStripMenuItem
 			// 
@@ -137,7 +137,8 @@ namespace SRCDS_RCON
 			// 
 			this.newToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.add;
 			this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-			this.newToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+			this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+			this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.newToolStripMenuItem.Text = "New...";
 			this.newToolStripMenuItem.Click += new System.EventHandler(this.NewToolStripMenuItem_Click);
 			// 
@@ -153,7 +154,8 @@ namespace SRCDS_RCON
 			// 
 			this.deleteToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.server_delete;
 			this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+			this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.deleteToolStripMenuItem.Text = "Delete";
 			this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
 			// 
@@ -162,13 +164,14 @@ namespace SRCDS_RCON
 			this.serverListContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem1});
 			this.serverListContextMenuStrip.Name = "serverListContextMenuStrip";
-			this.serverListContextMenuStrip.Size = new System.Drawing.Size(108, 26);
+			this.serverListContextMenuStrip.Size = new System.Drawing.Size(151, 26);
 			// 
 			// newToolStripMenuItem1
 			// 
 			this.newToolStripMenuItem1.Image = global::SRCDS_RCON.GUI.Properties.Resources.add;
 			this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
-			this.newToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+			this.newToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+			this.newToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
 			this.newToolStripMenuItem1.Text = "New...";
 			this.newToolStripMenuItem1.Click += new System.EventHandler(this.NewToolStripMenuItem1_Click);
 			// 
@@ -222,13 +225,14 @@ namespace SRCDS_RCON
             this.editToolStripMenuItem1,
             this.deleteToolStripMenuItem1});
 			this.newContextMenuStrip.Name = "editButtonContextMenuStrip";
-			this.newContextMenuStrip.Size = new System.Drawing.Size(153, 98);
+			this.newContextMenuStrip.Size = new System.Drawing.Size(151, 76);
 			this.newContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.EditButtonContextMenuStrip_Opening);
 			// 
 			// newToolStripMenuItem2
 			// 
 			this.newToolStripMenuItem2.Image = global::SRCDS_RCON.GUI.Properties.Resources.add;
 			this.newToolStripMenuItem2.Name = "newToolStripMenuItem2";
+			this.newToolStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
 			this.newToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
 			this.newToolStripMenuItem2.Text = "New...";
 			this.newToolStripMenuItem2.Click += new System.EventHandler(this.NewToolStripMenuItem2_Click);
@@ -250,6 +254,7 @@ namespace SRCDS_RCON
 			// 
 			this.deleteToolStripMenuItem1.Image = global::SRCDS_RCON.GUI.Properties.Resources.server_delete;
 			this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+			this.deleteToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.Delete;
 			this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
 			this.deleteToolStripMenuItem1.Text = "Delete";
 			this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.DeleteToolStripMenuItem1_Click);
@@ -282,6 +287,7 @@ namespace SRCDS_RCON
 			// 
 			// ConnectionForm
 			// 
+			this.AcceptButton = this.connectButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.cancelButton;
@@ -290,9 +296,11 @@ namespace SRCDS_RCON
 			this.Controls.Add(this.connectButton);
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.serverListView);
+			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.Name = "ConnectionForm";
 			this.Text = "ConnectionForm";
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ConnectionForm_KeyDown);
 			this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ServerListView_MouseDoubleClick);
 			this.serverContextMenuStrip.ResumeLayout(false);
 			this.serverListContextMenuStrip.ResumeLayout(false);
