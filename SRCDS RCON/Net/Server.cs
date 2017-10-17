@@ -36,8 +36,14 @@ namespace SRCDS_RCON.Net
 		public override int GetHashCode()
 		{
 			// this is just a random algorithm that probably has a low chance of colliding
-			// it isn't super important
-			return (Hostname.Length * Port * 11) + ((int)Type * 555) + ((Password.Length + 23) * 800);
+			// i basically just shifted the hell out of some bytes
+			unchecked
+			{
+				int a = Hostname.Length ^ (Port * 256);
+				int b = Password.Length << ~(int)Type;
+
+				return Math.Abs(a + b);
+			}
 		}
 
 		public override bool Equals(object obj)
