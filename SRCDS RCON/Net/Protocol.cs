@@ -140,6 +140,7 @@ namespace SRCDS_RCON.Net
 		{
 			_cancellationtokenSource?.Cancel();
 			_client?.Close();
+			_client = null;
 
 			Disconnected?.Invoke(this, new EventArgs());
 		}
