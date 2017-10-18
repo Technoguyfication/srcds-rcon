@@ -31,6 +31,8 @@ namespace SRCDS_RCON.GUI
 			protocol.Ready += Protocol_Ready;
 			protocol.Disconnected += Protocol_Disconnected;
 			protocol.MessageReceived += Protocol_MessageReceived;
+
+			UpdateGui();
 		}
 
 		private void ConnectionForm_ServerConnect(object sender, ServerConnectEventArgs e)
@@ -77,16 +79,38 @@ namespace SRCDS_RCON.GUI
 		private void Protocol_Ready(object sender, EventArgs e)
 		{
 			WriteToConsole("Connected!");
+			UpdateGui();
 		}
 
 		private void Protocol_Disconnected(object sender, EventArgs e)
 		{
 			WriteToConsole("Disconnected.");
+			UpdateGui();
 		}
 
 		private void Protocol_MessageReceived(object sender, MessageReceivedEventArgs e)
 		{
 			WriteToConsole($"rcon: {e.Message}");
+		}
+
+		/// <summary>
+		/// Updates buttons on the GUI to reflect the current program state
+		/// </summary>
+		private void UpdateGui()
+		{
+			if (InvokeRequired)
+			{
+				Invoke((MethodInvoker)delegate { UpdateGui(); });
+				return;
+			}
+
+			bool connected = protocol.Connected;
+
+			// send button
+			sendButton.Enabled = connected;
+
+			// disconnect buttons
+			disconnectToolStripMenuItem.Enabled = disconnectToolStripMenuItem1.Enabled = connected;
 		}
 
 		/// <summary>
@@ -227,7 +251,22 @@ namespace SRCDS_RCON.GUI
 			SendCommand();
 		}
 
-		#endregion
+		private void DisconnectToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			protocol.Disconnect();
+		}
 
+		private void DisconnectToolStripMenuItem1_Click(object sender, EventArgs e)
+		{
+			protocol.Disconnect();
+		}
+
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			if (protocol.Connected)
+				protocol.Disconnect();
+		}
+
+		#endregion
 	}
 }

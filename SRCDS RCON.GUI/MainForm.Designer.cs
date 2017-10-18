@@ -109,6 +109,7 @@
 			this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
 			this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
 			this.disconnectToolStripMenuItem.Text = "Disconnect";
+			this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.DisconnectToolStripMenuItem_Click);
 			// 
 			// reconnectToolStripMenuItem
 			// 
@@ -216,6 +217,7 @@
 			this.disconnectToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
 			this.disconnectToolStripMenuItem1.Size = new System.Drawing.Size(205, 22);
 			this.disconnectToolStripMenuItem1.Text = "&Disconnect";
+			this.disconnectToolStripMenuItem1.Click += new System.EventHandler(this.DisconnectToolStripMenuItem1_Click);
 			// 
 			// toolStripMenuItem3
 			// 
@@ -330,6 +332,7 @@
 			this.MinimumSize = new System.Drawing.Size(180, 150);
 			this.Name = "MainForm";
 			this.Text = "SRCDS RCON";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
 			this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.MainForm_HelpRequested);
