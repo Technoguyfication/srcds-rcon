@@ -44,20 +44,34 @@ namespace SRCDS_RCON.GUI
 		/// <param name="server"></param>
 		public void Connect(Server server)
 		{
+			if (protocol.Connected)
+				protocol.Disconnect();
+
 			WriteToConsole($"Connecting to {server.Hostname}:{server.Port}...", SrcdsRcon.Settings.DefaultConsoleColor);
 
-			try
+			// run connect async so it doens't hold up the gui
+
+			Task connectTask = new Task(() =>
 			{
-				protocol.Connect(server);
-			}
-			catch (InvalidCredentialsException)
-			{
-				WriteToConsole("Incorrect password");
-			}
-			catch (Exception e)
-			{
-				WriteToConsole($"Unhandled exception: {e.Message}\n{e.StackTrace}");
-			}
+				try
+				{
+					protocol.Connect(server);
+				}
+				catch (InvalidCredentialsException)
+				{
+					WriteToConsole("Incorrect password");
+				}
+				catch (ConnectionFailedException e)
+				{
+					WriteToConsole($"Connection failed: {e.Message}");
+				}
+				catch (Exception e)
+				{
+					WriteToConsole($"Unhandled exception: {e.Message}\n{e.StackTrace}");
+				}
+			});
+
+			connectTask.Start();
 		}
 
 		private void Protocol_Ready(object sender, EventArgs e)
@@ -82,8 +96,11 @@ namespace SRCDS_RCON.GUI
 		/// <param name="textColor">Color of the text to print. Defaults to the user-defined color for basic text.</param>
 		public void WriteToConsole(string text, Color? textColor = null)
 		{
-			if (InvokeRequired)
-				Invoke((MethodInvoker)delegate { WriteToConsole(text, textColor); });
+			if (consoleTextBox.InvokeRequired)
+			{
+				consoleTextBox.Invoke((MethodInvoker)delegate { WriteToConsole(text, textColor); });
+				return;
+			}
 
 			if (textColor == null)
 				textColor = SrcdsRcon.Settings.DefaultConsoleColor;
@@ -112,6 +129,21 @@ namespace SRCDS_RCON.GUI
 		{
 			if (consoleTextBox.SelectionLength > 0)
 				Clipboard.SetText(consoleTextBox.SelectedText);
+		}
+
+		/// <summary>
+		/// Sends the command in the input box and optionally clears the box
+		/// </summary>
+		/// <param name="clear"></param>
+		private void SendCommand(bool clear = true)
+		{
+			if (!protocol.Connected)
+				return;
+
+			protocol.SendCommand(inputTextBox.Text);
+
+			if (clear)
+				inputTextBox.Text = string.Empty;
 		}
 
 		/// <summary>
@@ -190,6 +222,12 @@ namespace SRCDS_RCON.GUI
 			CopyConsoleSelection();
 		}
 
+		private void SendButton_Click(object sender, EventArgs e)
+		{
+			SendCommand();
+		}
+
 		#endregion
+
 	}
 }

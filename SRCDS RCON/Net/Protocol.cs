@@ -78,7 +78,16 @@ namespace SRCDS_RCON.Net
 			_cancellationtokenSource = new CancellationTokenSource();
 
 			_client = new TcpClient();
-			_client.Connect(server.Hostname, server.Port);
+			try
+			{
+				_client.Connect(server.Hostname, server.Port);
+			}
+			catch (SocketException e)
+			{
+				Disconnect();
+
+				throw new ConnectionFailedException(e.Message, e);
+			}
 
 			// send auth packet
 			Packet authPacket = new Packet()
@@ -306,6 +315,17 @@ namespace SRCDS_RCON.Net
 		public DisconnectedException(string message) : base(message) { }
 		public DisconnectedException(string message, Exception inner) : base(message, inner) { }
 		protected DisconnectedException(
+		  System.Runtime.Serialization.SerializationInfo info,
+		  System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+	}
+
+	[Serializable]
+	public class ConnectionFailedException : Exception
+	{
+		public ConnectionFailedException() { }
+		public ConnectionFailedException(string message) : base(message) { }
+		public ConnectionFailedException(string message, Exception inner) : base(message, inner) { }
+		protected ConnectionFailedException(
 		  System.Runtime.Serialization.SerializationInfo info,
 		  System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
 	}

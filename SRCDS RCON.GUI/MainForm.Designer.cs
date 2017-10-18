@@ -81,12 +81,12 @@
 			// consoleContextMenuStrip
 			// 
 			this.consoleContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.clearToolStripMenuItem,
-			this.toolStripMenuItem1,
-			this.disconnectToolStripMenuItem,
-			this.reconnectToolStripMenuItem,
-			this.toolStripMenuItem2,
-			this.copyToolStripMenuItem});
+            this.clearToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.disconnectToolStripMenuItem,
+            this.reconnectToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.copyToolStripMenuItem});
 			this.consoleContextMenuStrip.Name = "consoleContextMenuStrip";
 			this.consoleContextMenuStrip.Size = new System.Drawing.Size(134, 104);
 			// 
@@ -131,8 +131,8 @@
 			// 
 			// inputTextBox
 			// 
-			this.inputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.inputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.inputTextBox.Location = new System.Drawing.Point(13, 137);
 			this.inputTextBox.Name = "inputTextBox";
 			this.inputTextBox.Size = new System.Drawing.Size(298, 20);
@@ -140,9 +140,9 @@
 			// 
 			// consolePanel
 			// 
-			this.consolePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-			| System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
+			this.consolePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.consolePanel.AutoScroll = true;
 			this.consolePanel.BackColor = System.Drawing.SystemColors.Window;
 			this.consolePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -161,14 +161,15 @@
 			this.sendButton.TabIndex = 2;
 			this.sendButton.Text = "Send";
 			this.sendButton.UseVisualStyleBackColor = true;
+			this.sendButton.Click += new System.EventHandler(this.SendButton_Click);
 			// 
 			// mainMenuStrip
 			// 
 			this.mainMenuStrip.BackColor = System.Drawing.SystemColors.Window;
 			this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.fileToolStripMenuItem,
-			this.consoleToolStripMenuItem,
-			this.helpToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.consoleToolStripMenuItem,
+            this.helpToolStripMenuItem});
 			this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
 			this.mainMenuStrip.Name = "mainMenuStrip";
 			this.mainMenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -179,13 +180,13 @@
 			// fileToolStripMenuItem
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.connectToolStripMenuItem,
-			this.reconnectToolStripMenuItem1,
-			this.disconnectToolStripMenuItem1,
-			this.toolStripMenuItem3,
-			this.settingsToolStripMenuItem,
-			this.toolStripMenuItem4,
-			this.exitToolStripMenuItem});
+            this.connectToolStripMenuItem,
+            this.reconnectToolStripMenuItem1,
+            this.disconnectToolStripMenuItem1,
+            this.toolStripMenuItem3,
+            this.settingsToolStripMenuItem,
+            this.toolStripMenuItem4,
+            this.exitToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
 			this.fileToolStripMenuItem.Text = "&File";
@@ -203,8 +204,8 @@
 			// 
 			this.reconnectToolStripMenuItem1.Image = global::SRCDS_RCON.GUI.Properties.Resources.arrow_refresh;
 			this.reconnectToolStripMenuItem1.Name = "reconnectToolStripMenuItem1";
-			this.reconnectToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
-			| System.Windows.Forms.Keys.N)));
+			this.reconnectToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.N)));
 			this.reconnectToolStripMenuItem1.Size = new System.Drawing.Size(205, 22);
 			this.reconnectToolStripMenuItem1.Text = "&Reconnect";
 			// 
@@ -246,10 +247,10 @@
 			// consoleToolStripMenuItem
 			// 
 			this.consoleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.clearToolStripMenuItem1,
-			this.toolStripMenuItem5,
-			this.findToolStripMenuItem,
-			this.findNextToolStripMenuItem});
+            this.clearToolStripMenuItem1,
+            this.toolStripMenuItem5,
+            this.findToolStripMenuItem,
+            this.findNextToolStripMenuItem});
 			this.consoleToolStripMenuItem.Name = "consoleToolStripMenuItem";
 			this.consoleToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
 			this.consoleToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
@@ -260,36 +261,36 @@
 			this.clearToolStripMenuItem1.Image = global::SRCDS_RCON.GUI.Properties.Resources.page_refresh;
 			this.clearToolStripMenuItem1.Name = "clearToolStripMenuItem1";
 			this.clearToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-			this.clearToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+			this.clearToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
 			this.clearToolStripMenuItem1.Text = "Clea&r";
 			this.clearToolStripMenuItem1.Click += new System.EventHandler(this.ClearToolStripMenuItem1_Click);
 			// 
 			// toolStripMenuItem5
 			// 
 			this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-			this.toolStripMenuItem5.Size = new System.Drawing.Size(149, 6);
+			this.toolStripMenuItem5.Size = new System.Drawing.Size(143, 6);
 			// 
 			// findToolStripMenuItem
 			// 
 			this.findToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.find;
 			this.findToolStripMenuItem.Name = "findToolStripMenuItem";
 			this.findToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-			this.findToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.findToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.findToolStripMenuItem.Text = "Find...";
 			// 
 			// findNextToolStripMenuItem
 			// 
 			this.findNextToolStripMenuItem.Name = "findNextToolStripMenuItem";
 			this.findNextToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-			this.findNextToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.findNextToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.findNextToolStripMenuItem.Text = "Find Next";
 			// 
 			// helpToolStripMenuItem
 			// 
 			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-			this.viewDocumentationToolStripMenuItem,
-			this.toolStripMenuItem6,
-			this.aboutSRCDSRCONToolStripMenuItem});
+            this.viewDocumentationToolStripMenuItem,
+            this.toolStripMenuItem6,
+            this.aboutSRCDSRCONToolStripMenuItem});
 			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
 			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.helpToolStripMenuItem.Text = "Help";
