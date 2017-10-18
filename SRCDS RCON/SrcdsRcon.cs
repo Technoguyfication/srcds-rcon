@@ -18,7 +18,7 @@ namespace SRCDS_RCON
 		[STAThread]
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Test");
+			Console.WriteLine("CLI mode not yet implemented. Sorry!");
 		}
 
 		/// <summary>
