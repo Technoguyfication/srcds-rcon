@@ -37,11 +37,11 @@ namespace SRCDS_RCON.Net
 		{
 			get
 			{
-				return Encoding.ASCII.GetBytes(Payload);
+				return Encoding.UTF8.GetBytes(Payload);
 			}
 			set
 			{
-				Payload = Encoding.ASCII.GetString(value);
+				Payload = Encoding.UTF8.GetString(value);
 			}
 		}
 
