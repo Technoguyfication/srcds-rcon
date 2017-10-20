@@ -10,21 +10,19 @@ namespace SRCDS_RCON.Minecraft
 	public static class TextColorUtility
 	{
 		/// <summary>
-		/// The byte used to define the start of a color identifier.
+		/// The character is used to define the start of a color identifier.
 		/// </summary>
-		public const byte ColorByte = 0xA7;
+		public const char ColorByte = '\xa7';	// section symbol
 
 		/// <summary>
 		/// Returns a map of <see cref="StyledString"/>s from a Bukkit response<para/>
-		/// each string contains a single "color", following all the same rules as Bukkit
 		/// </summary>
 		/// <param name="input"></param>
 		/// <returns></returns>
-		public static StyledString[] GetStyledStrings(byte[] input)
+		public static StyledString[] GetStyledStrings(string input)
 		{
 			List<StyledString> strings = new List<StyledString>();
 			StyledString currentString = new StyledString();
-			List<byte> currentStringRaw = new List<byte>();
 
 			for (int i = 0; i < input.Length; i++)
 			{
@@ -33,11 +31,12 @@ namespace SRCDS_RCON.Minecraft
 				{
 					clipString();
 
-					currentString.Color = GetMinecraftColor(input[i + 1]);
+					i++;
+					currentString.Color = GetMinecraftColor(input[i]);
 					continue;
 				}
 
-				currentStringRaw.Add(input[i]);
+				currentString.Content += input[i];
 			}
 
 			// clip it once more to "push" the data to the list
@@ -48,37 +47,76 @@ namespace SRCDS_RCON.Minecraft
 			// finish up the latest currentstring and add it to the collection
 			void clipString()
 			{
-				currentString.Content = Encoding.Unicode.GetString(currentStringRaw.ToArray());
-
 				strings.Add(currentString);
 				currentString = new StyledString();
 			}
 		}
 
-		private static ConsoleColor GetMinecraftColor(byte colorByte)
+		/// <summary>
+		/// Returns the <see cref="ConsoleColor"/> from a Minecraft color character
+		/// </summary>
+		/// <param name="colorCharacter"></param>
+		/// <returns></returns>
+		public static ConsoleColor GetMinecraftColor(char colorCharacter)
 		{
-			Dictionary<int, ConsoleColor> colors = new Dictionary<int, ConsoleColor>()
+			colorCharacter = Char.ToLower(colorCharacter);
+
+			Dictionary<char, ConsoleColor> colors = new Dictionary<char, ConsoleColor>()
 			{
-				{ 0, ConsoleColor.Black },			// BLACK
-				{ 1, ConsoleColor.DarkBlue },		// DARK BLUE
-				{ 2, ConsoleColor.DarkGreen },		// DARK GREEN
-				{ 3, ConsoleColor.DarkCyan },		// DARK CYAN
-				{ 4, ConsoleColor.DarkRed },		// DARK RED
-				{ 5, ConsoleColor.DarkMagenta },    // DARK PURPLE
-				{ 6, ConsoleColor.DarkYellow },     // DARK YELLOW
-				{ 7, ConsoleColor.Gray },           // LIGHT GRAY
-				{ 8, ConsoleColor.DarkGray },       // DARK GRAY
-				{ 9, ConsoleColor.Blue },           // LIGHT BLUE
-				{ 10, ConsoleColor.Green },         // LIGHT GREEN
-				{ 11, ConsoleColor.Cyan },          // LIGHT CYAN
-				{ 12, ConsoleColor.Red },           // LIGHT RED
-				{ 13, ConsoleColor.Magenta },       // LIGHT PURPLE
-				{ 14, ConsoleColor.Yellow },        // LIGHT YELLOW
-				{ 15, ConsoleColor.White },			// WHITE
+				{ '0', ConsoleColor.Black },		// BLACK
+				{ '1', ConsoleColor.DarkBlue },		// DARK BLUE
+				{ '2', ConsoleColor.DarkGreen },	// DARK GREEN
+				{ '3', ConsoleColor.DarkCyan },		// DARK CYAN
+				{ '4', ConsoleColor.DarkRed },		// DARK RED
+				{ '5', ConsoleColor.DarkMagenta },	// DARK PURPLE
+				{ '6', ConsoleColor.DarkYellow },	// DARK YELLOW
+				{ '7', ConsoleColor.Gray },         // LIGHT GRAY
+				{ '8', ConsoleColor.DarkGray },     // DARK GRAY
+				{ '9', ConsoleColor.Blue },         // LIGHT BLUE
+				{ 'a', ConsoleColor.Green },        // LIGHT GREEN
+				{ 'b', ConsoleColor.Cyan },         // LIGHT CYAN
+				{ 'c', ConsoleColor.Red },          // LIGHT RED
+				{ 'd', ConsoleColor.Magenta },      // LIGHT PURPLE
+				{ 'e', ConsoleColor.Yellow },       // LIGHT YELLOW
+				{ 'f', ConsoleColor.White },		// WHITE
 			};
 
-			if (!colors.TryGetValue(colorByte, out ConsoleColor color))
+			if (!colors.TryGetValue(colorCharacter, out ConsoleColor color))
 				color = ConsoleColor.Black;
+
+			return color;
+		}
+
+		/// <summary>
+		/// Returns the closest possible <see cref="Color"/> to a console (Minecraft) color
+		/// </summary>
+		/// <returns></returns>
+		public static Color FromConsoleColor(ConsoleColor cColor)
+		{
+			Dictionary<ConsoleColor, Color> colorMap = new Dictionary<ConsoleColor, Color>()
+			{
+				//TODO: these need to be tweaked to more accurately reflect the minecraft colors
+
+				{ ConsoleColor.Black, Color.Black },
+				{ ConsoleColor.DarkBlue, Color.DarkBlue },
+				{ ConsoleColor.DarkGreen, Color.DarkGreen },
+				{ ConsoleColor.DarkCyan, Color.DarkCyan },
+				{ ConsoleColor.DarkRed, Color.DarkRed },
+				{ ConsoleColor.DarkMagenta, Color.DarkMagenta },
+				{ ConsoleColor.DarkYellow, Color.Yellow },
+				{ ConsoleColor.Gray, Color.LightGray },
+				{ ConsoleColor.DarkGray, Color.DarkGray },
+				{ ConsoleColor.Blue, Color.Blue },
+				{ ConsoleColor.Green, Color.Green },
+				{ ConsoleColor.Cyan, Color.Cyan },
+				{ ConsoleColor.Red, Color.Red },
+				{ ConsoleColor.Magenta, Color.Magenta },
+				{ ConsoleColor.Yellow, Color.LightYellow },
+				{ ConsoleColor.White, Color.White }
+			};
+
+			if (!colorMap.TryGetValue(cColor, out Color color))
+				color = Color.Black;
 
 			return color;
 		}
