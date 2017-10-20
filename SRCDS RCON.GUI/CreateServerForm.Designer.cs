@@ -160,6 +160,7 @@
 			this.MaximumSize = new System.Drawing.Size(99999, 145);
 			this.MinimumSize = new System.Drawing.Size(380, 145);
 			this.Name = "CreateServerForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Create / Edit Server";
 			this.ResumeLayout(false);
 			this.PerformLayout();

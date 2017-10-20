@@ -32,11 +32,11 @@ namespace SRCDS_RCON
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "192.168.0.254",
             "27015",
             "SRCDS"}, -1);
-			System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "2001:4860:4860::8888",
             "25575",
             "Minecraft"}, -1);
@@ -83,8 +83,8 @@ namespace SRCDS_RCON
 			this.serverListView.FullRowSelect = true;
 			this.serverListView.HideSelection = false;
 			this.serverListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem7,
-            listViewItem8});
+            listViewItem1,
+            listViewItem2});
 			this.serverListView.Location = new System.Drawing.Point(12, 12);
 			this.serverListView.MultiSelect = false;
 			this.serverListView.Name = "serverListView";
@@ -124,21 +124,21 @@ namespace SRCDS_RCON
 			// 
 			this.connectToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.connect;
 			this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-			this.connectToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+			this.connectToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
 			this.connectToolStripMenuItem.Text = "Connect";
 			this.connectToolStripMenuItem.Click += new System.EventHandler(this.ConnectToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(116, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(147, 6);
 			// 
 			// newToolStripMenuItem
 			// 
 			this.newToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.add;
 			this.newToolStripMenuItem.Name = "newToolStripMenuItem";
 			this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-			this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.newToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
 			this.newToolStripMenuItem.Text = "New...";
 			this.newToolStripMenuItem.Click += new System.EventHandler(this.NewToolStripMenuItem_Click);
 			// 
@@ -146,7 +146,7 @@ namespace SRCDS_RCON
 			// 
 			this.editToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.server_edit;
 			this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-			this.editToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+			this.editToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
 			this.editToolStripMenuItem.Text = "Edit...";
 			this.editToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
 			// 
@@ -155,7 +155,7 @@ namespace SRCDS_RCON
 			this.deleteToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.server_delete;
 			this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
 			this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
 			this.deleteToolStripMenuItem.Text = "Delete";
 			this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
 			// 
@@ -171,7 +171,7 @@ namespace SRCDS_RCON
 			this.newToolStripMenuItem1.Image = global::SRCDS_RCON.GUI.Properties.Resources.add;
 			this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
 			this.newToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-			this.newToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+			this.newToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
 			this.newToolStripMenuItem1.Text = "New...";
 			this.newToolStripMenuItem1.Click += new System.EventHandler(this.NewToolStripMenuItem1_Click);
 			// 
@@ -233,20 +233,20 @@ namespace SRCDS_RCON
 			this.newToolStripMenuItem2.Image = global::SRCDS_RCON.GUI.Properties.Resources.add;
 			this.newToolStripMenuItem2.Name = "newToolStripMenuItem2";
 			this.newToolStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-			this.newToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+			this.newToolStripMenuItem2.Size = new System.Drawing.Size(150, 22);
 			this.newToolStripMenuItem2.Text = "New...";
 			this.newToolStripMenuItem2.Click += new System.EventHandler(this.NewToolStripMenuItem2_Click);
 			// 
 			// toolStripMenuItem3
 			// 
 			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(149, 6);
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(147, 6);
 			// 
 			// editToolStripMenuItem1
 			// 
 			this.editToolStripMenuItem1.Image = global::SRCDS_RCON.GUI.Properties.Resources.server_edit;
 			this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-			this.editToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+			this.editToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
 			this.editToolStripMenuItem1.Text = "Edit...";
 			this.editToolStripMenuItem1.Click += new System.EventHandler(this.EditToolStripMenuItem1_Click);
 			// 
@@ -255,7 +255,7 @@ namespace SRCDS_RCON
 			this.deleteToolStripMenuItem1.Image = global::SRCDS_RCON.GUI.Properties.Resources.server_delete;
 			this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
 			this.deleteToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-			this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+			this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
 			this.deleteToolStripMenuItem1.Text = "Delete";
 			this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.DeleteToolStripMenuItem1_Click);
 			// 
@@ -299,6 +299,7 @@ namespace SRCDS_RCON
 			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.Name = "ConnectionForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "ConnectionForm";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ConnectionForm_KeyDown);
 			this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ServerListView_MouseDoubleClick);

@@ -49,6 +49,7 @@ namespace SRCDS_RCON
 			defaultColorPickerButton.BackColor = tSettings.DefaultConsoleColor;
 			sentColorPickerButton.BackColor = tSettings.SentConsoleColor;
 			programColorPickerButton.BackColor = tSettings.ProgramConsoleColor;
+			useMinecraftColorsCheckBox.Checked = tSettings.UseMinecraftColors;
 
 			// network
 			reconnectCheckBox.Checked = tSettings.ReconnectOnConnectionLost;

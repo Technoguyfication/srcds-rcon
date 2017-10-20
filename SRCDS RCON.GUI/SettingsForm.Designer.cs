@@ -280,6 +280,7 @@
 			this.Controls.Add(this.colorGroupBox);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "SettingsForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Settings";
 			this.colorGroupBox.ResumeLayout(false);
 			this.colorGroupBox.PerformLayout();
