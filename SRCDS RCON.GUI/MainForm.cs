@@ -42,7 +42,7 @@ namespace SRCDS_RCON.GUI
 		}
 
 		/// <summary>
-		/// Starts an RCON connection
+		/// Starts an RCON connection to a server
 		/// </summary>
 		/// <param name="server"></param>
 		public void Connect(Server server)
@@ -141,7 +141,6 @@ namespace SRCDS_RCON.GUI
 		/// <param name="textColor">Color of the text to print. Defaults to the user-defined color for basic text.</param>
 		public void WriteToConsole(string text, Color? textColor = null, bool newline = true)
 		{
-
 			if (consoleTextBox.InvokeRequired)
 			{
 				consoleTextBox.Invoke((MethodInvoker)delegate { WriteToConsole(text, textColor, newline); });
@@ -203,17 +202,6 @@ namespace SRCDS_RCON.GUI
 		private void ShowDocumenation()
 		{
 			System.Diagnostics.Process.Start(Program.DocumentationUrl);
-		}
-
-		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-		{
-			// CTRL+, for settings menu item
-			if (keyData == (Keys.Control | Keys.Oemcomma))
-			{
-				settingsToolStripMenuItem.PerformClick();
-				return false;
-			}
-			return base.ProcessCmdKey(ref msg, keyData);
 		}
 
 		#region Control Event Handlers

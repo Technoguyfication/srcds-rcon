@@ -32,11 +32,11 @@ namespace SRCDS_RCON
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+			System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "192.168.0.254",
             "27015",
             "SRCDS"}, -1);
-			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+			System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "2001:4860:4860::8888",
             "25575",
             "Minecraft"}, -1);
@@ -83,8 +83,8 @@ namespace SRCDS_RCON
 			this.serverListView.FullRowSelect = true;
 			this.serverListView.HideSelection = false;
 			this.serverListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2});
+            listViewItem3,
+            listViewItem4});
 			this.serverListView.Location = new System.Drawing.Point(12, 12);
 			this.serverListView.MultiSelect = false;
 			this.serverListView.Name = "serverListView";
@@ -300,7 +300,7 @@ namespace SRCDS_RCON
 			this.MaximizeBox = false;
 			this.Name = "ConnectionForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "ConnectionForm";
+			this.Text = "Connect";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ConnectionForm_KeyDown);
 			this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ServerListView_MouseDoubleClick);
 			this.serverContextMenuStrip.ResumeLayout(false);
