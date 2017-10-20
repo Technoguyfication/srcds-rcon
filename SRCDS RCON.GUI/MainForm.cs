@@ -262,6 +262,7 @@ namespace SRCDS_RCON.GUI
 		private void MainForm_HelpRequested(object sender, HelpEventArgs hlpevent)
 		{
 			ShowDocumenation();
+			hlpevent.Handled = true;
 		}
 
 		private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -290,8 +291,6 @@ namespace SRCDS_RCON.GUI
 				protocol.Disconnect();
 		}
 
-		#endregion
-
 		private void AboutSRCDSRCONToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			using (AboutForm form = new AboutForm())
@@ -299,5 +298,7 @@ namespace SRCDS_RCON.GUI
 				form.ShowDialog();
 			}
 		}
+
+		#endregion
 	}
 }

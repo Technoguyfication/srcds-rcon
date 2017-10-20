@@ -301,7 +301,7 @@
 			// 
 			this.viewDocumentationToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.book;
 			this.viewDocumentationToolStripMenuItem.Name = "viewDocumentationToolStripMenuItem";
-			this.viewDocumentationToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+			this.viewDocumentationToolStripMenuItem.ShortcutKeyDisplayString = "F1";
 			this.viewDocumentationToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
 			this.viewDocumentationToolStripMenuItem.Text = "View Documentation";
 			this.viewDocumentationToolStripMenuItem.Click += new System.EventHandler(this.ViewDocumentationToolStripMenuItem_Click);
