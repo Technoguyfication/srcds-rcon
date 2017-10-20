@@ -97,13 +97,13 @@ namespace SRCDS_RCON.GUI
 			switch (e.Server?.Type)
 			{
 				case ServerType.MINECRAFT:
-					if (!SrcdsRcon.Settings.UseMinecraftColors)
-						goto default;
-
 					StyledString[] strings = TextColorUtility.GetStyledStrings(e.Message);
 					foreach (StyledString str in strings)
 					{
-						WriteToConsole(str.Content, TextColorUtility.GetColorFromConsoleColor(str.Color), false);
+						WriteToConsole(
+							str.Content,
+							(SrcdsRcon.Settings.UseMinecraftColors) ? TextColorUtility.GetColorFromConsoleColor(str.Color) : SrcdsRcon.Settings.DefaultConsoleColor,
+							false);
 					}
 					break;
 				case ServerType.SRCDS:
