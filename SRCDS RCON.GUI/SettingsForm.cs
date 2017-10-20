@@ -139,7 +139,7 @@ namespace SRCDS_RCON
 
 		private void FirewallButton_Click(object sender, EventArgs e)
 		{
-
+			throw new NotImplementedException();
 		}
 	}
 }
