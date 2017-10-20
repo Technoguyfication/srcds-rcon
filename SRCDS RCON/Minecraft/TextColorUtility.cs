@@ -95,24 +95,22 @@ namespace SRCDS_RCON.Minecraft
 		{
 			Dictionary<ConsoleColor, Color> colorMap = new Dictionary<ConsoleColor, Color>()
 			{
-				//TODO: these need to be tweaked to more accurately reflect the minecraft colors
-
-				{ ConsoleColor.Black, Color.Black },
-				{ ConsoleColor.DarkBlue, Color.DarkBlue },
-				{ ConsoleColor.DarkGreen, Color.DarkGreen },
-				{ ConsoleColor.DarkCyan, Color.DarkCyan },
-				{ ConsoleColor.DarkRed, Color.DarkRed },
-				{ ConsoleColor.DarkMagenta, Color.DarkMagenta },
-				{ ConsoleColor.DarkYellow, Color.Yellow },
-				{ ConsoleColor.Gray, Color.LightGray },
-				{ ConsoleColor.DarkGray, Color.DarkGray },
-				{ ConsoleColor.Blue, Color.Blue },
-				{ ConsoleColor.Green, Color.Green },
-				{ ConsoleColor.Cyan, Color.Cyan },
-				{ ConsoleColor.Red, Color.Red },
-				{ ConsoleColor.Magenta, Color.Magenta },
-				{ ConsoleColor.Yellow, Color.LightYellow },
-				{ ConsoleColor.White, Color.White }
+				{ ConsoleColor.Black, Color.Black },					// it's just black
+				{ ConsoleColor.DarkBlue, Color.Blue },					// close enough
+				{ ConsoleColor.DarkGreen, Color.Green },				// a little dark but not enough to warrant a custom color
+				{ ConsoleColor.DarkCyan, Color.FromArgb(0x00AAAA) },	// from minecraft
+				{ ConsoleColor.DarkRed, Color.DarkRed },				// close enough
+				{ ConsoleColor.DarkMagenta, Color.DarkMagenta },		// close enough
+				{ ConsoleColor.DarkYellow, Color.FromArgb(0xFFAA00) },	// from minecraft
+				{ ConsoleColor.Gray, Color.Gray },						// close enough
+				{ ConsoleColor.DarkGray, Color.DimGray },				// ehh... it'll do
+				{ ConsoleColor.Blue, Color.FromArgb(0x5555FF) },		// that perfect blue (from minecraft)
+				{ ConsoleColor.Green, Color.LightGreen },				// close enough
+				{ ConsoleColor.Cyan, Color.FromArgb(0x55FFFF) },		// from minecraft
+				{ ConsoleColor.Red, Color.FromArgb(0xFF5555) },			// from minecraft
+				{ ConsoleColor.Magenta, Color.Magenta },				// close enough
+				{ ConsoleColor.Yellow, Color.FromArgb(0xFFDC16) },		// slightly altered - more orange so it shows up on white
+				{ ConsoleColor.White, Color.Gray }						// close enough
 			};
 
 			if (!colorMap.TryGetValue(cColor, out Color color))
