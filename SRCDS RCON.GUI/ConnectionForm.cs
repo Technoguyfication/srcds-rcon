@@ -227,13 +227,6 @@ namespace SRCDS_RCON
 				EditServer(GetSelectedServer());
 		}
 
-		private void ConnectButtonContextMenuStrip_Opening(object sender, EventArgs e)
-		{
-			bool serverSelected = IsServerSelected();
-
-			connectButtonDirectConnectItem.Enabled = serverSelected;
-		}
-
 		private void NewButton_Click(object sender, EventArgs e)
 		{
 			CreateServer();
@@ -270,6 +263,11 @@ namespace SRCDS_RCON
 		{
 			if (IsServerSelected())
 				DeleteServer(GetSelectedServer());
+		}
+
+		private void ConnectButtonContextMenu_Opening(object sender, CancelEventArgs e)
+		{
+			connectButtonConnectItem.Enabled = IsServerSelected();
 		}
 
 		#endregion

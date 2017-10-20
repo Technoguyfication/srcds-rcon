@@ -199,7 +199,7 @@ namespace SRCDS_RCON.GUI
 		/// <summary>
 		/// Opens up the documenation for the program in a new window
 		/// </summary>
-		private void ShowDocumenation()
+		public static void ShowDocumenation()
 		{
 			System.Diagnostics.Process.Start(Program.DocumentationUrl);
 		}

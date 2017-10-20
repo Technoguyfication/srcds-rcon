@@ -79,6 +79,7 @@
 			this.githubLinkLabel.TabIndex = 3;
 			this.githubLinkLabel.TabStop = true;
 			this.githubLinkLabel.Text = "https://github.com/Technoguyfication/srcds-rcon";
+			this.githubLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GithubLinkLabel_LinkClicked);
 			// 
 			// versionLabel
 			// 
@@ -87,7 +88,7 @@
 			this.versionLabel.Location = new System.Drawing.Point(29, 180);
 			this.versionLabel.Name = "versionLabel";
 			this.versionLabel.Size = new System.Drawing.Size(45, 13);
-			this.versionLabel.TabIndex = 2;
+			this.versionLabel.TabIndex = 4;
 			this.versionLabel.Text = "Version:";
 			// 
 			// versionNumberLabel
@@ -97,7 +98,7 @@
 			this.versionNumberLabel.Location = new System.Drawing.Point(76, 180);
 			this.versionNumberLabel.Name = "versionNumberLabel";
 			this.versionNumberLabel.Size = new System.Drawing.Size(65, 13);
-			this.versionNumberLabel.TabIndex = 2;
+			this.versionNumberLabel.TabIndex = 5;
 			this.versionNumberLabel.Text = "X.X.XX.XXX";
 			// 
 			// closeButton
@@ -107,7 +108,7 @@
 			this.closeButton.Location = new System.Drawing.Point(330, 196);
 			this.closeButton.Name = "closeButton";
 			this.closeButton.Size = new System.Drawing.Size(75, 23);
-			this.closeButton.TabIndex = 4;
+			this.closeButton.TabIndex = 6;
 			this.closeButton.Text = "Close";
 			this.closeButton.UseVisualStyleBackColor = true;
 			this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);

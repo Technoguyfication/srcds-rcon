@@ -32,11 +32,11 @@ namespace SRCDS_RCON
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+			System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "192.168.0.254",
             "27015",
             "SRCDS"}, -1);
-			System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+			System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "2001:4860:4860::8888",
             "25575",
             "Minecraft"}, -1);
@@ -83,8 +83,8 @@ namespace SRCDS_RCON
 			this.serverListView.FullRowSelect = true;
 			this.serverListView.HideSelection = false;
 			this.serverListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3,
-            listViewItem4});
+            listViewItem1,
+            listViewItem2});
 			this.serverListView.Location = new System.Drawing.Point(12, 12);
 			this.serverListView.MultiSelect = false;
 			this.serverListView.Name = "serverListView";
@@ -194,8 +194,8 @@ namespace SRCDS_RCON
             this.toolStripMenuItem2,
             this.connectButtonDirectConnectItem});
 			this.connectButtonContextMenuStrip.Name = "connectButtonContextMenuStrip";
-			this.connectButtonContextMenuStrip.Size = new System.Drawing.Size(163, 54);
-			this.connectButtonContextMenuStrip.Opened += new System.EventHandler(this.ConnectButtonContextMenuStrip_Opening);
+			this.connectButtonContextMenuStrip.Size = new System.Drawing.Size(163, 76);
+			this.connectButtonContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ConnectButtonContextMenu_Opening);
 			// 
 			// connectButtonConnectItem
 			// 
@@ -267,7 +267,7 @@ namespace SRCDS_RCON
 			this.newButton.Name = "newButton";
 			this.newButton.Size = new System.Drawing.Size(69, 23);
 			this.newButton.SplitStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-			this.newButton.TabIndex = 4;
+			this.newButton.TabIndex = 1;
 			this.newButton.Text = "New   ";
 			this.newButton.UseVisualStyleBackColor = true;
 			this.newButton.Click += new System.EventHandler(this.NewButton_Click);

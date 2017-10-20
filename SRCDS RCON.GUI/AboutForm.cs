@@ -26,5 +26,10 @@ namespace SRCDS_RCON.GUI
 		{
 			versionNumberLabel.Text = Application.ProductVersion;
 		}
+
+		private void GithubLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			MainForm.ShowDocumenation();
+		}
 	}
 }
