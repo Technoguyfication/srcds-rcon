@@ -66,6 +66,12 @@
     <Compile Include="CreateServerForm.Designer.cs">
       <DependentUpon>CreateServerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DirectConnectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectConnectForm.Designer.cs">
+      <DependentUpon>DirectConnectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateServerForm.resx">
       <DependentUpon>CreateServerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectConnectForm.resx">
+      <DependentUpon>DirectConnectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

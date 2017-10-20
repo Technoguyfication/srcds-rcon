@@ -1,4 +1,5 @@
-﻿using SRCDS_RCON.Net;
+﻿using SRCDS_RCON.GUI;
+using SRCDS_RCON.Net;
 using SRCDS_RCON.Utility;
 using System;
 using System.Collections.Generic;
@@ -210,7 +211,13 @@ namespace SRCDS_RCON
 
 		private void ConnectButtonDirectConnectItem_Click(object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
+			using (DirectConnectForm form = new DirectConnectForm())
+			{
+				Server directConnectServer = form.OpenConnectDialog();
+
+				if (directConnectServer != null)
+					Connect(directConnectServer);
+			}
 		}
 
 		private void EditButtonContextMenuStrip_Opening(object sender, CancelEventArgs e)
