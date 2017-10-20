@@ -159,6 +159,9 @@ namespace SRCDS_RCON.GUI
 			consoleTextBox.SelectionColor = (Color)textColor;
 			consoleTextBox.AppendText(text + ((newline) ? Environment.NewLine : ""));
 
+			// scroll textbox to the bottom
+			consoleTextBox.SelectionStart = consoleTextBox.Text.Length;
+			consoleTextBox.ScrollToCaret();
 		}
 
 		/// <summary>
