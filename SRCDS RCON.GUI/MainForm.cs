@@ -291,5 +291,13 @@ namespace SRCDS_RCON.GUI
 		}
 
 		#endregion
+
+		private void AboutSRCDSRCONToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			using (AboutForm form = new AboutForm())
+			{
+				form.ShowDialog();
+			}
+		}
 	}
 }

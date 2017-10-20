@@ -316,6 +316,7 @@
 			this.aboutSRCDSRCONToolStripMenuItem.Name = "aboutSRCDSRCONToolStripMenuItem";
 			this.aboutSRCDSRCONToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
 			this.aboutSRCDSRCONToolStripMenuItem.Text = "About SRCDS RCON";
+			this.aboutSRCDSRCONToolStripMenuItem.Click += new System.EventHandler(this.AboutSRCDSRCONToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
