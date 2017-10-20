@@ -246,7 +246,7 @@ namespace SRCDS_RCON.GUI
 
 		private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			throw new NotImplementedException();
+			Application.Exit();
 		}
 
 		private void ClearToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -276,12 +276,12 @@ namespace SRCDS_RCON.GUI
 
 		private void DisconnectToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			protocol.Disconnect();
+			protocol.Disconnect(true);
 		}
 
 		private void DisconnectToolStripMenuItem1_Click(object sender, EventArgs e)
 		{
-			protocol.Disconnect();
+			protocol.Disconnect(true);
 		}
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

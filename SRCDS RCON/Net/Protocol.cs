@@ -88,7 +88,7 @@ namespace SRCDS_RCON.Net
 			}
 			catch (SocketException e)
 			{
-				Disconnect();
+				Disconnect(true);
 
 				throw new ConnectionFailedException(e.Message, e);
 			}
@@ -140,13 +140,15 @@ namespace SRCDS_RCON.Net
 		/// <summary>
 		/// Disconnects the client safely and gets everything ready for another connection
 		/// </summary>
-		public void Disconnect()
+		/// <param name="broadcast">Whether or not to fire the Disconnect event</param>
+		public void Disconnect(bool broadcast = false)
 		{
 			_cancellationtokenSource?.Cancel();
 			_client?.Close();
 			_client = null;
 
-			Disconnected?.Invoke(this, new EventArgs());
+			if (broadcast)
+				Disconnected?.Invoke(this, new EventArgs());
 		}
 
 		/// <summary>
@@ -180,7 +182,7 @@ namespace SRCDS_RCON.Net
 				}
 				catch (DisconnectedException)
 				{
-					Disconnect();
+					Disconnect(true);
 					return;
 				}
 			}
