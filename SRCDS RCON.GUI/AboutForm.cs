@@ -21,5 +21,10 @@ namespace SRCDS_RCON.GUI
 		{
 			Close();
 		}
+
+		private void AboutForm_Load(object sender, EventArgs e)
+		{
+			versionNumberLabel.Text = Application.ProductVersion;
+		}
 	}
 }
