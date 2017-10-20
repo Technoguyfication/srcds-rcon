@@ -191,6 +191,7 @@ namespace SRCDS_RCON.GUI
 				return;
 
 			protocol.SendCommand(inputTextBox.Text);
+			WriteToConsole($">> {inputTextBox.Text}", SrcdsRcon.Settings.SentConsoleColor);
 
 			if (clear)
 				inputTextBox.Text = string.Empty;
