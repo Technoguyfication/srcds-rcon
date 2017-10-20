@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SRCDS_RCON.Minecraft;
 
 namespace SRCDS_RCON.GUI
 {
@@ -90,7 +91,27 @@ namespace SRCDS_RCON.GUI
 
 		private void Protocol_MessageReceived(object sender, MessageReceivedEventArgs e)
 		{
-			WriteToConsole($"rcon: {e.Message}");
+			if (string.IsNullOrEmpty(e.Message))
+				return;
+
+			switch (e.Server?.Type)
+			{
+				case ServerType.MINECRAFT:
+					if (!SrcdsRcon.Settings.UseMinecraftColors)
+						goto default;
+
+					StyledString[] strings = TextColorUtility.GetStyledStrings(e.Message);
+					foreach (StyledString str in strings)
+					{
+						WriteToConsole(str.Content, TextColorUtility.GetColorFromConsoleColor(str.Color), false);
+					}
+					break;
+				case ServerType.SRCDS:
+				case null:
+				default:
+					WriteToConsole(e.Message);
+					break;
+			}
 		}
 
 		/// <summary>
@@ -118,11 +139,12 @@ namespace SRCDS_RCON.GUI
 		/// </summary>
 		/// <param name="text">Text to print</param>
 		/// <param name="textColor">Color of the text to print. Defaults to the user-defined color for basic text.</param>
-		public void WriteToConsole(string text, Color? textColor = null)
+		public void WriteToConsole(string text, Color? textColor = null, bool newline = true)
 		{
+
 			if (consoleTextBox.InvokeRequired)
 			{
-				consoleTextBox.Invoke((MethodInvoker)delegate { WriteToConsole(text, textColor); });
+				consoleTextBox.Invoke((MethodInvoker)delegate { WriteToConsole(text, textColor, newline); });
 				return;
 			}
 
@@ -135,7 +157,8 @@ namespace SRCDS_RCON.GUI
 
 			// set color and write text
 			consoleTextBox.SelectionColor = (Color)textColor;
-			consoleTextBox.AppendText(text + Environment.NewLine);
+			consoleTextBox.AppendText(text + ((newline) ? Environment.NewLine : ""));
+
 		}
 
 		/// <summary>

@@ -91,7 +91,7 @@ namespace SRCDS_RCON.Minecraft
 		/// Returns the closest possible <see cref="Color"/> to a console (Minecraft) color
 		/// </summary>
 		/// <returns></returns>
-		public static Color FromConsoleColor(ConsoleColor cColor)
+		public static Color GetColorFromConsoleColor(ConsoleColor cColor)
 		{
 			Dictionary<ConsoleColor, Color> colorMap = new Dictionary<ConsoleColor, Color>()
 			{

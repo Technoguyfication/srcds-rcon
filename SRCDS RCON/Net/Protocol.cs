@@ -27,6 +27,8 @@ namespace SRCDS_RCON.Net
 		private readonly object ReadLock = new object();
 		private readonly object WriteLock = new object();
 
+		private Server _currentServer = null;
+
 		/// <summary>
 		/// Occurs when the server sends the client a message, like the resposne to a comment
 		/// </summary>
@@ -76,6 +78,8 @@ namespace SRCDS_RCON.Net
 				Disconnect();
 
 			_cancellationtokenSource = new CancellationTokenSource();
+
+			_currentServer = server;
 
 			_client = new TcpClient();
 			try
@@ -192,7 +196,8 @@ namespace SRCDS_RCON.Net
 				case PacketType.COMMAND_RESPONSE:
 					MessageReceived?.Invoke(this, new MessageReceivedEventArgs()
 					{
-						Message = packet.Payload
+						Message = packet.Payload,
+						Server = _currentServer
 					});
 					break;
 				default:
@@ -276,6 +281,7 @@ namespace SRCDS_RCON.Net
 	public class MessageReceivedEventArgs : EventArgs
 	{
 		public string Message { get; set; }
+		public Server Server { get; set; }
 	}
 
 	/// <summary>
