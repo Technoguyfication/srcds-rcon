@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SRCDS_RCON.Net
 {
-	public class Packet
+	public class Packet : IDisposable
 	{
 		/// <summary>
 		/// The length of the entire packet, in bytes
@@ -84,6 +84,16 @@ namespace SRCDS_RCON.Net
 		public Packet()
 		{
 			PacketID = new Random().Next();
+		}
+
+		~Packet()
+		{
+			Dispose();
+		}
+
+		public void Dispose()
+		{
+			// there isn't much to do here
 		}
 	}
 

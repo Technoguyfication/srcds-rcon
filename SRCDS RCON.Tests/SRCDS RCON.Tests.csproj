@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PacketTests.cs" />
     <Compile Include="Properties\AssemblyVersionInfo.cs" />
     <Compile Include="ProtocolTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
