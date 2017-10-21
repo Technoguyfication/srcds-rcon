@@ -53,6 +53,7 @@
     <Compile Include="ProtocolTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerTests.cs" />
+    <Compile Include="SrcdsRconTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SRCDS RCON\SRCDS RCON.csproj">
