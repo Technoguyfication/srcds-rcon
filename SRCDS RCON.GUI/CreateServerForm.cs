@@ -52,6 +52,17 @@ namespace SRCDS_RCON
 
 		private void SaveButton_Click(object sender, EventArgs e)
 		{
+			if (!int.TryParse(portTextBox.Text, out int _))
+			{
+				MessageBox.Show(
+					"The port you entered is invalid.\n" +
+					$"Please enter a valid IANA port number.",
+					"Error",
+					MessageBoxButtons.OK,
+					MessageBoxIcon.Warning);
+
+				return;
+			}
 
 			Server newServer = new Server()
 			{
@@ -79,6 +90,16 @@ namespace SRCDS_RCON
 		private void CancelButton_Click(object sender, EventArgs e)
 		{
 			DialogResult = DialogResult.Cancel;
+		}
+
+		private void HostTextBox_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.OemSemicolon && e.Shift)  // semicolon
+			{
+				portTextBox.Select();
+				e.Handled = true;
+				e.SuppressKeyPress = true;
+			}
 		}
 	}
 }

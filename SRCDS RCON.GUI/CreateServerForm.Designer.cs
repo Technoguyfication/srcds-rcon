@@ -29,7 +29,6 @@
 		private void InitializeComponent()
 		{
 			this.hostTextBox = new System.Windows.Forms.TextBox();
-			this.portTextBox = new System.Windows.Forms.TextBox();
 			this.typeComboBox = new System.Windows.Forms.ComboBox();
 			this.portLabel = new System.Windows.Forms.Label();
 			this.hostLabel = new System.Windows.Forms.Label();
@@ -38,6 +37,7 @@
 			this.saveButton = new System.Windows.Forms.Button();
 			this.passwordLabel = new System.Windows.Forms.Label();
 			this.passwordTextBox = new System.Windows.Forms.TextBox();
+			this.portTextBox = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// hostTextBox
@@ -48,14 +48,7 @@
 			this.hostTextBox.Name = "hostTextBox";
 			this.hostTextBox.Size = new System.Drawing.Size(266, 20);
 			this.hostTextBox.TabIndex = 1;
-			// 
-			// portTextBox
-			// 
-			this.portTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.portTextBox.Location = new System.Drawing.Point(354, 13);
-			this.portTextBox.Name = "portTextBox";
-			this.portTextBox.Size = new System.Drawing.Size(76, 20);
-			this.portTextBox.TabIndex = 3;
+			this.hostTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HostTextBox_KeyDown);
 			// 
 			// typeComboBox
 			// 
@@ -139,6 +132,14 @@
 			this.passwordTextBox.Size = new System.Drawing.Size(218, 20);
 			this.passwordTextBox.TabIndex = 5;
 			// 
+			// portTextBox
+			// 
+			this.portTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.portTextBox.Location = new System.Drawing.Point(354, 13);
+			this.portTextBox.Name = "portTextBox";
+			this.portTextBox.Size = new System.Drawing.Size(76, 20);
+			this.portTextBox.TabIndex = 3;
+			// 
 			// CreateServerForm
 			// 
 			this.AcceptButton = this.saveButton;
@@ -170,7 +171,6 @@
 		#endregion
 
 		private System.Windows.Forms.TextBox hostTextBox;
-		private System.Windows.Forms.TextBox portTextBox;
 		private System.Windows.Forms.ComboBox typeComboBox;
 		private System.Windows.Forms.Label portLabel;
 		private System.Windows.Forms.Label hostLabel;
@@ -179,5 +179,6 @@
 		private System.Windows.Forms.Button saveButton;
 		private System.Windows.Forms.Label passwordLabel;
 		private System.Windows.Forms.TextBox passwordTextBox;
+		private System.Windows.Forms.TextBox portTextBox;
 	}
 }
