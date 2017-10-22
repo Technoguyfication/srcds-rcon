@@ -1,0 +1,2 @@
+- [ ] Finish up direct connections
+- [ ] Fix: Server disconnect not appearing in console
