@@ -35,13 +35,22 @@ namespace SRCDS_RCON.GUI
 
 		private Server GetCurrentServer()
 		{
-			throw new NotImplementedException();
+			if (!int.TryParse(portTextBox.Text, out int port))
+				port = 0;
+
+			return new Server()
+			{
+				Hostname = hostnameTextBox.Text,
+				Port = port,
+				Password = passwordTextBox.Text,
+				Type = (ServerType)Enum.Parse(typeof(ServerType), Enum.GetName(typeof(ServerType), typeComboBox.SelectedIndex))
+			};
 		}
 
 		/// <summary>
 		/// Opens the form as a dialog to connect to a server
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>The selected server, or null if a valid server was not selected</returns>
 		public Server OpenConnectDialog()
 		{
 			DialogResult result = ShowDialog();

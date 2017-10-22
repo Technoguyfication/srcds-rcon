@@ -35,6 +35,8 @@
 			this.typeLabel = new System.Windows.Forms.Label();
 			this.typeComboBox = new System.Windows.Forms.ComboBox();
 			this.connectButton = new System.Windows.Forms.Button();
+			this.passwordTextBox = new System.Windows.Forms.TextBox();
+			this.passwordLabel = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// hostnameTextBox
@@ -43,16 +45,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.hostnameTextBox.Location = new System.Drawing.Point(50, 12);
 			this.hostnameTextBox.Name = "hostnameTextBox";
-			this.hostnameTextBox.Size = new System.Drawing.Size(287, 20);
+			this.hostnameTextBox.Size = new System.Drawing.Size(195, 20);
 			this.hostnameTextBox.TabIndex = 1;
 			// 
 			// portTextBox
 			// 
-			this.portTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.portTextBox.Location = new System.Drawing.Point(50, 38);
+			this.portTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.portTextBox.Location = new System.Drawing.Point(286, 12);
 			this.portTextBox.Name = "portTextBox";
-			this.portTextBox.Size = new System.Drawing.Size(93, 20);
+			this.portTextBox.Size = new System.Drawing.Size(86, 20);
 			this.portTextBox.TabIndex = 3;
 			// 
 			// hostnameLabel
@@ -66,9 +67,9 @@
 			// 
 			// portLabel
 			// 
-			this.portLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.portLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.portLabel.AutoSize = true;
-			this.portLabel.Location = new System.Drawing.Point(12, 41);
+			this.portLabel.Location = new System.Drawing.Point(251, 15);
 			this.portLabel.Name = "portLabel";
 			this.portLabel.Size = new System.Drawing.Size(29, 13);
 			this.portLabel.TabIndex = 2;
@@ -78,10 +79,10 @@
 			// 
 			this.typeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.typeLabel.AutoSize = true;
-			this.typeLabel.Location = new System.Drawing.Point(149, 41);
+			this.typeLabel.Location = new System.Drawing.Point(184, 41);
 			this.typeLabel.Name = "typeLabel";
 			this.typeLabel.Size = new System.Drawing.Size(34, 13);
-			this.typeLabel.TabIndex = 4;
+			this.typeLabel.TabIndex = 6;
 			this.typeLabel.Text = "Type:";
 			// 
 			// typeComboBox
@@ -91,37 +92,59 @@
 			this.typeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
 			this.typeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.typeComboBox.FormattingEnabled = true;
-			this.typeComboBox.Location = new System.Drawing.Point(189, 38);
+			this.typeComboBox.Location = new System.Drawing.Point(224, 38);
 			this.typeComboBox.Name = "typeComboBox";
 			this.typeComboBox.Size = new System.Drawing.Size(79, 21);
-			this.typeComboBox.TabIndex = 5;
+			this.typeComboBox.TabIndex = 7;
 			// 
 			// connectButton
 			// 
 			this.connectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.connectButton.Location = new System.Drawing.Point(275, 36);
+			this.connectButton.Location = new System.Drawing.Point(310, 36);
 			this.connectButton.Name = "connectButton";
 			this.connectButton.Size = new System.Drawing.Size(62, 23);
-			this.connectButton.TabIndex = 6;
+			this.connectButton.TabIndex = 8;
 			this.connectButton.Text = "Connect";
 			this.connectButton.UseVisualStyleBackColor = true;
 			this.connectButton.Click += new System.EventHandler(this.ConnectButton_Click);
+			// 
+			// passwordTextBox
+			// 
+			this.passwordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.passwordTextBox.Location = new System.Drawing.Point(74, 38);
+			this.passwordTextBox.Name = "passwordTextBox";
+			this.passwordTextBox.Size = new System.Drawing.Size(104, 20);
+			this.passwordTextBox.TabIndex = 5;
+			// 
+			// passwordLabel
+			// 
+			this.passwordLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.passwordLabel.AutoSize = true;
+			this.passwordLabel.Location = new System.Drawing.Point(12, 41);
+			this.passwordLabel.Name = "passwordLabel";
+			this.passwordLabel.Size = new System.Drawing.Size(56, 13);
+			this.passwordLabel.TabIndex = 4;
+			this.passwordLabel.Text = "Password:";
 			// 
 			// DirectConnectForm
 			// 
 			this.AcceptButton = this.connectButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(349, 70);
+			this.ClientSize = new System.Drawing.Size(384, 70);
 			this.Controls.Add(this.connectButton);
 			this.Controls.Add(this.typeComboBox);
 			this.Controls.Add(this.typeLabel);
+			this.Controls.Add(this.passwordLabel);
 			this.Controls.Add(this.portLabel);
 			this.Controls.Add(this.hostnameLabel);
+			this.Controls.Add(this.passwordTextBox);
 			this.Controls.Add(this.portTextBox);
 			this.Controls.Add(this.hostnameTextBox);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.KeyPreview = true;
+			this.MinimumSize = new System.Drawing.Size(400, 109);
 			this.Name = "DirectConnectForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Direct Connect";
@@ -140,5 +163,7 @@
 		private System.Windows.Forms.Label typeLabel;
 		private System.Windows.Forms.ComboBox typeComboBox;
 		private System.Windows.Forms.Button connectButton;
+		private System.Windows.Forms.TextBox passwordTextBox;
+		private System.Windows.Forms.Label passwordLabel;
 	}
 }
