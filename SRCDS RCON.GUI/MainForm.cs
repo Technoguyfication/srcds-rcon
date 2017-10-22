@@ -270,12 +270,12 @@ namespace SRCDS_RCON.GUI
 
 		private void DisconnectToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			protocol.Disconnect(true);
+			protocol.Disconnect();
 		}
 
 		private void DisconnectToolStripMenuItem1_Click(object sender, EventArgs e)
 		{
-			protocol.Disconnect(true);
+			protocol.Disconnect();
 		}
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

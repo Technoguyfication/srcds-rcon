@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.IO;
 
 namespace SRCDS_RCON.Net
 {
@@ -62,34 +63,33 @@ namespace SRCDS_RCON.Net
 			}
 		}
 
-		public Protocol()
-		{
-
-		}
-
 		~Protocol()
 		{
 			Dispose();
 		}
 
+		/// <summary>
+		/// Connects to a <see cref="Server"/>, disconnecting any existing connections
+		/// </summary>
+		/// <param name="server"></param>
+		/// <exception cref="ConnectionFailedException"/>
+		/// <exception cref="DisconnectedException"/>
 		public void Connect(Server server)
 		{
 			if (Connected)
 				Disconnect();
 
 			_cancellationtokenSource = new CancellationTokenSource();
-
 			_currentServer = server;
-
 			_client = new TcpClient();
+
 			try
 			{
 				_client.Connect(server.Hostname, server.Port);
 			}
 			catch (SocketException e)
 			{
-				Disconnect(true);
-
+				Disconnect();
 				throw new ConnectionFailedException(e.Message, e);
 			}
 
@@ -102,13 +102,17 @@ namespace SRCDS_RCON.Net
 
 			SendPacket(authPacket);
 
-			// receive auth packet
+			// receive auth response packet
 			Packet authResponse;
 			while (true)
 			{
 				Packet newPacket = ReadNextPacket();
 				if (newPacket.Type != PacketType.AUTH_RESPONSE)
 				{
+					/* 
+					 * we shouldn't really ever get a packet
+					 * that isn't an auth response but whatever
+					 * */
 					HandlePacket(newPacket);
 					continue;
 				}
@@ -141,14 +145,19 @@ namespace SRCDS_RCON.Net
 		/// Disconnects the client safely and gets everything ready for another connection
 		/// </summary>
 		/// <param name="broadcast">Whether or not to fire the Disconnect event</param>
-		public void Disconnect(bool broadcast = false)
+		public void Disconnect()
 		{
+			bool alreadyDisconnected = _client == null;
+
 			_cancellationtokenSource?.Cancel();
 			_client?.Close();
 			_client = null;
 
-			if (broadcast)
+			// check if this client has been disconnected yet
+			if (!alreadyDisconnected)
+			{
 				Disconnected?.Invoke(this, new EventArgs());
+			}
 		}
 
 		/// <summary>
@@ -182,7 +191,7 @@ namespace SRCDS_RCON.Net
 				}
 				catch (DisconnectedException)
 				{
-					Disconnect(true);
+					Disconnect();
 					return;
 				}
 			}
@@ -208,7 +217,7 @@ namespace SRCDS_RCON.Net
 		}
 
 		/// <summary>
-		/// Sends a packet
+		/// Sends a packet to the client
 		/// </summary>
 		/// <param name="packet"></param>
 		private void SendPacket(Packet packet)
@@ -239,6 +248,7 @@ namespace SRCDS_RCON.Net
 				ReadFromStream(packetBuffer, 0, packetBuffer.Length);
 				List<byte> packetBufferList = new List<byte>(packetBuffer);
 
+				// make a new packet
 				Packet packet = new Packet()
 				{
 					PacketID = getNextInt(packetBufferList),
@@ -249,6 +259,7 @@ namespace SRCDS_RCON.Net
 				return packet;
 			}
 
+			// gets the next integer from a list and removes it
 			int getNextInt(List<byte> buffer)
 			{
 				int number = BitConverter.ToInt32(buffer.Take(4).ToArray().ReverseLittleEndian(), 0);
@@ -258,24 +269,32 @@ namespace SRCDS_RCON.Net
 		}
 
 		/// <summary>
-		/// Reads from the client stream
+		/// Reads bytes from the client's stream
 		/// </summary>
 		/// <param name="buffer"></param>
 		/// <param name="offset"></param>
 		/// <param name="size"></param>
+		/// <exception cref="DisconnectedException"/>
 		private void ReadFromStream(byte[] buffer, int offset, int size)
 		{
-			int bytesRead = 0;
-			while (bytesRead < size)
+			try
 			{
-				int newBytesRead = _client.GetStream().Read(buffer, offset + bytesRead, size - bytesRead);
-				if (newBytesRead == 0)
+				int bytesRead = 0;
+				while (bytesRead < size)
 				{
-					Disconnect();
-					throw new DisconnectedException("Connection closed");
-				}
+					int newBytesRead = _client.GetStream().Read(buffer, offset + bytesRead, size - bytesRead);
+					if (newBytesRead == 0)
+					{
+						Disconnect();
+						throw new DisconnectedException("Connection closed");
+					}
 
-				bytesRead += newBytesRead;
+					bytesRead += newBytesRead;
+				}
+			}
+			catch (IOException e)
+			{
+				throw new DisconnectedException("Stream read failed. The connection was likely lost.", e);
 			}
 		}
 	}
@@ -301,20 +320,6 @@ namespace SRCDS_RCON.Net
 	}
 
 	/// <summary>
-	/// This exception is thrown when the Protocol is not used properly
-	/// </summary>
-	[Serializable]
-	public class ProtocolException : Exception
-	{
-		public ProtocolException() { }
-		public ProtocolException(string message) : base(message) { }
-		public ProtocolException(string message, Exception inner) : base(message, inner) { }
-		protected ProtocolException(
-		  System.Runtime.Serialization.SerializationInfo info,
-		  System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
-	}
-
-	/// <summary>
 	/// This exception is thrown when the client is forcibly disconnected
 	/// </summary>
 	[Serializable]
@@ -328,6 +333,9 @@ namespace SRCDS_RCON.Net
 		  System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
 	}
 
+	/// <summary>
+	/// This exception is thrown when we tried connecting to a server and it didn't work for some reason
+	/// </summary>
 	[Serializable]
 	public class ConnectionFailedException : Exception
 	{
