@@ -77,5 +77,55 @@ namespace SRCDS_RCON.Tests
 
 			Assert.IsNotNull(s.GetHashCode());
 		}
+
+		[TestMethod]
+		public void Equals_OK()
+		{
+			string hostname = "localhost";
+			int port = 1000;
+			string password = "test";
+			ServerType type = ServerType.SRCDS;
+
+			Server server1 = new Server()
+			{
+				Hostname = hostname,
+				Port = port,
+				Password = password,
+				Type = type
+			};
+			Server server2 = new Server()
+			{
+				Hostname = hostname,
+				Port = port,
+				Password = password,
+				Type = type
+			};
+
+			Assert.IsTrue(server1.Equals(server2));
+			Assert.IsTrue(Server.AreEqual(server1, server2));
+		}
+
+		[TestMethod]
+		public void NotEquals_OK()
+		{
+			Server server1 = new Server()
+			{
+				Hostname = "host1",
+				Port = 101,
+				Password = "password1",
+				Type = ServerType.SRCDS
+			};
+
+			Server server2 = new Server()
+			{
+				Hostname = "host2",
+				Port = 202,
+				Password = "password2",
+				Type = ServerType.MINECRAFT
+			};
+
+			Assert.IsFalse(server1.Equals(server2));
+			Assert.IsFalse(Server.AreEqual(server1, server2));
+		}
 	}
 }
