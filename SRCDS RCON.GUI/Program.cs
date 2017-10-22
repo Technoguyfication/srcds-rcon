@@ -9,8 +9,8 @@ namespace SRCDS_RCON.GUI
 	static class Program
 	{
 		// program constants
-		public const string DocumentationUrl = "https://github.com/Technoguyfication/srcds-rcon/wiki";
-		public const string StartupText =
+		public const string DOCUMENTATION_URL = "https://github.com/Technoguyfication/srcds-rcon/wiki";
+		public const string STARTUP_MSG =
 			"Welcome to SRCDS RCON!\n" +
 			"This program licensed under the Unlicense.\n";
 

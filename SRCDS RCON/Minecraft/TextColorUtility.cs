@@ -12,7 +12,7 @@ namespace SRCDS_RCON.Minecraft
 		/// <summary>
 		/// The character is used to define the start of a color identifier.
 		/// </summary>
-		public const char ColorByte = '\xa7';	// section symbol
+		public const char COLOR_BYTE = '\xa7';	// section symbol
 
 		/// <summary>
 		/// Returns a map of <see cref="StyledString"/>s from a Bukkit response<para/>
@@ -27,7 +27,7 @@ namespace SRCDS_RCON.Minecraft
 			for (int i = 0; i < input.Length; i++)
 			{
 				// new color here
-				if (input[i] == ColorByte)
+				if (input[i] == COLOR_BYTE)
 				{
 					clipString();
 

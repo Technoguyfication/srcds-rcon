@@ -201,7 +201,7 @@ namespace SRCDS_RCON.GUI
 		/// </summary>
 		public static void ShowDocumenation()
 		{
-			System.Diagnostics.Process.Start(Program.DocumentationUrl);
+			System.Diagnostics.Process.Start(Program.DOCUMENTATION_URL);
 		}
 
 		#region Control Event Handlers
@@ -215,7 +215,7 @@ namespace SRCDS_RCON.GUI
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			consoleTextBox.Clear();
-			WriteToConsole(Program.StartupText, SrcdsRcon.Settings.ProgramConsoleColor);
+			WriteToConsole(Program.STARTUP_MSG, SrcdsRcon.Settings.ProgramConsoleColor);
 		}
 
 		private void ClearToolStripMenuItem_Click(object sender, EventArgs e)
