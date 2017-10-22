@@ -302,6 +302,6 @@ namespace SRCDS_RCON.GUI
 			reconnectToolStripMenuItem1.Enabled = (SrcdsRcon.Settings.LastServer != null);
 		}
 
-#endregion
+		#endregion
 	}
 }
