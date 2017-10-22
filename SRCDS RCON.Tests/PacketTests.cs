@@ -19,6 +19,9 @@ namespace SRCDS_RCON.Tests
 			Packet p = new Packet();
 		}
 
+		/// <summary>
+		/// Check that we can dispose the packet safely
+		/// </summary>
 		[TestMethod]
 		public void Dispose_OK()
 		{

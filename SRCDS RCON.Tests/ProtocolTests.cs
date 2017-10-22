@@ -239,7 +239,10 @@ namespace SRCDS_RCON.Tests
 						return;
 					}
 
-					// https://developer.valvesoftware.com/wiki/Source_RCON_Protocol#Multiple-packet_Responses
+					/*
+					 * Read this for the following block
+					 * https://developer.valvesoftware.com/wiki/Source_RCON_Protocol#Multiple-packet_Responses
+					 * */
 					if (clientPacket.Type != PacketType.COMMAND)
 					{
 						privateServerProtocol.Invoke("SendPacket", new Packet()
@@ -269,6 +272,7 @@ namespace SRCDS_RCON.Tests
 				client.Close();
 			})
 			{
+				// make sure the server doesn't keep the program going
 				IsBackground = true,
 				Name = "Fake Server Thread"
 			};
