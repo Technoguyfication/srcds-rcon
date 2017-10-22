@@ -266,6 +266,12 @@ namespace SRCDS_RCON.Tests
 
 					// send it
 					privateServerProtocol.Invoke("SendPacket", responsePacket);
+
+					// implement "quit" command
+					if (clientPacket.Payload.ToLower() == "quit")
+					{
+						privateServerProtocol.Invoke("Disconnect", null);
+					}
 				}
 
 				// "stop" the "server"
