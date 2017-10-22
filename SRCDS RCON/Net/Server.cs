@@ -46,6 +46,9 @@ namespace SRCDS_RCON.Net
 		/// <returns></returns>
 		public static Server FromSerializedString(string input)
 		{
+			if (string.IsNullOrEmpty(input))
+				return null;
+
 			string hostname = "";
 			string port = "";
 			string password = "";
@@ -156,16 +159,6 @@ namespace SRCDS_RCON.Net
 		public static bool AreEqual(Server server1, Server server2)
 		{
 			return server1.GetHashCode() == server2.GetHashCode();
-		}
-
-		public static bool operator ==(Server left, Server right)
-		{
-			return AreEqual(left, right);
-		}
-
-		public static bool operator !=(Server left, Server right)
-		{
-			return !AreEqual(left, right);
 		}
 	}
 }

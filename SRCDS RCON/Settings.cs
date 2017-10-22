@@ -80,7 +80,7 @@ namespace SRCDS_RCON
 		/// </summary>
 		/// <param name="colorName"></param>
 		/// <param name="color"></param>
-		private static  void SetConsoleColor(string colorName, Color color)
+		private static void SetConsoleColor(string colorName, Color color)
 		{
 			_baseKey.CreateSubKey("Console").SetValue(colorName, color.ToArgb(), RegistryValueKind.DWord);
 		}
@@ -202,6 +202,23 @@ namespace SRCDS_RCON
 		}
 
 		/// <summary>
+		/// The last server that the client connected to
+		/// </summary>
+		new public Server LastServer
+		{
+			get
+			{
+				string lastServerString = (string)_baseKey.GetValue("LastServer", string.Empty);
+				return Server.FromSerializedString(lastServerString);
+			}
+			set
+			{
+				string lastServerString = value.ToSerializedString();
+				_baseKey.SetValue("LastServer", lastServerString, RegistryValueKind.String);
+			}
+		}
+
+		/// <summary>
 		/// The width of the main RCON window
 		/// </summary>
 		new public int MainWindowWidth
@@ -270,22 +287,23 @@ namespace SRCDS_RCON
 	/// <summary>
 	/// Gets the default settings for the program to use.
 	/// </summary>
-	public  class DefaultSettings : IBaseSettings
+	public class DefaultSettings : IBaseSettings
 	{
-		public  Color DefaultConsoleColor { get; set; } = SystemColors.ControlText;
-		public Color SentConsoleColor { get; set; } = Color.FromKnownColor(KnownColor.LimeGreen);
-		public Color ProgramConsoleColor { get; set; } = Color.Blue;
-		public bool UseMinecraftColors { get; set; } = true;
+		public Color DefaultConsoleColor { get; } = SystemColors.ControlText;
+		public Color SentConsoleColor { get; } = Color.FromKnownColor(KnownColor.LimeGreen);
+		public Color ProgramConsoleColor { get; } = Color.Blue;
+		public bool UseMinecraftColors { get; } = true;
 
-		public bool LogToFile { get; set; } = false;
-		public string LogFilePath { get; set; } = "logs\\{0}.log";
+		public bool LogToFile { get; } = false;
+		public string LogFilePath { get; } = "logs\\{0}.log";
 
-		public bool ReconnectOnConnectionLost { get; set; } = false;
+		public bool ReconnectOnConnectionLost { get; } = false;
 
-		public List<Server> Servers { get; set; } = new List<Server>();
+		public List<Server> Servers { get; } = new List<Server>();
+		public Server LastServer { get; } = null;
 
-		public int MainWindowWidth { get; set; } = 420;
-		public int MainWindowHeight { get; set; } = 225;
+		public int MainWindowWidth { get; } = 420;
+		public int MainWindowHeight { get; } = 225;
 	}
 
 	/// <summary>
@@ -293,20 +311,21 @@ namespace SRCDS_RCON
 	/// </summary>
 	public class Settings : ISettings
 	{
-		public  Color DefaultConsoleColor { get; set; }
-		public  Color SentConsoleColor { get; set; }
-		public  Color ProgramConsoleColor { get; set; }
-		public  bool UseMinecraftColors { get; set; }
+		public Color DefaultConsoleColor { get; set; }
+		public Color SentConsoleColor { get; set; }
+		public Color ProgramConsoleColor { get; set; }
+		public bool UseMinecraftColors { get; set; }
 
-		public  bool LogToFile { get; set; }
-		public  string LogFilePath { get; set; }
+		public bool LogToFile { get; set; }
+		public string LogFilePath { get; set; }
 
-		public  bool ReconnectOnConnectionLost { get; set; }
+		public bool ReconnectOnConnectionLost { get; set; }
 
-		public  List<Server> Servers { get; set; }
+		public List<Server> Servers { get; set; }
+		public Server LastServer { get; set; }
 
-		public  int MainWindowWidth { get; set; }
-		public  int MainWindowHeight { get; set; }
+		public int MainWindowWidth { get; set; }
+		public int MainWindowHeight { get; set; }
 
 		/// <summary>
 		/// Copies the properties of a <see cref="IBaseSettings"/> to a <see cref="ISettings"/>
@@ -345,6 +364,7 @@ namespace SRCDS_RCON
 		new bool ReconnectOnConnectionLost { get; set; }
 
 		new List<Server> Servers { get; set; }
+		new Server LastServer { get; set; }
 
 		new int MainWindowWidth { get; set; }
 		new int MainWindowHeight { get; set; }
@@ -366,6 +386,7 @@ namespace SRCDS_RCON
 		bool ReconnectOnConnectionLost { get; }
 
 		List<Server> Servers { get; }
+		Server LastServer { get; }
 
 		int MainWindowWidth { get; }
 		int MainWindowHeight { get; }

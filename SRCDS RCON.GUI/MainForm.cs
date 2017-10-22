@@ -74,6 +74,7 @@ namespace SRCDS_RCON.GUI
 				}
 			});
 
+			SrcdsRcon.Settings.LastServer = server;
 			connectTask.Start();
 		}
 
@@ -291,6 +292,16 @@ namespace SRCDS_RCON.GUI
 			}
 		}
 
-		#endregion
+		private void FileToolStripItem_DropDownOpening(object sender, EventArgs e)
+		{
+			reconnectToolStripMenuItem.Enabled = (SrcdsRcon.Settings.LastServer != null);
+		}
+
+		private void ConsoleContextMenuStrip_Opening(object sender, CancelEventArgs e)
+		{
+			reconnectToolStripMenuItem1.Enabled = (SrcdsRcon.Settings.LastServer != null);
+		}
+
+#endregion
 	}
 }
