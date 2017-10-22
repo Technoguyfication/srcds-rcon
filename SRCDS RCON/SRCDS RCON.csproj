@@ -51,7 +51,6 @@
     <Compile Include="Net\Packet.cs" />
     <Compile Include="Net\Protocol.cs" />
     <Compile Include="Net\Server.cs" />
-    <Compile Include="Properties\AssemblyVersionInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
