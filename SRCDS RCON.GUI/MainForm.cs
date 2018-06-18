@@ -50,7 +50,7 @@ namespace SRCDS_RCON.GUI
 			if (protocol.Connected)
 				protocol.Disconnect();
 
-			WriteToConsole($"Connecting to {server.Hostname}:{server.Port}...", SrcdsRcon.Settings.DefaultConsoleColor);
+			WriteToConsole($"Connecting to {server.Hostname}:{server.Port}...", SrcdsRcon.Settings.ProgramConsoleColor);
 
 			// run connect async so it doens't hold up the gui
 
@@ -62,15 +62,15 @@ namespace SRCDS_RCON.GUI
 				}
 				catch (InvalidCredentialsException)
 				{
-					WriteToConsole("Incorrect password");
+					WriteToConsole("Incorrect password", SrcdsRcon.Settings.ProgramConsoleColor);
 				}
 				catch (ConnectionFailedException e)
 				{
-					WriteToConsole($"Connection failed: {e.Message}");
+					WriteToConsole($"Connection failed: {e.Message}", SrcdsRcon.Settings.ProgramConsoleColor);
 				}
 				catch (Exception e)
 				{
-					WriteToConsole($"Unhandled exception: {e.Message}\n{e.StackTrace}");
+					WriteToConsole($"Unhandled exception: {e.Message}\n{e.StackTrace}", SrcdsRcon.Settings.ProgramConsoleColor);
 				}
 			});
 
@@ -80,13 +80,13 @@ namespace SRCDS_RCON.GUI
 
 		private void Protocol_Ready(object sender, EventArgs e)
 		{
-			WriteToConsole("Connected!");
+			WriteToConsole("Connected!", SrcdsRcon.Settings.ProgramConsoleColor);
 			UpdateGui();
 		}
 
 		private void Protocol_Disconnected(object sender, EventArgs e)
 		{
-			WriteToConsole("Disconnected.");
+			WriteToConsole("Disconnected.", SrcdsRcon.Settings.ProgramConsoleColor);
 			UpdateGui();
 		}
 
@@ -99,12 +99,12 @@ namespace SRCDS_RCON.GUI
 			{
 				case ServerType.MINECRAFT:
 					StyledString[] strings = TextColorUtility.GetStyledStrings(e.Message);
-					foreach (StyledString str in strings)
+					for (int i = 0; i < strings.Length; i++)
 					{
 						WriteToConsole(
-							str.Content,
-							(SrcdsRcon.Settings.UseMinecraftColors) ? TextColorUtility.GetColorFromConsoleColor(str.Color) : SrcdsRcon.Settings.DefaultConsoleColor,
-							false);
+							strings[i].Content,
+							(SrcdsRcon.Settings.UseMinecraftColors) ? TextColorUtility.GetColorFromConsoleColor(strings[i].Color) : SrcdsRcon.Settings.DefaultConsoleColor,
+							(i + 1 < strings.Length) ? false : true);	// don't add newline unless it's the end of the message
 					}
 					break;
 				case ServerType.SRCDS:
