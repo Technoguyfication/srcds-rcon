@@ -77,6 +77,7 @@
 			this.consoleTextBox.TabIndex = 0;
 			this.consoleTextBox.TabStop = false;
 			this.consoleTextBox.Text = "Lorem ipsum\ndolor sit amet";
+			this.consoleTextBox.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.ConsoleTextBox_LinkClicked);
 			// 
 			// consoleContextMenuStrip
 			// 
@@ -88,27 +89,27 @@
             this.toolStripMenuItem2,
             this.copyToolStripMenuItem});
 			this.consoleContextMenuStrip.Name = "consoleContextMenuStrip";
-			this.consoleContextMenuStrip.Size = new System.Drawing.Size(153, 126);
+			this.consoleContextMenuStrip.Size = new System.Drawing.Size(134, 104);
 			this.consoleContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ConsoleContextMenuStrip_Opening);
 			// 
 			// clearToolStripMenuItem
 			// 
 			this.clearToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.page_refresh;
 			this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-			this.clearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.clearToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
 			this.clearToolStripMenuItem.Text = "Clear";
 			this.clearToolStripMenuItem.Click += new System.EventHandler(this.ClearToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(130, 6);
 			// 
 			// disconnectToolStripMenuItem
 			// 
 			this.disconnectToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.disconnect;
 			this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-			this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
 			this.disconnectToolStripMenuItem.Text = "Disconnect";
 			this.disconnectToolStripMenuItem.Click += new System.EventHandler(this.DisconnectToolStripMenuItem_Click);
 			// 
@@ -116,18 +117,18 @@
 			// 
 			this.reconnectToolStripMenuItem.Image = global::SRCDS_RCON.GUI.Properties.Resources.arrow_refresh;
 			this.reconnectToolStripMenuItem.Name = "reconnectToolStripMenuItem";
-			this.reconnectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.reconnectToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
 			this.reconnectToolStripMenuItem.Text = "Reconnect";
 			// 
 			// toolStripMenuItem2
 			// 
 			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(130, 6);
 			// 
 			// copyToolStripMenuItem
 			// 
 			this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-			this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.copyToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
 			this.copyToolStripMenuItem.Text = "Copy";
 			this.copyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
 			// 

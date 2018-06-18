@@ -302,6 +302,11 @@ namespace SRCDS_RCON.GUI
 			reconnectToolStripMenuItem1.Enabled = (SrcdsRcon.Settings.LastServer != null);
 		}
 
+		private void ConsoleTextBox_LinkClicked(object sender, LinkClickedEventArgs e)
+		{
+			System.Diagnostics.Process.Start(e.LinkText);
+		}
+
 		#endregion
 	}
 }
